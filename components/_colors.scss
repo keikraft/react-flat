@@ -1,0 +1,192 @@
+//-- Flat Degin Colors
+
+$red: (
+  'red1-0': rgb(255,204,188),
+  'red1-1': rgb(255,172,156),
+  'red1-2': rgb(255,140,124),
+  'red1-3': rgb(255,124,108),
+
+  'red2-0': rgb(255,108,92),
+  'red2-1': rgb(247,92,76),
+  'red2-2': rgb(231,76,60),
+  'red2-3': rgb(215,60,44),
+
+  'red3-0': rgb(199,44,28),
+  'red3-1': rgb(183,28,12),
+  'red3-2': rgb(167,12,0),
+  'red3-3': rgb(135,0,0)
+);
+
+$pink: (
+  'pink1-0': rgb(255,188,216),
+  'pink1-1': rgb(255,140,200),
+  'pink1-2': rgb(255,124,184),
+  'pink1-3': rgb(255,108,168),
+
+  'pink2-0': rgb(255,108,168),
+  'pink2-1': rgb(234,76,136),
+  'pink2-2': rgb(218,60,120),
+  'pink2-3': rgb(202,44,104),
+
+  'pink3-0': rgb(186,28,88),
+  'pink3-1': rgb(170,12,72),
+  'pink3-2': rgb(154,0,56),
+  'pink3-3': rgb(138,0,40)
+);
+
+$purple: (
+  'purple1-0': rgb(220, 198, 224),
+  'purple1-1': rgb(206, 160, 228),
+  'purple1-2': rgb(190, 144, 212),
+  'purple1-3': rgb(171, 105, 198),
+
+  'purple2-0': rgb(171, 105, 198),
+  'purple2-1': rgb(142, 68, 173),
+  'purple2-2': rgb(126, 52, 157),
+  'purple2-3': rgb(110, 36, 141),
+
+  'purple3-0': rgb(94,20,125),
+  'purple3-1': rgb(78,4,109),
+  'purple3-2': rgb(62,0,93),
+  'purple3-3': rgb(30,0,61)
+);
+
+$blue: (
+  'blue1-0': rgb(57, 213, 255),
+  'blue1-1': rgb(41, 197, 255),
+  'blue1-2': rgb(25, 181, 254),
+  'blue1-3': rgb(34, 167, 240),
+
+  'blue2-0': rgb(18, 151, 224),
+  'blue2-1': rgb(2, 135, 208),
+  'blue2-2': rgb(0, 119, 192),
+  'blue2-3': rgb(0, 103, 176),
+
+  'blue3-0': rgb(0, 87, 160),
+  'blue3-1': rgb(0, 71, 144),
+  'blue3-2': rgb(0, 55, 128),
+  'blue3-3': rgb(16, 39, 112)
+);
+
+$aqua: (
+  'aqua1-0': rgb(94, 250, 247),
+  'aqua1-1': rgb(81, 245, 234),
+  'aqua1-2': rgb(71, 235, 224),
+  'aqua1-3': rgb(55, 219, 208),
+
+  'aqua2-0': rgb(39, 203, 192),
+  'aqua2-1': rgb(23, 187, 176),
+  'aqua2-2': rgb(7, 171, 160),
+  'aqua2-3': rgb(0, 155, 144),
+
+  'aqua3-0': rgb(0, 139, 128),
+  'aqua3-1': rgb(0, 123, 112),
+  'aqua3-2': rgb(16, 107, 96),
+  'aqua3-3': rgb(0, 91, 80)
+);
+
+$green: (
+  'green1-0': rgb(142, 255, 193),
+  'green1-1': rgb(94, 252, 161),
+  'green1-2': rgb(78, 236, 145),
+  'green1-3': rgb(62, 220, 129),
+
+  'green2-0': rgb(46, 204, 113),
+  'green2-1': rgb(30, 188, 97),
+  'green2-2': rgb(14, 172, 81),
+  'green2-3': rgb(0, 156, 65),
+
+  'green3-0': rgb(0, 140, 49),
+  'green3-1': rgb(0, 124, 33),
+  'green3-2': rgb(0, 108, 17),
+  'green3-3': rgb(0, 92, 1)
+);
+
+$yellow: (
+  'yellow1-0': rgb(253, 227, 167),
+  'yellow1-1': rgb(255, 207, 75),
+  'yellow1-2': rgb(249, 191, 59),
+  'yellow1-3': rgb(249, 179, 47),
+
+  'yellow2-0': rgb(245, 171, 53),
+  'yellow2-1': rgb(243, 156, 18),
+  'yellow2-2': rgb(241, 137, 45),
+  'yellow2-3': rgb(230, 126, 34),
+
+  'yellow3-0': rgb(216, 116, 0),
+  'yellow3-1': rgb(200, 100, 0),
+  'yellow3-2': rgb(184, 84, 0),
+  'yellow3-3': rgb(168, 68, 16)
+);
+
+$orange: (
+  'orange1-0': rgb(255, 220, 181),
+  'orange1-1': rgb(255, 194, 155),
+  'orange1-2': rgb(255, 178, 139),
+  'orange1-3': rgb(255, 162, 123),
+
+  'orange2-0': rgb(255, 146, 107),
+  'orange2-1': rgb(243, 130, 91),
+  'orange2-2': rgb(227, 114, 75),
+  'orange2-3': rgb(211, 98, 59),
+
+  'orange3-0': rgb(195, 82, 43),
+  'orange3-1': rgb(179, 66, 27),
+  'orange3-2': rgb(163, 50, 11),
+  'orange3-3': rgb(147, 34, 16)
+);
+
+$brown: (
+  'brown1-0': rgb(246, 196, 163),
+  'brown1-1': rgb(234, 184, 151),
+  'brown1-2': rgb(223, 173, 140),
+  'brown1-3': rgb(212, 162, 129),
+
+  'brown2-0': rgb(206, 156, 123),
+  'brown2-1': rgb(190, 140, 107),
+  'brown2-2': rgb(174, 124, 91),
+  'brown2-3': rgb(158, 108, 75),
+
+  'brown3-0': rgb(142, 92, 59),
+  'brown3-1': rgb(126, 76, 43),
+  'brown3-2': rgb(110, 60, 27),
+  'brown3-3': rgb(94, 44, 11)
+);
+
+$grey: (
+  'grey1-0': rgb(224, 224, 224),
+  'grey1-1': rgb(208, 208, 208),
+  'grey1-2': rgb(192, 192, 192),
+  'grey1-3': rgb(160, 160, 160),
+
+  'grey2-0': rgb(144, 144, 144),
+  'grey2-1': rgb(128, 128, 128),
+  'grey2-2': rgb(112, 112, 112),
+  'grey2-3': rgb(96, 96, 96),
+
+  'grey3-0': rgb(80, 80, 80),
+  'grey3-1': rgb(64, 64, 64),
+  'grey3-2': rgb(48, 48, 48),
+  'grey3-3': rgb(32, 32, 32)
+);
+
+$color-black: rgb(0,0,0);
+$color-white: rgb(255,255,255);
+
+$color-dark-contrast: $color-white !default;
+$color-light-contrast: $color-black !default;
+
+// color classes
+$colors: ($red, $pink, $purple, $blue, $aqua, $green, $yellow, $orange, $brown, $grey);
+
+@each $color in $colors {
+  @each $color-name, $color-value in $color {
+    .#{$color-name}-b {
+      background-color: $color-value;
+    }
+
+    .#{$color-name} {
+      color: $color-value;
+    }
+  }
+}
