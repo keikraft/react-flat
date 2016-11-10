@@ -15,12 +15,12 @@ const XSwitch = (props) => {
     <span>
       <label className="switch">
         <input type="checkbox" onClick={handleToggle} defaultChecked={checked} disabled={disabled}/>
-        <div className="slider"></div>
+        <div className="slider"/>
       </label>
       {showLabel}
     </span>
   );
-}
+};
 
 XSwitch.propTypes = {
   label: React.PropTypes.string,
@@ -28,7 +28,7 @@ XSwitch.propTypes = {
   checked: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   onChange: React.PropTypes.func.isRequired
-}
+};
 
 XSwitch.defaultProps = {
   theme: 'grey',

@@ -35,7 +35,7 @@ var Button = function (_React$Component) {
 	}
 
 	_createClass(Button, [{
-		key: 'onClick',
+		key: 'handleClick',
 		value: function onClick() {
 			this.setState({ clicked: true });
 		}
