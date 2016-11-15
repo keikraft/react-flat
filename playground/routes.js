@@ -3,8 +3,8 @@ import Route from 'react-router/lib/Route';
 
 import App from './src/app.jsx';
 import Buttons from './src/components/buttons.jsx';
-import Selectors from './src/components/selectors.jsx';
-import Colors from './src/components/colors.jsx';
+import Selectors from './src/components/selectors/selectors.jsx';
+import Colors from './src/components/colors/colors.jsx';
 
 export default (
   <Route path="/app" component={App}>

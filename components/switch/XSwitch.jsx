@@ -1,9 +1,11 @@
 import React from 'react';
+import classnames from 'classnames';
+
 import './styles.scss';
 
 const XSwitch = (props) => {
-  const { label, checked, disabled } = props;
-  const showLabel = label ? <span className="switch-text">{label}</span> : null;
+  const { label, className, theme, checked, disabled } = props;
+  const showLabel = label ? <span className={classnames('text', { disabled: disabled })}>{label}</span> : null;
 
   const handleToggle = (e) => {
     if (props.onChange) {
@@ -12,13 +14,13 @@ const XSwitch = (props) => {
   };
 
   return (
-    <span>
-      <label className="switch">
-        <input type="checkbox" onClick={handleToggle} defaultChecked={checked} disabled={disabled}/>
-        <div className="slider"/>
-      </label>
+    <label className={classnames('switch', className, theme)}>
+      <input type="checkbox" onClick={handleToggle} defaultChecked={checked} disabled={disabled}/>
+      <span className="track">
+        <span role="thumb" className="thumb"/>
+      </span>
       {showLabel}
-    </span>
+    </label>
   );
 };
 
@@ -31,7 +33,8 @@ XSwitch.propTypes = {
 };
 
 XSwitch.defaultProps = {
-  theme: 'grey',
+  className: '',
+  theme: 'default',
   checked: false,
   disabled: false
 };

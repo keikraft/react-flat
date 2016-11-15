@@ -1,0 +1,138 @@
+@import '../colors';
+
+/* XSwitch */
+.switch-input {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+
+  &:checked + .track > .thumb {
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
+  }
+
+  &:disabled {
+    + .track {
+      background-color: $grey110;
+      cursor: default;
+    }
+    + .track > .thumb {
+      background-color: $grey200;
+    }
+  }
+}
+
+// Rail Design
+// .switch-track {
+//   position: relative;
+//   display: inline-block;
+//   width: 34px;
+//   height: 18px;
+//   cursor: pointer;
+// }
+
+// .switch-thumb {
+//   position: absolute;
+//   height: 14px;
+//   width: 14px;
+//   left: 2px;
+//   bottom: 2px;
+//   cursor: pointer;
+//   content: "";
+//   -webkit-transition: .3s;
+//   transition: .3s;
+// }
+
+.switch-track {
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 10px;
+  cursor: pointer;
+}
+
+.switch-thumb {
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  left: 0px;
+  bottom: -3px;
+  cursor: pointer;
+  content: "";
+  box-shadow: 0 0.5px 5px 0px rgba(0,0,0,0.3);
+  border: 0.5px solid rgba(0, 0, 0, 0.1);
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.switch-text {
+  padding-left: 10px;
+
+  &.disabled {
+    color: $grey110;
+  }
+}
+
+.switch {
+  display: inline-flex;
+  align-items: center;
+}
+
+.switch.default {
+  input {
+    @extend .switch-input;
+    &:checked {
+      + .track {
+        background-color: $grey110;
+      }
+      + .track > .thumb {
+        background-color: $grey220;
+      }
+    }
+  }
+
+  .track {
+    @extend .switch-track;
+    background-color: $grey110;
+    .thumb {
+      @extend .switch-thumb;
+      background-color: $color-white;
+    }
+  }
+
+  .text {
+    @extend .switch-text;
+  }
+}
+
+/* THEMES */
+@each $color-name in $color-names {
+  .switch.#{$color-name} {
+    input {
+      @extend .switch-input;
+      &:checked {
+        + .track {
+          background-color: get-color($color-name, '110');
+        }
+        + .track > .thumb {
+          background-color: get-color($color-name, '220');
+        }
+      }
+    }
+
+    .track {
+      @extend .switch-track;
+      background-color: get-color($color-name, '100');
+      .thumb {
+        @extend .switch-thumb;
+        background-color: get-color($color-name, '120');
+      }
+    }
+
+    .text {
+      @extend .switch-text;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
-import '../../../components/_colors.scss';
-import './colorsPage.scss';
+import '../../../../components/_colors.scss';
+import './styles.scss';
 
 var Colors = (props) => {
   return <div>

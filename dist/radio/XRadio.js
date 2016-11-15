@@ -8,18 +8,24 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-require('./styles.scss');
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var XSwitch = function XSwitch(props) {
+// import './styles.scss';
+
+var XRadio = function XRadio(props) {
   var label = props.label,
+      className = props.className,
+      theme = props.theme,
       checked = props.checked,
       disabled = props.disabled;
 
   var showLabel = label ? _react2.default.createElement(
     'span',
-    { className: 'switch-text' },
+    { className: (0, _classnames2.default)('text', { disabled: disabled }) },
     label
   ) : null;
 
@@ -30,19 +36,15 @@ var XSwitch = function XSwitch(props) {
   };
 
   return _react2.default.createElement(
-    'span',
-    null,
-    _react2.default.createElement(
-      'label',
-      { className: 'switch' },
-      _react2.default.createElement('input', { type: 'checkbox', onClick: handleToggle, defaultChecked: checked, disabled: disabled }),
-      _react2.default.createElement('div', { className: 'slider' })
-    ),
+    'label',
+    { className: (0, _classnames2.default)('radiobutton', className, theme) },
+    _react2.default.createElement('input', { type: 'radio', onClick: handleToggle, defaultChecked: checked, disabled: disabled }),
+    _react2.default.createElement('span', { className: 'radio' }),
     showLabel
   );
 };
 
-XSwitch.propTypes = {
+XRadio.propTypes = {
   label: _react2.default.PropTypes.string,
   theme: _react2.default.PropTypes.string,
   checked: _react2.default.PropTypes.bool,
@@ -50,10 +52,11 @@ XSwitch.propTypes = {
   onChange: _react2.default.PropTypes.func.isRequired
 };
 
-XSwitch.defaultProps = {
+XRadio.defaultProps = {
+  className: '',
   theme: 'grey',
   checked: false,
   disabled: false
 };
 
-exports.default = XSwitch;
+exports.default = XRadio;
