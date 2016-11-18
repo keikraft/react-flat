@@ -7,9 +7,9 @@ const XSwitch = (props) => {
   const { label, className, theme, checked, disabled } = props;
   const showLabel = label ? <span className={classnames('text', { disabled: disabled })}>{label}</span> : null;
 
-  const handleToggle = (e) => {
+  const handleToggle = (event) => {
     if (props.onChange) {
-      props.onChange(e.target.checked);
+      props.onChange(event.target.checked);
     }
   };
 

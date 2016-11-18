@@ -59,7 +59,7 @@
   width: 14px;
   height: 14px;
   cursor: pointer;
-  transition: background-color .2s ease;
+  transition: background-color .3s ease;
 }
 
 /* THEMES */
@@ -71,7 +71,7 @@
       @extend .checkbox-input;
       &:checked {
         + .check {
-          background-color: get-color($color-name,'200');
+          background-color: get-color($color-name,'220');
         }
 
         + .check:after {
@@ -82,7 +82,7 @@
 
     .check {
       @extend .checkbox-check;
-      border: 2px solid get-color($color-name,'200');
+      border: 2px solid get-color($color-name,'220');
     }
   }
 }

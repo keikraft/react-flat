@@ -29,9 +29,9 @@ var XSwitch = function XSwitch(props) {
     label
   ) : null;
 
-  var handleToggle = function handleToggle(e) {
+  var handleToggle = function handleToggle(event) {
     if (props.onChange) {
-      props.onChange(e.target.checked);
+      props.onChange(event.target.checked);
     }
   };
 

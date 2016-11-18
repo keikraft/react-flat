@@ -3,208 +3,218 @@ import '../../../../components/_colors.scss';
 import './styles.scss';
 
 var Colors = (props) => {
-  return <div>
-    <div className="colors-row">
-      <div className="color-container">
-        <span className="red3-3">Red</span>
-        <div className="color-block">
-          <div className="color-box red1-0-b"><span>red1-0</span></div>
-          <div className="color-box red1-1-b"><span>red1-1</span></div>
-          <div className="color-box red1-2-b"><span>red1-2</span></div>
-          <div className="color-box red1-3-b"><span>red1-3</span></div>
-
-          <div className="color-box red2-0-b"><span>red2-0</span></div>
-          <div className="color-box red2-1-b"><span>red2-1</span></div>
-          <div className="color-box red2-2-b"><span>red2-2</span></div>
-          <div className="color-box red2-3-b"><span>red2-3</span></div>
-
-          <div className="color-box red3-0-b"><span>red3-0</span></div>
-          <div className="color-box red3-1-b"><span>red3-1</span></div>
-          <div className="color-box red3-2-b"><span>red3-2</span></div>
-          <div className="color-box red3-3-b"><span>red3-3</span></div>
+  return (
+    <div>
+      <div className="color-values">
+        <div>
+          <span>HEX: </span>
+        </div>
+        <div>
+          <span>RGBA: </span>
         </div>
       </div>
+      <div className="colors-row">
+        <div className="color-container">
+          <span className="red330">Red</span>
+          <div className="color-block">
+            <div className="color-box red100-b"><span>red100</span></div>
+            <div className="color-box red110-b"><span>red110</span></div>
+            <div className="color-box red120-b"><span>red120</span></div>
+            <div className="color-box red130-b"><span>red130</span></div>
 
-      <div className="color-container">
-        <span className="pink3-3">Pink</span>
-        <div className="color-block">
-          <div className="color-box pink1-0-b"><span>pink1-0</span></div>
-          <div className="color-box pink1-1-b"><span>pink1-1</span></div>
-          <div className="color-box pink1-2-b"><span>pink1-2</span></div>
-          <div className="color-box pink1-3-b"><span>pink1-3</span></div>
+            <div className="color-box red200-b"><span>red200</span></div>
+            <div className="color-box red210-b"><span>red210</span></div>
+            <div className="color-box red220-b"><span>red220</span></div>
+            <div className="color-box red230-b"><span>red230</span></div>
 
-          <div className="color-box pink2-0-b"><span>pink2-0</span></div>
-          <div className="color-box pink2-1-b"><span>pink2-1</span></div>
-          <div className="color-box pink2-2-b"><span>pink2-2</span></div>
-          <div className="color-box pink2-3-b"><span>pink2-3</span></div>
+            <div className="color-box red300-b"><span>red300</span></div>
+            <div className="color-box red310-b"><span>red310</span></div>
+            <div className="color-box red320-b"><span>red320</span></div>
+            <div className="color-box red330-b"><span>red330</span></div>
+          </div>
+        </div>
 
-          <div className="color-box pink3-0-b"><span>pink3-0</span></div>
-          <div className="color-box pink3-1-b"><span>pink3-1</span></div>
-          <div className="color-box pink3-2-b"><span>pink3-2</span></div>
-          <div className="color-box pink3-3-b"><span>pink3-3</span></div>
+        <div className="color-container">
+          <span className="pink330">Pink</span>
+          <div className="color-block">
+            <div className="color-box pink100-b"><span>pink100</span></div>
+            <div className="color-box pink110-b"><span>pink110</span></div>
+            <div className="color-box pink120-b"><span>pink120</span></div>
+            <div className="color-box pink130-b"><span>pink130</span></div>
+
+            <div className="color-box pink200-b"><span>pink200</span></div>
+            <div className="color-box pink210-b"><span>pink210</span></div>
+            <div className="color-box pink220-b"><span>pink220</span></div>
+            <div className="color-box pink230-b"><span>pink230</span></div>
+
+            <div className="color-box pink300-b"><span>pink300</span></div>
+            <div className="color-box pink310-b"><span>pink310</span></div>
+            <div className="color-box pink320-b"><span>pink320</span></div>
+            <div className="color-box pink330-b"><span>pink330</span></div>
+          </div>
+        </div>
+
+        <div className="color-container">
+          <span className="purple330">Purple</span>
+          <div className="color-block">
+            <div className="color-box purple100-b"><span>purple100</span></div>
+            <div className="color-box purple110-b"><span>purple110</span></div>
+            <div className="color-box purple120-b"><span>purple120</span></div>
+            <div className="color-box purple130-b"><span>purple130</span></div>
+
+            <div className="color-box purple200-b"><span>purple200</span></div>
+            <div className="color-box purple210-b"><span>purple210</span></div>
+            <div className="color-box purple220-b"><span>purple220</span></div>
+            <div className="color-box purple230-b"><span>purple230</span></div>
+
+            <div className="color-box purple300-b"><span>purple300</span></div>
+            <div className="color-box purple310-b"><span>purple310</span></div>
+            <div className="color-box purple320-b"><span>purple320</span></div>
+            <div className="color-box purple330-b"><span>purple330</span></div>
+          </div>
+        </div>
+        <div className="color-container">
+          <span className="blue330">Blue</span>
+          <div className="color-block">
+            <div className="color-box blue100-b"><span>blue100</span></div>
+            <div className="color-box blue110-b"><span>blue110</span></div>
+            <div className="color-box blue120-b"><span>blue120</span></div>
+            <div className="color-box blue130-b"><span>blue130</span></div>
+
+            <div className="color-box blue200-b"><span>blue200</span></div>
+            <div className="color-box blue210-b"><span>blue210</span></div>
+            <div className="color-box blue220-b"><span>blue220</span></div>
+            <div className="color-box blue230-b"><span>blue230</span></div>
+
+            <div className="color-box blue300-b"><span>blue300</span></div>
+            <div className="color-box blue310-b"><span>blue310</span></div>
+            <div className="color-box blue320-b"><span>blue320</span></div>
+            <div className="color-box blue330-b"><span>blue330</span></div>
+          </div>
         </div>
       </div>
+      <div className="colors-row">
+        <div className="color-container">
+          <span className="aqua330">Aqua</span>
+          <div className="color-block">
+            <div className="color-box aqua100-b"><span>aqua100</span></div>
+            <div className="color-box aqua110-b"><span>aqua110</span></div>
+            <div className="color-box aqua120-b"><span>aqua120</span></div>
+            <div className="color-box aqua130-b"><span>aqua130</span></div>
 
-      <div className="color-container">
-        <span className="purple3-3">Purple</span>
-        <div className="color-block">
-          <div className="color-box purple1-0-b"><span>purple1-0</span></div>
-          <div className="color-box purple1-1-b"><span>purple1-1</span></div>
-          <div className="color-box purple1-2-b"><span>purple1-2</span></div>
-          <div className="color-box purple1-3-b"><span>purple1-3</span></div>
+            <div className="color-box aqua200-b"><span>aqua200</span></div>
+            <div className="color-box aqua210-b"><span>aqua210</span></div>
+            <div className="color-box aqua220-b"><span>aqua220</span></div>
+            <div className="color-box aqua230-b"><span>aqua230</span></div>
 
-          <div className="color-box purple2-0-b"><span>purple2-0</span></div>
-          <div className="color-box purple2-1-b"><span>purple2-1</span></div>
-          <div className="color-box purple2-2-b"><span>purple2-2</span></div>
-          <div className="color-box purple2-3-b"><span>purple2-3</span></div>
+            <div className="color-box aqua300-b"><span>aqua300</span></div>
+            <div className="color-box aqua310-b"><span>aqua310</span></div>
+            <div className="color-box aqua320-b"><span>aqua320</span></div>
+            <div className="color-box aqua330-b"><span>aqua330</span></div>
+          </div>
+        </div>
 
-          <div className="color-box purple3-0-b"><span>purple3-0</span></div>
-          <div className="color-box purple3-1-b"><span>purple3-1</span></div>
-          <div className="color-box purple3-2-b"><span>purple3-2</span></div>
-          <div className="color-box purple3-3-b"><span>purple3-3</span></div>
+        <div className="color-container">
+          <span className="green330">Green</span>
+          <div className="color-block">
+            <div className="color-box green100-b"><span>green100</span></div>
+            <div className="color-box green110-b"><span>green110</span></div>
+            <div className="color-box green120-b"><span>green120</span></div>
+            <div className="color-box green130-b"><span>green130</span></div>
+
+            <div className="color-box green200-b"><span>green200</span></div>
+            <div className="color-box green210-b"><span>green210</span></div>
+            <div className="color-box green220-b"><span>green220</span></div>
+            <div className="color-box green230-b"><span>green230</span></div>
+
+            <div className="color-box green300-b"><span>green300</span></div>
+            <div className="color-box green310-b"><span>green310</span></div>
+            <div className="color-box green320-b"><span>green320</span></div>
+            <div className="color-box green330-b"><span>green330</span></div>
+          </div>
+        </div>
+
+        <div className="color-container">
+          <span className="yellow330">Yellow</span>
+          <div className="color-block">
+            <div className="color-box yellow100-b"><span>yellow100</span></div>
+            <div className="color-box yellow110-b"><span>yellow110</span></div>
+            <div className="color-box yellow120-b"><span>yellow120</span></div>
+            <div className="color-box yellow130-b"><span>yellow130</span></div>
+
+            <div className="color-box yellow200-b"><span>yellow200</span></div>
+            <div className="color-box yellow210-b"><span>yellow210</span></div>
+            <div className="color-box yellow220-b"><span>yellow220</span></div>
+            <div className="color-box yellow230-b"><span>yellow230</span></div>
+
+            <div className="color-box yellow300-b"><span>yellow300</span></div>
+            <div className="color-box yellow310-b"><span>yellow310</span></div>
+            <div className="color-box yellow320-b"><span>yellow320</span></div>
+            <div className="color-box yellow330-b"><span>yellow330</span></div>
+          </div>
+        </div>
+        <div className="color-container">
+          <span className="orange330">Orange</span>
+          <div className="color-block">
+            <div className="color-box orange100-b"><span>orange100</span></div>
+            <div className="color-box orange110-b"><span>orange110</span></div>
+            <div className="color-box orange120-b"><span>orange120</span></div>
+            <div className="color-box orange130-b"><span>orange130</span></div>
+
+            <div className="color-box orange200-b"><span>orange200</span></div>
+            <div className="color-box orange210-b"><span>orange210</span></div>
+            <div className="color-box orange220-b"><span>orange220</span></div>
+            <div className="color-box orange230-b"><span>orange230</span></div>
+
+            <div className="color-box orange300-b"><span>orange300</span></div>
+            <div className="color-box orange310-b"><span>orange310</span></div>
+            <div className="color-box orange320-b"><span>orange320</span></div>
+            <div className="color-box orange330-b"><span>orange330</span></div>
+          </div>
         </div>
       </div>
-      <div className="color-container">
-        <span className="blue3-3">Blue</span>
-        <div className="color-block">
-          <div className="color-box blue1-0-b"><span>blue1-0</span></div>
-          <div className="color-box blue1-1-b"><span>blue1-1</span></div>
-          <div className="color-box blue1-2-b"><span>blue1-2</span></div>
-          <div className="color-box blue1-3-b"><span>blue1-3</span></div>
+      <div className="colors-row">
+        <div className="color-container">
+          <span className="brown330">Brown</span>
+          <div className="color-block">
+            <div className="color-box brown100-b"><span>brown100</span></div>
+            <div className="color-box brown110-b"><span>brown110</span></div>
+            <div className="color-box brown120-b"><span>brown120</span></div>
+            <div className="color-box brown130-b"><span>brown130</span></div>
 
-          <div className="color-box blue2-0-b"><span>blue2-0</span></div>
-          <div className="color-box blue2-1-b"><span>blue2-1</span></div>
-          <div className="color-box blue2-2-b"><span>blue2-2</span></div>
-          <div className="color-box blue2-3-b"><span>blue2-3</span></div>
+            <div className="color-box brown200-b"><span>brown200</span></div>
+            <div className="color-box brown210-b"><span>brown210</span></div>
+            <div className="color-box brown220-b"><span>brown220</span></div>
+            <div className="color-box brown230-b"><span>brown230</span></div>
 
-          <div className="color-box blue3-0-b"><span>blue3-0</span></div>
-          <div className="color-box blue3-1-b"><span>blue3-1</span></div>
-          <div className="color-box blue3-2-b"><span>blue3-2</span></div>
-          <div className="color-box blue3-3-b"><span>blue3-3</span></div>
+            <div className="color-box brown300-b"><span>brown300</span></div>
+            <div className="color-box brown310-b"><span>brown310</span></div>
+            <div className="color-box brown320-b"><span>brown320</span></div>
+            <div className="color-box brown330-b"><span>brown330</span></div>
+          </div>
+        </div>
+        <div className="color-container">
+          <span className="grey330">Grey</span>
+          <div className="color-block">
+            <div className="color-box grey100-b"><span>grey100</span></div>
+            <div className="color-box grey110-b"><span>grey110</span></div>
+            <div className="color-box grey120-b"><span>grey120</span></div>
+            <div className="color-box grey130-b"><span>grey130</span></div>
+
+            <div className="color-box grey200-b"><span>grey200</span></div>
+            <div className="color-box grey210-b"><span>grey210</span></div>
+            <div className="color-box grey220-b"><span>grey220</span></div>
+            <div className="color-box grey230-b"><span>grey230</span></div>
+
+            <div className="color-box grey300-b"><span>grey300</span></div>
+            <div className="color-box grey310-b"><span>grey310</span></div>
+            <div className="color-box grey320-b"><span>grey320</span></div>
+            <div className="color-box grey330-b"><span>grey330</span></div>
+          </div>
         </div>
       </div>
     </div>
-    <div className="colors-row">
-      <div className="color-container">
-        <span className="aqua3-3">Aqua</span>
-        <div className="color-block">
-          <div className="color-box aqua1-0-b"><span>aqua1-0</span></div>
-          <div className="color-box aqua1-1-b"><span>aqua1-1</span></div>
-          <div className="color-box aqua1-2-b"><span>aqua1-2</span></div>
-          <div className="color-box aqua1-3-b"><span>aqua1-3</span></div>
-
-          <div className="color-box aqua2-0-b"><span>aqua2-0</span></div>
-          <div className="color-box aqua2-1-b"><span>aqua2-1</span></div>
-          <div className="color-box aqua2-2-b"><span>aqua2-2</span></div>
-          <div className="color-box aqua2-3-b"><span>aqua2-3</span></div>
-
-          <div className="color-box aqua3-0-b"><span>aqua3-0</span></div>
-          <div className="color-box aqua3-1-b"><span>aqua3-1</span></div>
-          <div className="color-box aqua3-2-b"><span>aqua3-2</span></div>
-          <div className="color-box aqua3-3-b"><span>aqua3-3</span></div>
-        </div>
-      </div>
-
-      <div className="color-container">
-        <span className="green3-3">Green</span>
-        <div className="color-block">
-          <div className="color-box green1-0-b"><span>green1-0</span></div>
-          <div className="color-box green1-1-b"><span>green1-1</span></div>
-          <div className="color-box green1-2-b"><span>green1-2</span></div>
-          <div className="color-box green1-3-b"><span>green1-3</span></div>
-
-          <div className="color-box green2-0-b"><span>green2-0</span></div>
-          <div className="color-box green2-1-b"><span>green2-1</span></div>
-          <div className="color-box green2-2-b"><span>green2-2</span></div>
-          <div className="color-box green2-3-b"><span>green2-3</span></div>
-
-          <div className="color-box green3-0-b"><span>green3-0</span></div>
-          <div className="color-box green3-1-b"><span>green3-1</span></div>
-          <div className="color-box green3-2-b"><span>green3-2</span></div>
-          <div className="color-box green3-3-b"><span>green3-3</span></div>
-        </div>
-      </div>
-
-      <div className="color-container">
-        <span className="yellow3-3">Yellow</span>
-        <div className="color-block">
-          <div className="color-box yellow1-0-b"><span>yellow1-0</span></div>
-          <div className="color-box yellow1-1-b"><span>yellow1-1</span></div>
-          <div className="color-box yellow1-2-b"><span>yellow1-2</span></div>
-          <div className="color-box yellow1-3-b"><span>yellow1-3</span></div>
-
-          <div className="color-box yellow2-0-b"><span>yellow2-0</span></div>
-          <div className="color-box yellow2-1-b"><span>yellow2-1</span></div>
-          <div className="color-box yellow2-2-b"><span>yellow2-2</span></div>
-          <div className="color-box yellow2-3-b"><span>yellow2-3</span></div>
-
-          <div className="color-box yellow3-0-b"><span>yellow3-0</span></div>
-          <div className="color-box yellow3-1-b"><span>yellow3-1</span></div>
-          <div className="color-box yellow3-2-b"><span>yellow3-2</span></div>
-          <div className="color-box yellow3-3-b"><span>yellow3-3</span></div>
-        </div>
-      </div>
-      <div className="color-container">
-        <span className="orange3-3">Orange</span>
-        <div className="color-block">
-          <div className="color-box orange1-0-b"><span>orange1-0</span></div>
-          <div className="color-box orange1-1-b"><span>orange1-1</span></div>
-          <div className="color-box orange1-2-b"><span>orange1-2</span></div>
-          <div className="color-box orange1-3-b"><span>orange1-3</span></div>
-
-          <div className="color-box orange2-0-b"><span>orange2-0</span></div>
-          <div className="color-box orange2-1-b"><span>orange2-1</span></div>
-          <div className="color-box orange2-2-b"><span>orange2-2</span></div>
-          <div className="color-box orange2-3-b"><span>orange2-3</span></div>
-
-          <div className="color-box orange3-0-b"><span>orange3-0</span></div>
-          <div className="color-box orange3-1-b"><span>orange3-1</span></div>
-          <div className="color-box orange3-2-b"><span>orange3-2</span></div>
-          <div className="color-box orange3-3-b"><span>orange3-3</span></div>
-        </div>
-      </div>
-    </div>
-    <div className="colors-row">
-      <div className="color-container">
-        <span className="brown3-3">Brown</span>
-        <div className="color-block">
-          <div className="color-box brown1-0-b"><span>brown1-0</span></div>
-          <div className="color-box brown1-1-b"><span>brown1-1</span></div>
-          <div className="color-box brown1-2-b"><span>brown1-2</span></div>
-          <div className="color-box brown1-3-b"><span>brown1-3</span></div>
-
-          <div className="color-box brown2-0-b"><span>brown2-0</span></div>
-          <div className="color-box brown2-1-b"><span>brown2-1</span></div>
-          <div className="color-box brown2-2-b"><span>brown2-2</span></div>
-          <div className="color-box brown2-3-b"><span>brown2-3</span></div>
-
-          <div className="color-box brown3-0-b"><span>brown3-0</span></div>
-          <div className="color-box brown3-1-b"><span>brown3-1</span></div>
-          <div className="color-box brown3-2-b"><span>brown3-2</span></div>
-          <div className="color-box brown3-3-b"><span>brown3-3</span></div>
-        </div>
-      </div>
-      <div className="color-container">
-        <span className="grey3-3">Grey</span>
-        <div className="color-block">
-          <div className="color-box grey1-0-b"><span>grey1-0</span></div>
-          <div className="color-box grey1-1-b"><span>grey1-1</span></div>
-          <div className="color-box grey1-2-b"><span>grey1-2</span></div>
-          <div className="color-box grey1-3-b"><span>grey1-3</span></div>
-
-          <div className="color-box grey2-0-b"><span>grey2-0</span></div>
-          <div className="color-box grey2-1-b"><span>grey2-1</span></div>
-          <div className="color-box grey2-2-b"><span>grey2-2</span></div>
-          <div className="color-box grey2-3-b"><span>grey2-3</span></div>
-
-          <div className="color-box grey3-0-b"><span>grey3-0</span></div>
-          <div className="color-box grey3-1-b"><span>grey3-1</span></div>
-          <div className="color-box grey3-2-b"><span>grey3-2</span></div>
-          <div className="color-box grey3-3-b"><span>grey3-3</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
+  );
 };
 
 export default Colors;

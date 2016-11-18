@@ -1,3 +1,11 @@
+@import "../../../../components/colors";
+
+div.color-values {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 div.colors-row {
   display: flex;
   justify-content: center;
@@ -41,6 +49,18 @@ div.colors-row {
           display: none;
         }
       }
+    }
+  }
+}
+
+@each $color-name in $color-names {
+  @each $color-intensity in $color-intensities {
+    .#{$color-name}#{$color-intensity}-b {
+      background-color: get-color($color-name, $color-intensity);
+    }
+
+    .#{$color-name}#{$color-intensity} {
+      color: get-color($color-name, $color-intensity);
     }
   }
 }

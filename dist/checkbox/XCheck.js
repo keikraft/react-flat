@@ -29,9 +29,9 @@ var XCheck = function XCheck(props) {
     label
   ) : null;
 
-  var handleToggle = function handleToggle(e) {
+  var handleToggle = function handleToggle(event) {
     if (props.onChange) {
-      props.onChange(e.target.checked);
+      props.onChange(event.target.checked);
     }
   };
 
@@ -46,6 +46,7 @@ var XCheck = function XCheck(props) {
 
 XCheck.propTypes = {
   label: _react2.default.PropTypes.string,
+  className: _react2.default.PropTypes.string,
   theme: _react2.default.PropTypes.string,
   checked: _react2.default.PropTypes.bool,
   disabled: _react2.default.PropTypes.bool,

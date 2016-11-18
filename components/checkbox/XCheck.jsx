@@ -7,9 +7,9 @@ const XCheck = (props) => {
   const { label, className, theme, checked, disabled } = props;
   const showLabel = label ? <span className={classnames('text', { disabled: disabled })}>{label}</span> : null;
 
-  const handleToggle = (e) => {
+  const handleToggle = (event) => {
     if (props.onChange) {
-      props.onChange(e.target.checked);
+      props.onChange(event.target.checked);
     }
   };
 
@@ -24,6 +24,7 @@ const XCheck = (props) => {
 
 XCheck.propTypes = {
   label: React.PropTypes.string,
+  className: React.PropTypes.string,
   theme: React.PropTypes.string,
   checked: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
