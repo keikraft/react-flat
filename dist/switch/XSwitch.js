@@ -23,7 +23,7 @@ var XSwitch = function XSwitch(props) {
       checked = props.checked,
       disabled = props.disabled;
 
-  var showLabel = label ? _react2.default.createElement(
+  var switchLabel = label ? _react2.default.createElement(
     'span',
     { className: (0, _classnames2.default)('text', { disabled: disabled }) },
     label
@@ -44,7 +44,7 @@ var XSwitch = function XSwitch(props) {
       { className: 'track' },
       _react2.default.createElement('span', { role: 'thumb', className: 'thumb' })
     ),
-    showLabel
+    switchLabel
   );
 };
 
@@ -53,7 +53,7 @@ XSwitch.propTypes = {
   theme: _react2.default.PropTypes.string,
   checked: _react2.default.PropTypes.bool,
   disabled: _react2.default.PropTypes.bool,
-  onChange: _react2.default.PropTypes.func.isRequired
+  onChange: _react2.default.PropTypes.func
 };
 
 XSwitch.defaultProps = {

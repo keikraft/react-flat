@@ -1,10 +1,8 @@
 import React, { PropTypes, Children } from 'react';
-import classnames from 'classnames';
-
-//import './styles.scss';
+import classnames from 'classnames'
 
 const XRadioGroup = (props) => {
-  const { name, value, className, disabled, onChange } = props;
+  const { name, value, className, onChange } = props;
 
   const handleChange = (value) => {
     if (onChange) {
@@ -29,7 +27,6 @@ XRadioGroup.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.any.isRequired,
   className: PropTypes.string,
-  disabled: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   children: PropTypes.node
 };

@@ -23,7 +23,7 @@ var XCheck = function XCheck(props) {
       checked = props.checked,
       disabled = props.disabled;
 
-  var showLabel = label ? _react2.default.createElement(
+  var checkboxLabel = label ? _react2.default.createElement(
     'span',
     { className: (0, _classnames2.default)('text', { disabled: disabled }) },
     label
@@ -40,17 +40,17 @@ var XCheck = function XCheck(props) {
     { className: (0, _classnames2.default)('checkbox', className, theme) },
     _react2.default.createElement('input', { type: 'checkbox', onClick: handleToggle, defaultChecked: checked, disabled: disabled }),
     _react2.default.createElement('span', { className: 'check' }),
-    showLabel
+    checkboxLabel
   );
 };
 
 XCheck.propTypes = {
-  label: _react2.default.PropTypes.string,
-  className: _react2.default.PropTypes.string,
-  theme: _react2.default.PropTypes.string,
-  checked: _react2.default.PropTypes.bool,
-  disabled: _react2.default.PropTypes.bool,
-  onChange: _react2.default.PropTypes.func.isRequired
+  label: _react.PropTypes.string,
+  className: _react.PropTypes.string,
+  theme: _react.PropTypes.string,
+  checked: _react.PropTypes.bool,
+  disabled: _react.PropTypes.bool,
+  onChange: _react.PropTypes.func
 };
 
 XCheck.defaultProps = {

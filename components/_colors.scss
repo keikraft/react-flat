@@ -232,6 +232,7 @@ $color-names: ('red', 'pink', 'purple', 'blue', 'aqua', 'green', 'yellow', 'oran
 $color-matrixes: ('grey': $grey, 'red': $red, 'pink': $pink, 'purple': $purple, 'blue': $blue, 'aqua': $aqua, 'green': $green, 'yellow': $yellow, 'orange': $orange, 'brown': $brown);
 $color-intensities: ('100', '110', '120', '130', '200', '210', '220', '230', '300', '310', '320', '330');
 
-@function get-color($color: 'grey', $intensity: '100'){
-  @return map-get(map-get($color-matrixes, $color), #{$color}#{$intensity});
+@function get-color($color: 'grey', $intensity: '100', $alpha: 1){
+  $color-value: map-get(map-get($color-matrixes, $color), #{$color}#{$intensity});
+  @return rgba($color-value, $alpha);
 }

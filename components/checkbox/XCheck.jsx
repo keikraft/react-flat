@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import classnames from 'classnames';
 
 import './styles.scss';
 
 const XCheck = (props) => {
   const { label, className, theme, checked, disabled } = props;
-  const showLabel = label ? <span className={classnames('text', { disabled: disabled })}>{label}</span> : null;
+  const checkboxLabel = label ? <span className={classnames('text', { disabled: disabled })}>{label}</span> : null;
 
   const handleToggle = (event) => {
     if (props.onChange) {
@@ -17,18 +17,18 @@ const XCheck = (props) => {
     <label className={classnames('checkbox', className, theme)}>
       <input type="checkbox" onClick={handleToggle} defaultChecked={checked} disabled={disabled}/>
       <span className="check"/>
-      {showLabel}
+      {checkboxLabel}
     </label>
   );
 };
 
 XCheck.propTypes = {
-  label: React.PropTypes.string,
-  className: React.PropTypes.string,
-  theme: React.PropTypes.string,
-  checked: React.PropTypes.bool,
-  disabled: React.PropTypes.bool,
-  onChange: React.PropTypes.func.isRequired
+  label: PropTypes.string,
+  className: PropTypes.string,
+  theme: PropTypes.string,
+  checked: PropTypes.bool,
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func
 };
 
 XCheck.defaultProps = {

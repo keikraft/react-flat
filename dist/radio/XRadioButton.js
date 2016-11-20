@@ -27,7 +27,7 @@ var XRadioButton = function XRadioButton(props) {
 
 
   var handleClick = function handleClick(event) {
-    if (onChange) {
+    if (!checked && !disabled && onChange) {
       onChange(event);
     }
   };
@@ -35,8 +35,8 @@ var XRadioButton = function XRadioButton(props) {
   return _react2.default.createElement(
     'label',
     { className: (0, _classnames2.default)('radiobutton', className, theme) },
-    _react2.default.createElement('input', { type: 'radio', defaultChecked: checked, disabled: disabled, value: value, onClick: handleClick }),
-    _react2.default.createElement('span', { className: 'radio' }),
+    _react2.default.createElement('input', { type: 'radio', value: value, onClick: handleClick }),
+    _react2.default.createElement('span', { className: (0, _classnames2.default)('radio', { disabled: disabled, checked: checked }) }),
     _react2.default.createElement(
       'span',
       { className: (0, _classnames2.default)('text', { disabled: disabled }) },

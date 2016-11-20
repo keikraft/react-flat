@@ -5,7 +5,7 @@ import './styles.scss';
 
 const XSwitch = (props) => {
   const { label, className, theme, checked, disabled } = props;
-  const showLabel = label ? <span className={classnames('text', { disabled: disabled })}>{label}</span> : null;
+  const switchLabel = label ? <span className={classnames('text', { disabled: disabled })}>{label}</span> : null;
 
   const handleToggle = (event) => {
     if (props.onChange) {
@@ -19,7 +19,7 @@ const XSwitch = (props) => {
       <span className="track">
         <span role="thumb" className="thumb"/>
       </span>
-      {showLabel}
+      {switchLabel}
     </label>
   );
 };
@@ -29,7 +29,7 @@ XSwitch.propTypes = {
   theme: React.PropTypes.string,
   checked: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
-  onChange: React.PropTypes.func.isRequired
+  onChange: React.PropTypes.func
 };
 
 XSwitch.defaultProps = {

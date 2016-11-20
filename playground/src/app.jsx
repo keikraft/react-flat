@@ -18,7 +18,6 @@ const App = (props) => {
         <nav>
           <ul>
             <li><a className="active" href="">Components</a></li>
-            <li><a href="">Docs</a></li>
             <li><a href="https://github.com/k3ira">Github</a></li>
           </ul>
         </nav>
