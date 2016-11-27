@@ -1,5 +1,6 @@
 import React from 'react';
 import XButton from '../../../../components/button/XButton';
+import XIcon from '../../../../components/icon/XIcon';
 
 import './pageConfig.scss';
 
@@ -12,7 +13,10 @@ const Buttons = (props) => {
       <div>
         <h2>Flat</h2>
         <XButton name="Default" flat/>
-        <XButton name="Themed" theme="red" icon="bookmark" flat />
+        {/*<XButton name="Themed" theme="red" icon="bookmark" flat />
+        <XButton name="Right" theme="green" flat>
+          <XIcon className="material-icons" value="bug_report"/>
+        </XButton>
         <XButton name="Disabled" flat disabled/>
         <XButton href="https://github.com/k3ira" icon={<GithubIcon/>} theme="purple" flat/>
       </div>
@@ -20,6 +24,9 @@ const Buttons = (props) => {
         <h2>Raised</h2>
         <XButton name="Default" raised/>
         <XButton name="Themed" theme="red" icon="bookmark" raised />
+        <XButton name="Right" theme="green" raised>
+          <XIcon className="material-icons" value="bug_report"/>
+        </XButton>
         <XButton name="Disabled" raised disabled/>
         <XButton name="Github" href="https://github.com/k3ira" icon={<GithubIcon/>} theme="purple" raised/>
       </div>
@@ -31,7 +38,7 @@ const Buttons = (props) => {
         <XButton icon="add" circular disabled/>
         <XButton icon="favorite" theme="red" circular mini/>
         <XButton icon="favorite" theme="red" circular inverse/>
-        <XButton href="https://github.com/k3ira" icon={<GithubIcon/>} theme="purple" circular mini/>
+        <XButton href="https://github.com/k3ira" icon={<GithubIcon/>} theme="purple" circular mini/>*/}
       </div>
     </div>
   );

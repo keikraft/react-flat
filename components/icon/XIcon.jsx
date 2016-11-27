@@ -10,7 +10,7 @@ const XIcon = (props) => {
     }
   };
 
-  return (<span className={classnames('icon', className, theme)} onClick="handleClick">{value}</span>);
+  return (<span className={classnames('icon', className, theme)} onClick={handleClick}>{value}</span>);
 };
 
 XIcon.propTypes = {
