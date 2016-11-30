@@ -54,6 +54,7 @@ var xwaveFactory = function xwaveFactory() {
         var _this = _possibleConstructorReturn(this, (XWaveComponent.__proto__ || Object.getPrototypeOf(XWaveComponent)).call(this, props));
 
         _this.state = { waves: {} };
+        _this.waveWidth = 15;
         _this.handleMouseDown = _this.handleMouseDown.bind(_this);
         return _this;
       }
@@ -70,7 +71,7 @@ var xwaveFactory = function xwaveFactory() {
 
               _this2.addEventListenerOnAnimationEnd(_this2.refs[waveKey], function onAnimationEnd(event) {
                 self.removeEventListenerOnAnimationEnd(self.refs[waveKey], onAnimationEnd);
-                self.setState({ waves: self.removeWave(waveKey, self.state.wave) });
+                self.setState({ waves: self.removeWave(waveKey, self.state.waves) });
               });
             })();
           }
@@ -87,13 +88,13 @@ var xwaveFactory = function xwaveFactory() {
       }, {
         key: 'addEventListenerOnAnimationEnd',
         value: function addEventListenerOnAnimationEnd(element, cb) {
-          element.addEventListener('animationend webkitAnimationEnd oanimationend MSAnimationEnd', cb);
+          element.addEventListener('animationend', cb);
           return true;
         }
       }, {
         key: 'removeEventListenerOnAnimationEnd',
         value: function removeEventListenerOnAnimationEnd(element, cb) {
-          element.removeEventListener('animationend webkitAnimationEnd oanimationend MSAnimationEnd', cb);
+          element.removeEventListener('animationend', cb);
           return true;
         }
       }, {
@@ -127,10 +128,12 @@ var xwaveFactory = function xwaveFactory() {
               height = _ReactDOM$findDOMNode.height,
               width = _ReactDOM$findDOMNode.width;
 
+          var spread = width * this.props.length;
+
           return {
-            top: y - top - height / 2,
-            left: x - left - width / 2,
-            width: width * this.props.length
+            top: y - top - this.waveWidth - spread / 2,
+            left: x - left - this.waveWidth - spread / 2,
+            width: spread
           };
         }
       }, {
@@ -144,25 +147,11 @@ var xwaveFactory = function xwaveFactory() {
           var noActiveWaves = Object.keys(this.state.waves).length === 0;
           var key = this.props.multiple || noActiveWaves ? this.getNewWaveKey() : this.getCurrentWaveKey();
 
-          // const stopWave = this.createStopWaveEventListener(key);
-          var waveState = { top: top, left: left, width: width }; //, stopWave };
+          var waveState = { top: top, left: left, width: width };
           this.setState((0, _immutabilityHelper2.default)(this.state, {
             waves: _defineProperty({}, key, { $set: waveState })
           }));
         }
-
-        // createStopWaveEventListener(waveKey) {
-        //   const stopWave = () => {
-        //     document.removeEventListener('mouseup', stopWave);
-        //     this.setState({ waves: update(this.state.waves, {
-        //       [waveKey]: { $merge: { active: false } }
-        //     })});
-        //   };
-
-        //   document.addEventListener('mouseup', stopWave);
-        //   return stopWave;
-        // }
-
       }, {
         key: 'handleMouseDown',
         value: function handleMouseDown(event) {
@@ -179,11 +168,7 @@ var xwaveFactory = function xwaveFactory() {
               left = _ref.left,
               width = _ref.width;
 
-          return _react2.default.createElement(
-            'span',
-            { key: key, className: (0, _classnames2.default)('wave-wrapper', className, theme), disabled: disabled },
-            _react2.default.createElement('span', { ref: key, role: 'wave', className: 'wave', style: { top: top, left: left, width: width, height: width } })
-          );
+          return _react2.default.createElement('span', { key: key, ref: key, role: 'wave', className: (0, _classnames2.default)('wave', className, theme), style: { top: top, left: left, width: width, height: width }, disabled: disabled });
         }
       }, {
         key: 'render',
@@ -224,7 +209,7 @@ var xwaveFactory = function xwaveFactory() {
     XWaveComponent.defaultProps = {
       theme: '',
       className: '',
-      length: 3,
+      length: 2,
       centered: false,
       multiple: true,
       disabled: false

@@ -6,7 +6,9 @@ import classnames from 'classnames';
 import './styles.scss';
 
 const xwaveFactory = (options = {}) => {
-  const {...props} = {...options};
+  const {
+    waveWidth = 15
+  } = {...options};
 
   return (Component) => {
     class XWaveComponent extends React.Component {
@@ -32,7 +34,7 @@ const xwaveFactory = (options = {}) => {
         super(props);
 
         this.state = { waves: {} };
-        this.waveWidth = 15;
+        this.waves = {};
         this.handleMouseDown = this.handleMouseDown.bind(this);
       }
 
@@ -41,8 +43,8 @@ const xwaveFactory = (options = {}) => {
           const self = this;
           const waveKey = this.getCurrentWaveKey();
 
-          this.addEventListenerOnAnimationEnd(this.refs[waveKey], function onAnimationEnd(event) {
-            self.removeEventListenerOnAnimationEnd(self.refs[waveKey], onAnimationEnd);
+          this.addEventListenerOnAnimationEnd(this.waves[waveKey], function onAnimationEnd() {
+            self.removeEventListenerOnAnimationEnd(self.waves[waveKey], onAnimationEnd);
             self.setState({ waves: self.removeWave(waveKey, self.state.waves) });
           });
         }
@@ -80,14 +82,14 @@ const xwaveFactory = (options = {}) => {
       }
 
       getOffset(x, y) {
-        const { left, top, height, width } = ReactDOM.findDOMNode(this).getBoundingClientRect();
+        const { left, top, width } = ReactDOM.findDOMNode(this).getBoundingClientRect();
         const spread = width * this.props.length;
 
         return {
-          top: y - top - this.waveWidth - spread / 2,
-          left: x - left - this.waveWidth - spread / 2,
+          top: y - top - waveWidth - spread / 2,
+          left: x - left - waveWidth - spread / 2,
           width: spread
-        }
+        };
       }
 
       createWave(x, y) {
@@ -108,11 +110,12 @@ const xwaveFactory = (options = {}) => {
           const y = event.pageY - (window.scrollY || window.pageYOffset);
           this.createWave(x, y);
         }
-      };
+      }
 
-      renderWave (key, className, theme, disabled, { top, left, width }) {
+      renderWave(key, className, theme, disabled, { top, left, width }) {
+        const border = `${waveWidth}px solid currentColor`;
         return (
-            <span key={key} ref={key} role='wave' className={classnames('wave', className, theme)} style={{top, left, width, height: width}} disabled={disabled}/>
+          <span key={key} ref={c => { this.waves[key] = c; }} className={classnames('wave', className, theme)} style={{top, left, width, height: width, border}} disabled={disabled}/>
         );
       }
 
@@ -127,10 +130,10 @@ const xwaveFactory = (options = {}) => {
           </Component>
         );
       }
-    };
+    }
 
     return XWaveComponent;
-  }
-}
+  };
+};
 
 export default xwaveFactory;

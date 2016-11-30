@@ -6,74 +6,66 @@ import XIcon from '../icon/XIcon';
 import './styles.scss';
 
 const xbuttonFactory = (xwave) => {
-  class XButton extends React.Component {
-    static propTypes = {
-      name: PropTypes.string,
-      theme: PropTypes.string,
-      className: PropTypes.string,
-      inverse: PropTypes.bool,
-      icon: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.element
-      ]),
-      flat: PropTypes.bool,
-      raised: PropTypes.bool,
-      circular: PropTypes.bool,
-      mini: PropTypes.bool,
-      href: PropTypes.string,
-      disabled: PropTypes.bool,
-      onMouseUp: PropTypes.func,
-      children: PropTypes.node
-    };
+  const XButton = (props) => {
+    const { name, theme, className, inverse, icon, flat, raised, circular, mini, href, disabled, children, ...other } = props;
 
-    static defaultProps = {
-      theme: '',
-      className: '',
-      flat: false,
-      raised: false,
-      circular: false,
-      mini: false,
-      disabled: false
-    };
+    const element = href ? 'a' : 'button';
+    const type = flat ? 'flat' : raised ? 'raised' : circular ? 'circular' : 'flat';
+    const classes = classnames('button', className, theme, type, {mini: mini, inverse: inverse});
+    const hasIcon = icon ? true : children ? true : false;
 
-    constructor(props) {
-      super(props)
-
-      this.handleMouseUp = this.handleMouseUp.bind(this);
-    }
-
-    handleMouseUp() {
-      if (this.props.onMouseUp) {
-        this.props.onMouseUp();
+    const handleMouseUp = () => {
+      if (props.onMouseUp) {
+        props.onMouseUp();
       }
-    }
+    };
 
-    render() {
-      const { name, theme, className, inverse, icon, flat, raised, circular, mini, href, disabled, onMouseUp, children, ...other } = this.props;
+    const properties = {
+      className: classes,
+      href,
+      onMouseUp: handleMouseUp,
+      disabled,
+      ...other
+    };
 
-      const element = href ? 'a' : 'button';
-      const type = flat ? 'flat' : raised ? 'raised' : circular ? 'circular' : 'flat';
-      const classes = classnames('button', className, theme, type, {mini: mini, inverse: inverse});
-      const hasIcon = icon ? true : children ? true : false;
+    return React.createElement(element, properties,
+      hasIcon ? <XIcon className={classnames({'material-icons': typeof(icon) === 'string'})} value={icon}/> : null,
+      name && !circular ? <span className={classnames({text: hasIcon})}>{name}</span> : null,
+      children
+    );
+  };
 
-      const properties = {
-        className: classes,
-        href,
-        onMouseUp: this.handleMouseUp,
-        disabled,
-        ...other
-      };
+  XButton.propTypes = {
+    name: PropTypes.string,
+    theme: PropTypes.string,
+    className: PropTypes.string,
+    inverse: PropTypes.bool,
+    icon: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.element
+    ]),
+    flat: PropTypes.bool,
+    raised: PropTypes.bool,
+    circular: PropTypes.bool,
+    mini: PropTypes.bool,
+    href: PropTypes.string,
+    disabled: PropTypes.bool,
+    onMouseUp: PropTypes.func,
+    children: PropTypes.node
+  };
 
-      return React.createElement(element, properties,
-        hasIcon ? <XIcon className={classnames({'material-icons': typeof(icon) === 'string'})} value={icon}/> : null,
-        name && !circular ? <span className={classnames({'text': hasIcon})}>{name}</span> : null,
-        children
-      )
-    }
-  }
+  XButton.defaultProps = {
+    theme: '',
+    className: '',
+    flat: false,
+    raised: false,
+    circular: false,
+    mini: false,
+    disabled: false
+  };
 
   return xwave(XButton);
-}
+};
 
 const XButton = xbuttonFactory(xwaveFactory());
 export { xbuttonFactory };

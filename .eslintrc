@@ -186,12 +186,12 @@
       "order": [
         "displayName",
         "propTypes",
+        "defaultProps",
         "constructor",
         "contextTypes",
         "childContextTypes",
         "mixins",
         "statics",
-        "defaultProps",
         "getDefaultProps",
         "getInitialState",
         "getChildContext",
@@ -204,6 +204,7 @@
         "componentWillUnmount",
         "/^init.+$/",
         "/^on.+$/",
+        "/^handle.+$/",
         "/^get.+$/",
         "/^render.+$/",
         "render"

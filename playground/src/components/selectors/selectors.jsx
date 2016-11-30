@@ -3,7 +3,7 @@ import XCheck from '../../../../components/checkbox/XCheck';
 import XSwitch from '../../../../components/switch/XSwitch';
 import { XRadioGroup, XRadioButton } from '../../../../components/radio/XRadio';
 
-import './styles.scss';
+import './pageConfig.scss';
 
 class Selectors extends Component {
   constructor(props) {
@@ -44,6 +44,6 @@ class Selectors extends Component {
       </div>
     );
   }
-};
+}
 
 export default Selectors;
