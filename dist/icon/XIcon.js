@@ -29,7 +29,7 @@ var XIcon = function XIcon(props) {
 
   return _react2.default.createElement(
     'span',
-    { className: (0, _classnames2.default)('icon', className, theme), onClick: 'handleClick' },
+    { className: (0, _classnames2.default)('icon', className, theme), onClick: handleClick },
     value
   );
 };

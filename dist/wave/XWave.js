@@ -4,9 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _react = require('react');
 
@@ -28,8 +28,6 @@ require('./styles.scss');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38,7 +36,14 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
 var xwaveFactory = function xwaveFactory() {
+  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  var _options = _extends({}, options),
+      props = _objectWithoutProperties(_options, []);
+
   return function (Component) {
     var XWaveComponent = function (_React$Component) {
       _inherits(XWaveComponent, _React$Component);
@@ -49,6 +54,7 @@ var xwaveFactory = function xwaveFactory() {
         var _this = _possibleConstructorReturn(this, (XWaveComponent.__proto__ || Object.getPrototypeOf(XWaveComponent)).call(this, props));
 
         _this.state = { waves: {} };
+        _this.handleMouseDown = _this.handleMouseDown.bind(_this);
         return _this;
       }
 
@@ -187,17 +193,18 @@ var xwaveFactory = function xwaveFactory() {
           var waves = this.state.waves;
 
           var _props = this.props,
-              waveTheme = _props.waveTheme,
               waveClassName = _props.waveClassName,
+              waveTheme = _props.waveTheme,
               waveDisabled = _props.waveDisabled,
-              componentProps = _objectWithoutProperties(_props, ['waveTheme', 'waveClassName', 'waveDisabled']);
+              children = _props.children,
+              componentProps = _objectWithoutProperties(_props, ['waveClassName', 'waveTheme', 'waveDisabled', 'children']);
 
           return _react2.default.createElement(
             Component,
             _extends({}, componentProps, { onMouseDown: this.handleMouseDown }),
             children,
             Object.keys(waves).map(function (key) {
-              return _this4.renderWave(key, className, theme, disabled, waves[key]);
+              return _this4.renderWave(key, waveClassName, waveTheme, waveDisabled, waves[key]);
             })
           );
         }
@@ -206,6 +213,22 @@ var xwaveFactory = function xwaveFactory() {
       return XWaveComponent;
     }(_react2.default.Component);
 
+    XWaveComponent.propTypes = {
+      theme: _react.PropTypes.string,
+      className: _react.PropTypes.string,
+      length: _react.PropTypes.number,
+      centered: _react.PropTypes.bool,
+      multiple: _react.PropTypes.bool,
+      disabled: _react.PropTypes.bool
+    };
+    XWaveComponent.defaultProps = {
+      theme: '',
+      className: '',
+      length: 3,
+      centered: false,
+      multiple: true,
+      disabled: false
+    };
     ;
 
     return XWaveComponent;

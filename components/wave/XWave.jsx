@@ -22,7 +22,7 @@ const xwaveFactory = (options = {}) => {
       static defaultProps = {
         theme: '',
         className: '',
-        length: 3,
+        length: 2,
         centered: false,
         multiple: true,
         disabled: false
@@ -32,6 +32,7 @@ const xwaveFactory = (options = {}) => {
         super(props);
 
         this.state = { waves: {} };
+        this.waveWidth = 15;
         this.handleMouseDown = this.handleMouseDown.bind(this);
       }
 
@@ -42,7 +43,7 @@ const xwaveFactory = (options = {}) => {
 
           this.addEventListenerOnAnimationEnd(this.refs[waveKey], function onAnimationEnd(event) {
             self.removeEventListenerOnAnimationEnd(self.refs[waveKey], onAnimationEnd);
-            self.setState({ waves: self.removeWave(waveKey, self.state.wave) });
+            self.setState({ waves: self.removeWave(waveKey, self.state.waves) });
           });
         }
       }
@@ -54,12 +55,12 @@ const xwaveFactory = (options = {}) => {
       }
 
       addEventListenerOnAnimationEnd(element, cb) {
-        element.addEventListener('animationend webkitAnimationEnd oanimationend MSAnimationEnd', cb);
+        element.addEventListener('animationend', cb);
         return true;
       }
 
       removeEventListenerOnAnimationEnd (element, cb) {
-        element.removeEventListener('animationend webkitAnimationEnd oanimationend MSAnimationEnd', cb);
+        element.removeEventListener('animationend', cb);
         return true;
       }
 
@@ -80,11 +81,12 @@ const xwaveFactory = (options = {}) => {
 
       getOffset(x, y) {
         const { left, top, height, width } = ReactDOM.findDOMNode(this).getBoundingClientRect();
+        const spread = width * this.props.length;
 
         return {
-          top: y - top - height / 2,
-          left: x - left - width / 2,
-          width: width * this.props.length
+          top: y - top - this.waveWidth - spread / 2,
+          left: x - left - this.waveWidth - spread / 2,
+          width: spread
         }
       }
 
@@ -94,24 +96,11 @@ const xwaveFactory = (options = {}) => {
         const noActiveWaves = Object.keys(this.state.waves).length === 0;
         const key = this.props.multiple || noActiveWaves ? this.getNewWaveKey() : this.getCurrentWaveKey();
 
-        // const stopWave = this.createStopWaveEventListener(key);
-        const waveState = { top, left, width };//, stopWave };
+        const waveState = { top, left, width };
         this.setState(update(this.state, {
           waves: { [key]: { $set: waveState } }
         }));
       }
-
-      // createStopWaveEventListener(waveKey) {
-      //   const stopWave = () => {
-      //     document.removeEventListener('mouseup', stopWave);
-      //     this.setState({ waves: update(this.state.waves, {
-      //       [waveKey]: { $merge: { active: false } }
-      //     })});
-      //   };
-
-      //   document.addEventListener('mouseup', stopWave);
-      //   return stopWave;
-      // }
 
       handleMouseDown(event) {
         if (!this.props.disabled) {
@@ -123,9 +112,7 @@ const xwaveFactory = (options = {}) => {
 
       renderWave (key, className, theme, disabled, { top, left, width }) {
         return (
-          <span key={key} className={classnames('wave-wrapper', className, theme)} disabled={disabled}>
-            <span ref={key} role='wave' className='wave' style={{top, left, width, height: width}}/>
-          </span>
+            <span key={key} ref={key} role='wave' className={classnames('wave', className, theme)} style={{top, left, width, height: width}} disabled={disabled}/>
         );
       }
 

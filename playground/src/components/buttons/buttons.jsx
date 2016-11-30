@@ -13,7 +13,7 @@ const Buttons = (props) => {
       <div>
         <h2>Flat</h2>
         <XButton name="Default" flat/>
-        {/*<XButton name="Themed" theme="red" icon="bookmark" flat />
+        <XButton name="Themed" theme="red" icon="bookmark" flat />
         <XButton name="Right" theme="green" flat>
           <XIcon className="material-icons" value="bug_report"/>
         </XButton>
@@ -38,7 +38,7 @@ const Buttons = (props) => {
         <XButton icon="add" circular disabled/>
         <XButton icon="favorite" theme="red" circular mini/>
         <XButton icon="favorite" theme="red" circular inverse/>
-        <XButton href="https://github.com/k3ira" icon={<GithubIcon/>} theme="purple" circular mini/>*/}
+        <XButton href="https://github.com/k3ira" icon={<GithubIcon/>} theme="purple" circular mini/>
       </div>
     </div>
   );

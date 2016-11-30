@@ -1,22 +1,19 @@
-.wave-wrapper {
-  position: relative;
-  overflow: hidden;
-  margin: 0;
-}
-
 .wave {
-  border-radius: 50%;
   position: absolute;
-  overflow: inherit;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: $z-index-high;
   pointer-events: none;
-  border: 4px solid rgba(0,0,0, 0.3);
+  border: 15px solid currentColor;
+  border-radius: 50%;
   transform-origin: 50% 50%;
-  animation: wave 0.5s ease-out;
+  animation: wave .8s ease-out;
 }
 
 @keyframes wave {
   0% {
-    opacity: 1;
+    opacity: 0.5;
     transform: scale(0);
   }
   100% {

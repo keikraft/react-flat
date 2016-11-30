@@ -37,16 +37,15 @@
 }
 
 .button-circular {
-  position: relative;
   padding: 0;
   height: 56px;
   width: 56px;
-  overflow: hidden;
   border-radius: 50%;
   text-align: center;
   background-color: $color-white;
   color: get-color('grey','300');
   box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 0 5px -2px rgba(0,0,0,.2),0 2px 5px 0 rgba(0,0,0,.14);
+  z-index: 1;
 
   &:hover:not(:disabled) {
     background-color: get-color('grey','100');
@@ -85,6 +84,7 @@
 
 .button {
   display: inline-block;
+  position: relative;
   vertical-align: middle;
   padding: 0 14px;
   height: 36px;
@@ -94,6 +94,7 @@
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 0;
+  overflow: hidden;
   border: none;
   cursor: pointer;
 
