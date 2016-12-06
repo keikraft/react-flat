@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Immutable from 'immutable';
+import XToaster from '../../../../components/toaster/XToaster';
 import XButton from '../../../../components/button/XButton';
 import { XRadioGroup, XRadioButton } from '../../../../components/radio/XRadio';
 
@@ -7,53 +9,87 @@ import './pageConfig.scss';
 class Toaster extends Component {
   constructor(props) {
     super(props);
+
+    const fromJSOrdered = (js) => {
+      return typeof js !== 'object' || js === null ? js :
+        Array.isArray(js) ?
+          Immutable.Seq(js).map(fromJSOrdered).toList() :
+          Immutable.Seq(js).map(fromJSOrdered).toOrderedMap();
+    }
+
     this.state = {
-      toasterSide: 'right',
-      toasterPosition: 'top',
-      toasterType: 'info'
+      toastPosition: 'top',
+      toastSide: 'right',
+      toastType: 'info',
+      toasts: fromJSOrdered({
+        top: { left: {}, center: {}, right: {} },
+        bottom: { left: {}, center: {}, right: {} }
+      })
     };
 
-    this.handleToasterSideButtonChange = this.handleToasterSideButtonChange.bind(this);
-    this.handleToasterPositionButtonChange = this.handleToasterPositionButtonChange.bind(this);
-    this.handleToasterTypeButtonChange = this.handleToasterTypeButtonChange.bind(this);
+    this.handleToastSideButtonChange = this.handleToastSideButtonChange.bind(this);
+    this.handleToastPositionButtonChange = this.handleToastPositionButtonChange.bind(this);
+    this.handleToastTypeButtonChange = this.handleToastTypeButtonChange.bind(this);
+    this.handleCreateToastButtonMouseUp = this.handleCreateToastButtonMouseUp.bind(this);
+    this.handleRemoveToast = this.handleRemoveToast.bind(this);
   }
 
-  handleToasterSideButtonChange(toasterSide) {
-    this.setState({toasterSide});
+  handleToastSideButtonChange(toastSide) {
+    this.setState({toastSide});
   }
 
-  handleToasterPositionButtonChange(toasterPosition) {
-    this.setState({toasterPosition});
+  handleToastPositionButtonChange(toastPosition) {
+    this.setState({toastPosition});
   }
 
-  handleToasterTypeButtonChange(toasterType) {
-    this.setState({toasterType});
+  handleToastTypeButtonChange(toastType) {
+    this.setState({toastType});
+  }
+
+  handleCreateToastButtonMouseUp() {
+    this.toastCount = this.toastCount ? this.toastCount + 1 : 1;
+    const { toastPosition: position, toastSide: side, toastType: type } = this.state;
+    const toastKey = `${position}${side}toast-${this.toastCount}`;
+
+    const toastState = {
+      type,
+      message: 'This is a test text por first toast',
+      msec: 6000
+    };
+    this.setState(({toasts}) => ({
+      toasts: toasts.updateIn([position, side], x => x.set(toastKey, toastState))
+    }));
+  }
+
+  handleRemoveToast(position, side, toastKey) {
+    this.setState(({toasts}) => ({
+      toasts: toasts.updateIn([position, side], x => x.delete(toastKey))
+    }));
   }
 
   render() {
     return (
       <div>
-        <h2 className="row">Toaster</h2>
+        <h2>Toaster</h2>
         <div className="toaster-config">
           <div className="config-column">
-            <div>Side</div>
-            <XRadioGroup name="toasterSide" value={this.state.toasterSide} onChange={this.handleToasterSideButtonChange}>
-              <XRadioButton label="Left" value="left"/>
-              <XRadioButton label="Middle" value="middle"/>
-              <XRadioButton label="Right" value="right" checked/>
-            </XRadioGroup>
-          </div>
-          <div className="config-column">
-            <div>Position</div>
-            <XRadioGroup name="toasterPosition" value={this.state.toasterPosition} onChange={this.handleToasterPositionButtonChange}>
+          <div className="config-header">POSITION</div>
+            <XRadioGroup name="toastPosition" value={this.state.toastPosition} onChange={this.handleToastPositionButtonChange}>
               <XRadioButton label="Top" value="top" checked/>
-              <XRadioButton label="Middle" value="middle"/>
               <XRadioButton label="Bottom" value="bottom"/>
             </XRadioGroup>
           </div>
           <div className="config-column">
-            <div>Type</div>
-            <XRadioGroup name="toasterType" value={this.state.toasterType} onChange={this.handleToasterTypeButtonChange}>
+            <div className="config-header">SIDE</div>
+            <XRadioGroup name="toastSide" value={this.state.toastSide} onChange={this.handleToastSideButtonChange}>
+              <XRadioButton label="Left" value="left"/>
+              <XRadioButton label="Center" value="center"/>
+              <XRadioButton label="Right" value="right" checked/>
+            </XRadioGroup>
+          </div>
+          <div className="config-column">
+            <div className="config-header">TYPE</div>
+            <XRadioGroup name="toastType" value={this.state.toastType} onChange={this.handleToastTypeButtonChange}>
               <XRadioButton label="Info" value="info" theme="blue" checked/>
               <XRadioButton label="Success" value="success" theme="green"/>
               <XRadioButton label="Warning" value="warning" theme="yellow"/>
@@ -61,7 +97,15 @@ class Toaster extends Component {
             </XRadioGroup>
           </div>
         </div>
-        <div><XButton name="Create Toast" raised/></div>
+        <div>
+          <XButton name="Create Toast" onMouseUp={this.handleCreateToastButtonMouseUp} raised/>
+        </div>
+        <XToaster top left className="topOverride" toasts={this.state.toasts.getIn(['top', 'left']).toJS()} onRemoveToast={this.handleRemoveToast.bind(this, 'top', 'left')}/>
+        <XToaster top center className="topOverride" toasts={this.state.toasts.getIn(['top', 'center']).toJS()} onRemoveToast={this.handleRemoveToast.bind(this, 'top', 'center')}/>
+        <XToaster top right className="topOverride" toasts={this.state.toasts.getIn(['top', 'right']).toJS()} onRemoveToast={this.handleRemoveToast.bind(this, 'top', 'right')}/>
+        <XToaster bottom left toasts={this.state.toasts.getIn(['bottom', 'left']).toJS()} onRemoveToast={this.handleRemoveToast.bind(this, 'bottom', 'left')}/>
+        <XToaster bottom center toasts={this.state.toasts.getIn(['bottom', 'center']).toJS()} onRemoveToast={this.handleRemoveToast.bind(this, 'bottom', 'center')}/>
+        <XToaster bottom right toasts={this.state.toasts.getIn(['bottom', 'right']).toJS()} onRemoveToast={this.handleRemoveToast.bind(this, 'bottom', 'right')}/>
       </div>
     );
   }

@@ -1,7 +1,23 @@
+div.toaster.topOverride {
+  top: 100px;
+}
+
 div.toaster-config {
   display: flex;
+  margin-bottom: 40px;
 
   div.config-column {
-    margin: 10px 30px;
+    padding: 10px 30px;
+
+    &:not(:last-child) {
+      border-right: 3px dashed #e4e4e4;
+    }
+
+    div.config-header {
+      margin: 15px 0;
+      font-size: 1.4rem;
+      font-weight: 400;
+      text-align: center;
+    }
   }
 }

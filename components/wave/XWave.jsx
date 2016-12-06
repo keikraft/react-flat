@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import update from 'immutability-helper';
+import { OrderedMap } from 'immutable';
 import classnames from 'classnames';
 
 import './styles.scss';
@@ -33,27 +33,21 @@ const xwaveFactory = (options = {}) => {
       constructor(props) {
         super(props);
 
-        this.state = { waves: {} };
-        this.waves = {};
+        this.state = { waves: OrderedMap() };
+        this.waves = OrderedMap();
         this.handleMouseDown = this.handleMouseDown.bind(this);
       }
 
       componentDidUpdate(prevProps, prevState) {
-        if (Object.keys(prevState.waves).length < Object.keys(this.state.waves).length) {
+        if (prevState.waves.size < this.state.waves.size) {
           const self = this;
           const waveKey = this.getCurrentWaveKey();
 
-          this.addEventListenerOnAnimationEnd(this.waves[waveKey], function onAnimationEnd() {
-            self.removeEventListenerOnAnimationEnd(self.waves[waveKey], onAnimationEnd);
-            self.setState({ waves: self.removeWave(waveKey, self.state.waves) });
+          this.addEventListenerOnAnimationEnd(this.waves.get(waveKey), function onAnimationEnd() {
+            self.removeEventListenerOnAnimationEnd(self.waves.get(waveKey), onAnimationEnd);
+            self.removeWave(waveKey);
           });
         }
-      }
-
-      componentWillUnmount() {
-        Object.keys(this.state.waves).forEach(key => {
-          this.state.waves[key].stopWave();
-        });
       }
 
       addEventListenerOnAnimationEnd(element, cb) {
@@ -66,6 +60,13 @@ const xwaveFactory = (options = {}) => {
         return true;
       }
 
+      removeWave(waveKey) {
+        this.waves = this.waves.delete(waveKey);
+        this.setState(({waves}) => ({
+          waves: waves.delete(waveKey)
+        }));
+      }
+
       getNewWaveKey() {
         this.waveCount = this.waveCount ? this.waveCount + 1 : 1;
         return `wave${this.waveCount}`;
@@ -73,12 +74,6 @@ const xwaveFactory = (options = {}) => {
 
       getCurrentWaveKey() {
         return `wave${this.waveCount}`;
-      }
-
-      removeWave(key, waves) {
-        const newObject = {};
-        Object.keys(waves).filter(k => k !== key).forEach(k => { newObject[k] = waves[k]; });
-        return newObject;
       }
 
       getOffset(x, y) {
@@ -95,12 +90,12 @@ const xwaveFactory = (options = {}) => {
       createWave(x, y) {
         const { top, left, width } = this.getOffset(x, y);
 
-        const noActiveWaves = Object.keys(this.state.waves).length === 0;
+        const noActiveWaves = this.state.waves.size === 0;
         const key = this.props.multiple || noActiveWaves ? this.getNewWaveKey() : this.getCurrentWaveKey();
 
         const waveState = { top, left, width };
-        this.setState(update(this.state, {
-          waves: { [key]: { $set: waveState } }
+        this.setState(({waves}) => ({
+          waves: waves.set(key, waveState)
         }));
       }
 
@@ -114,19 +109,25 @@ const xwaveFactory = (options = {}) => {
 
       renderWave(key, className, theme, disabled, { top, left, width }) {
         const border = `${waveWidth}px solid currentColor`;
+        const waveRef = (wave) => {
+          if (wave !== null) {
+            this.waves = this.waves.set(key, wave);
+          }
+        };
+
         return (
-          <span key={key} ref={c => { this.waves[key] = c; }} className={classnames('wave', className, theme)} style={{top, left, width, height: width, border}} disabled={disabled}/>
+          <span key={key} ref={waveRef} className={classnames('wave', className, theme)} style={{top, left, width, height: width, border}} disabled={disabled}/>
         );
       }
 
       render() {
-        const { waves } = this.state;
+        const waves = this.state.waves.toJS();
         const { waveClassName, waveTheme, waveDisabled, children, ...componentProps } = this.props;
 
         return (
           <Component {...componentProps} onMouseDown={this.handleMouseDown}>
             {children}
-            {Object.keys(waves).map(key => this.renderWave(key, waveClassName, waveTheme, waveDisabled, waves[key]))}
+            {Object.keys(waves).map(waveKey => { return this.renderWave(waveKey, waveClassName, waveTheme, waveDisabled, waves[waveKey]); })}
           </Component>
         );
       }
