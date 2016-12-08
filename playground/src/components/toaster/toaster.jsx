@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Immutable from 'immutable';
 import XToaster from '../../../../components/toaster/XToaster';
 import XButton from '../../../../components/button/XButton';
+import XInput from '../../../../components/input/XInput';
 import { XRadioGroup, XRadioButton } from '../../../../components/radio/XRadio';
 
 import './pageConfig.scss';
@@ -21,6 +22,7 @@ class Toaster extends Component {
       toastPosition: 'top',
       toastSide: 'right',
       toastType: 'info',
+      toastMessage: '',
       toasts: fromJSOrdered({
         top: { left: {}, center: {}, right: {} },
         bottom: { left: {}, center: {}, right: {} }
@@ -31,7 +33,7 @@ class Toaster extends Component {
     this.handleToastPositionButtonChange = this.handleToastPositionButtonChange.bind(this);
     this.handleToastTypeButtonChange = this.handleToastTypeButtonChange.bind(this);
     this.handleCreateToastButtonMouseUp = this.handleCreateToastButtonMouseUp.bind(this);
-    this.handleRemoveToast = this.handleRemoveToast.bind(this);
+    this.handleMessageInputOnChange = this.handleMessageInputOnChange.bind(this);
   }
 
   handleToastSideButtonChange(toastSide) {
@@ -46,14 +48,18 @@ class Toaster extends Component {
     this.setState({toastType});
   }
 
+  handleMessageInputOnChange(toastMessage) {
+    this.setState({toastMessage});
+  }
+
   handleCreateToastButtonMouseUp() {
     this.toastCount = this.toastCount ? this.toastCount + 1 : 1;
-    const { toastPosition: position, toastSide: side, toastType: type } = this.state;
+    const { toastPosition: position, toastSide: side, toastType: type, toastMessage: message } = this.state;
     const toastKey = `${position}${side}toast-${this.toastCount}`;
 
     const toastState = {
       type,
-      message: 'This is a test text por first toast',
+      message,
       msec: 6000
     };
     this.setState(({toasts}) => ({
@@ -96,6 +102,9 @@ class Toaster extends Component {
               <XRadioButton label="Error" value="error" theme="red"/>
             </XRadioGroup>
           </div>
+        </div>
+        <div>
+          <XInput type="text" placeholder="Toast Message" theme="orange" icon="message" value={this.state.toastMessage} onChange={this.handleMessageInputOnChange}/>
         </div>
         <div>
           <XButton name="Create Toast" onMouseUp={this.handleCreateToastButtonMouseUp} raised/>

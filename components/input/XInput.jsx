@@ -1,27 +1,53 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import classnames from 'classnames';
+import XIcon from '../icon/XIcon';
 
-import './inputs.scss';
+import './styles.scss';
 
-let TextInput = (props) => {
-  const { styles, placeholder, pattern, required, onChange } = props;
+const XInput = (props) => {
+  const { type, placeholder, pattern, maxlength, required, className, theme, icon, iconClassName, value, onChange } = props;
+  const valueEntered = value !== null && value !== undefined && value != '';
+  const hasIcon = icon ? true: false;
+
+  const handleChange = (event) => {
+    const value = event.target.value;
+
+    if (onChange) {
+      onChange(value, event);
+    }
+  }
 
   return (
-    <input
-      type="text"
-      className={styles}
-      placeholder={placeholder}
-      pattern={pattern}
-      required={required}
-      onChange={onChange}/>
+    <div className={classnames('input', className, theme)}>
+      <input type={type} className={classnames({withIcon: hasIcon, active: valueEntered})} pattern={pattern} maxLength={maxlength} required={required} value={value} onChange={handleChange}/>
+      {icon ? <XIcon className={iconClassName ? classnames(iconClassName) : 'material-icons'} value={icon}/> : null}
+      {placeholder ? <label className={classnames({withIcon: hasIcon})}>{placeholder}</label> : null }
+      <div className="bar"><hr/><hr/></div>
+    </div>
   );
 };
 
-TextInput.propTypes = {
-  styles: React.PropTypes.string,
-  placeholder: React.PropTypes.string,
-  pattern: React.PropTypes.string,
-  required: React.PropTypes.bool,
-  onChange: React.PropTypes.func.isRequired
+XInput.propTypes = {
+  type: PropTypes.string,
+  placeholder: PropTypes.string,
+  pattern: PropTypes.string,
+  maxlength: PropTypes.number,
+  required: PropTypes.bool,
+  className: PropTypes.string,
+  theme: PropTypes.string,
+  icon: PropTypes.string,
+  iconClassName: PropTypes.string,
+  value: React.PropTypes.any,
+  onChange: PropTypes.func.isRequired
 };
 
-export default TextInput;
+XInput.defaultProps = {
+  type: 'text',
+  required: false,
+  className: '',
+  theme: 'grey',
+  floating: true,
+  disabled: false
+};
+
+export default XInput;

@@ -50,8 +50,8 @@ var xwaveFactory = function xwaveFactory() {
 
         var _this = _possibleConstructorReturn(this, (XWaveComponent.__proto__ || Object.getPrototypeOf(XWaveComponent)).call(this, props));
 
-        _this.state = { waves: (0, _immutable.Map)() };
-        _this.waves = (0, _immutable.Map)();
+        _this.state = { waves: (0, _immutable.OrderedMap)() };
+        _this.waves = (0, _immutable.OrderedMap)();
         _this.handleMouseDown = _this.handleMouseDown.bind(_this);
         return _this;
       }

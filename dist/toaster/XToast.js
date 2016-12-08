@@ -54,7 +54,7 @@ var XToast = function XToast(props) {
 
   return _react2.default.createElement(
     'div',
-    { key: toastKey, className: (0, _classnames2.default)('toast', type, className, theme) },
+    { className: (0, _classnames2.default)('toast', type, className, theme) },
     _react2.default.createElement(
       'div',
       { className: 'dismiss', onClick: handleDismiss.bind(undefined, toastKey) },
