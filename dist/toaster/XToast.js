@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -20,64 +22,114 @@ require('./styles.scss');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var XToast = function XToast(props) {
-  var toastKey = props.toastKey,
-      type = props.type,
-      className = props.className,
-      theme = props.theme,
-      icon = props.icon,
-      iconClassName = props.iconClassName,
-      message = props.message,
-      msec = props.msec,
-      delayActive = props.delayActive,
-      children = props.children;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-  var getIconFromToastType = function getIconFromToastType(toastType) {
-    switch (toastType) {
-      case 'info':
-      case 'warning':
-      case 'error':
-        return toastType;
-      case 'success':
-        return 'check';
-      default:
-        return 'code';
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var XToast = function (_React$Component) {
+  _inherits(XToast, _React$Component);
+
+  function XToast(props) {
+    _classCallCheck(this, XToast);
+
+    var _this = _possibleConstructorReturn(this, (XToast.__proto__ || Object.getPrototypeOf(XToast)).call(this, props));
+
+    _this.state = { active: false };
+    _this.timebar = '';
+    _this.handleDismiss = _this.handleDismiss.bind(_this);
+    return _this;
+  }
+
+  _createClass(XToast, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.setState({ active: true });
+
+      if (this.props.msec) {
+        (function () {
+          var self = _this2;
+
+          _this2.timebar.addEventListener('animationend', function onAnimationEnd() {
+            self.timebar.removeEventListener('animationend', onAnimationEnd);
+            self.setState({ active: false });
+            setTimeout(self.props.onDismiss, 400);
+          });
+        })();
+      }
     }
-  };
-
-  var handleDismiss = function handleDismiss(key) {
-    if (props.onDismiss) {
-      props.onDismiss(key);
+  }, {
+    key: 'getIconFromToastType',
+    value: function getIconFromToastType(toastType) {
+      switch (toastType) {
+        case 'info':
+        case 'warning':
+        case 'error':
+          return toastType;
+        case 'success':
+          return 'check';
+        default:
+          return 'code';
+      }
     }
-  };
+  }, {
+    key: 'handleDismiss',
+    value: function handleDismiss() {
+      if (this.props.onDismiss) {
+        this.setState({ active: false });
+        setTimeout(this.props.onDismiss, 1000);
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
 
-  return _react2.default.createElement(
-    'div',
-    { className: (0, _classnames2.default)('toast', type, className, theme) },
-    _react2.default.createElement(
-      'div',
-      { className: 'dismiss', onClick: handleDismiss.bind(undefined, toastKey) },
-      _react2.default.createElement('span', null),
-      _react2.default.createElement('span', null)
-    ),
-    _react2.default.createElement(_XIcon2.default, { className: iconClassName ? (0, _classnames2.default)(iconClassName) : 'material-icons md-light md-36', value: icon ? icon : getIconFromToastType(type) }),
-    _react2.default.createElement(
-      'div',
-      { className: 'body' },
-      _react2.default.createElement(
-        'span',
-        { className: 'text' },
-        message
-      ),
-      children
-    ),
-    _react2.default.createElement('div', { className: 'delaybar', style: msec ? { transition: 'width ' + msec / 1000 + 's linear', width: delayActive ? '0' : '100%' } : null })
-  );
-};
+      var _props = this.props,
+          type = _props.type,
+          className = _props.className,
+          theme = _props.theme,
+          icon = _props.icon,
+          iconClassName = _props.iconClassName,
+          message = _props.message,
+          msec = _props.msec,
+          children = _props.children;
+
+
+      return _react2.default.createElement(
+        'div',
+        { className: (0, _classnames2.default)('toast', { active: this.state.active }, type, className, theme) },
+        _react2.default.createElement(
+          'div',
+          { className: 'dismiss', onClick: this.handleDismiss },
+          _react2.default.createElement('span', null),
+          _react2.default.createElement('span', null)
+        ),
+        _react2.default.createElement(_XIcon2.default, { className: iconClassName ? (0, _classnames2.default)(iconClassName) : 'material-icons md-light md-36', value: icon ? icon : this.getIconFromToastType(type) }),
+        _react2.default.createElement(
+          'div',
+          { className: 'body' },
+          _react2.default.createElement(
+            'span',
+            { className: 'text' },
+            message
+          ),
+          children
+        ),
+        _react2.default.createElement('div', { ref: function ref(timebar) {
+            _this3.timebar = timebar;
+          }, className: 'timebar', style: msec ? { animationDuration: msec / 1000 + 's' } : null })
+      );
+    }
+  }]);
+
+  return XToast;
+}(_react2.default.Component);
 
 XToast.propTypes = {
-  toastKey: _react.PropTypes.string.isRequired,
   type: _react.PropTypes.string,
   className: _react.PropTypes.string,
   theme: _react.PropTypes.string,
@@ -85,16 +137,12 @@ XToast.propTypes = {
   iconClassName: _react.PropTypes.string,
   message: _react.PropTypes.string,
   msec: _react.PropTypes.number,
-  delayActive: _react.PropTypes.bool,
   children: _react.PropTypes.node,
   onDismiss: _react.PropTypes.func
 };
-
 XToast.defaultProps = {
   type: 'info',
   className: '',
-  theme: '',
-  delayActive: false
+  theme: ''
 };
-
 exports.default = XToast;

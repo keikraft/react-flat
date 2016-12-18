@@ -5,6 +5,7 @@ const App = (props) => {
   const PAGES = {
     buttons: '/app/buttons',
     colors: '/app/colors',
+    inputs: '/app/inputs',
     selectors: '/app/selectors',
     toaster: '/app/toaster'
   };
@@ -28,6 +29,7 @@ const App = (props) => {
           <ul>
             <li><a className={currentPage === PAGES.buttons ? 'active' : ''} href={PAGES.buttons}>Buttons</a></li>
             <li><a className={currentPage === PAGES.colors ? 'active' : ''} href={PAGES.colors}>Colors</a></li>
+            <li><a className={currentPage === PAGES.inputs ? 'active' : ''} href={PAGES.inputs}>Inputs</a></li>
             <li><a className={currentPage === PAGES.selectors ? 'active' : ''} href={PAGES.selectors}>Selectors</a></li>
             <li><a className={currentPage === PAGES.toaster ? 'active' : ''} href={PAGES.toaster}>Toaster</a></li>
           </ul>

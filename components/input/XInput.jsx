@@ -5,9 +5,9 @@ import XIcon from '../icon/XIcon';
 import './styles.scss';
 
 const XInput = (props) => {
-  const { type, placeholder, pattern, maxlength, required, className, theme, icon, iconClassName, value, onChange } = props;
+  const { type, name, placeholder, floating, hint, disabled, className, theme, icon, iconClassName, error, value, onChange } = props;
   const valueEntered = value !== null && value !== undefined && value != '';
-  const hasIcon = icon ? true: false;
+  const hasIcon = icon ? true : false;
 
   const handleChange = (event) => {
     const value = event.target.value;
@@ -18,21 +18,23 @@ const XInput = (props) => {
   }
 
   return (
-    <div className={classnames('input', className, theme)}>
-      <input type={type} className={classnames({withIcon: hasIcon, active: valueEntered})} pattern={pattern} maxLength={maxlength} required={required} value={value} onChange={handleChange}/>
+    <div className={classnames('input', className, theme, {floating: floating, disabled: disabled})}>
+      <input type={type} name={name} className={classnames({withIcon: hasIcon}, {active: valueEntered})} value={value} onChange={handleChange} disabled={disabled}/>
       {icon ? <XIcon className={iconClassName ? classnames(iconClassName) : 'material-icons'} value={icon}/> : null}
-      {placeholder ? <label className={classnames({withIcon: hasIcon})}>{placeholder}</label> : null }
+      {placeholder ? <label className={classnames({withIcon: hasIcon, withHint: !hasIcon && hint})}>{placeholder}</label> : null}
       <div className="bar"><hr/><hr/></div>
+      {error ? <span className="error">{error}</span> : null}
     </div>
   );
 };
 
 XInput.propTypes = {
   type: PropTypes.string,
+  name: PropTypes.string,
   placeholder: PropTypes.string,
-  pattern: PropTypes.string,
-  maxlength: PropTypes.number,
-  required: PropTypes.bool,
+  floating: PropTypes.bool,
+  hint: PropTypes.bool,
+  disabled: PropTypes.bool,
   className: PropTypes.string,
   theme: PropTypes.string,
   icon: PropTypes.string,
@@ -43,10 +45,10 @@ XInput.propTypes = {
 
 XInput.defaultProps = {
   type: 'text',
-  required: false,
   className: '',
   theme: 'grey',
-  floating: true,
+  hint: false,
+  floating: false,
   disabled: false
 };
 

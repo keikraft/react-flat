@@ -4,10 +4,51 @@ import XIcon from '../icon/XIcon';
 
 import './styles.scss';
 
-const XToast = (props) => {
-  const { toastKey, type, className, theme, icon, iconClassName, message, msec, delayActive, children } = props;
+class XToast extends React.Component {
+  static propTypes = {
+    type: PropTypes.string,
+    className: PropTypes.string,
+    theme: PropTypes.string,
+    icon: PropTypes.string,
+    iconClassName: PropTypes.string,
+    message: PropTypes.string,
+    msec: PropTypes.number,
+    children: PropTypes.node,
+    onDismiss: PropTypes.func
+  };
 
-  const getIconFromToastType = (toastType) => {
+  static defaultProps = {
+    type: 'info',
+    className: '',
+    theme: ''
+  };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      active: false,
+      closing: false
+    };
+    this.timebar = '';
+    this.handleDismiss = this.handleDismiss.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({active: true});
+
+    if (this.props.msec) {
+      const self = this;
+
+      this.timebar.addEventListener('animationend', function onAnimationEnd() {
+        self.timebar.removeEventListener('animationend', onAnimationEnd);
+        self.setState({active: false, closing: true});
+        setTimeout(self.props.onDismiss, 400);
+      });
+    }
+  }
+
+  getIconFromToastType(toastType) {
     switch (toastType) {
         case 'info':
         case 'warning':
@@ -20,44 +61,28 @@ const XToast = (props) => {
     }
   }
 
-  const handleDismiss = (key) => {
-    if (props.onDismiss) {
-      props.onDismiss(key);
+  handleDismiss() {
+    if (this.props.onDismiss) {
+      this.setState({active: false, closing: true});
+      setTimeout(this.props.onDismiss, 400);
     }
-  };
+  }
 
-  return (
-    <div className={classnames('toast', type, className, theme)}>
-        <div className="dismiss" onClick={handleDismiss.bind(this, toastKey)}><span></span><span></span></div>
-        <XIcon className={iconClassName ? classnames(iconClassName) : 'material-icons md-light md-36'} value={icon ? icon : getIconFromToastType(type)}/>
-        <div className="body">
-          <span className="text">{message}</span>
-          {children}
-        </div>
-        <div className="delaybar" style={msec ? {transition: `width ${msec/1000}s linear`, width: delayActive ? '0' : '100%'} : null} ></div>
-    </div>
-  );
-};
+  render() {
+    const { type, className, theme, icon, iconClassName, message, msec, children } = this.props;
 
-XToast.propTypes = {
-  toastKey: PropTypes.string.isRequired,
-  type: PropTypes.string,
-  className: PropTypes.string,
-  theme: PropTypes.string,
-  icon: PropTypes.string,
-  iconClassName: PropTypes.string,
-  message: PropTypes.string,
-  msec: PropTypes.number,
-  delayActive: PropTypes.bool,
-  children: PropTypes.node,
-  onDismiss: PropTypes.func
-};
-
-XToast.defaultProps = {
-  type: 'info',
-  className: '',
-  theme: '',
-  delayActive: false
-};
+    return (
+      <div className={classnames('toast', {active: this.state.active, closing: this.state.closing}, type, className, theme)}>
+          <div className="dismiss" onClick={this.handleDismiss}><span></span><span></span></div>
+          <XIcon className={iconClassName ? classnames(iconClassName) : 'material-icons md-light md-36'} value={icon ? icon : this.getIconFromToastType(type)}/>
+          <div className="body">
+            <span className="text">{message}</span>
+            {children}
+          </div>
+          {msec ? <div ref={timebar => { this.timebar = timebar; }} className="timebar" style={{animationDuration: `${msec/1000}s`}}></div> : null}
+      </div>
+    );
+  }
+}
 
 export default XToast;

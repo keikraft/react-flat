@@ -22,14 +22,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var XInput = function XInput(props) {
   var type = props.type,
+      name = props.name,
       placeholder = props.placeholder,
-      pattern = props.pattern,
-      maxlength = props.maxlength,
-      required = props.required,
+      floating = props.floating,
+      hint = props.hint,
+      disabled = props.disabled,
       className = props.className,
       theme = props.theme,
       icon = props.icon,
       iconClassName = props.iconClassName,
+      error = props.error,
       value = props.value,
       onChange = props.onChange;
 
@@ -46,12 +48,12 @@ var XInput = function XInput(props) {
 
   return _react2.default.createElement(
     'div',
-    { className: (0, _classnames2.default)('input', className, theme) },
-    _react2.default.createElement('input', { type: type, className: (0, _classnames2.default)({ withIcon: hasIcon, active: valueEntered }), pattern: pattern, maxLength: maxlength, required: required, value: value, onChange: handleChange }),
+    { className: (0, _classnames2.default)('input', className, theme, { floating: floating, disabled: disabled }) },
+    _react2.default.createElement('input', { type: type, name: name, className: (0, _classnames2.default)({ withIcon: hasIcon }, { active: valueEntered }), value: value, onChange: handleChange, disabled: disabled }),
     icon ? _react2.default.createElement(_XIcon2.default, { className: iconClassName ? (0, _classnames2.default)(iconClassName) : 'material-icons', value: icon }) : null,
     placeholder ? _react2.default.createElement(
       'label',
-      { className: (0, _classnames2.default)({ withIcon: hasIcon }) },
+      { className: (0, _classnames2.default)({ withIcon: hasIcon, withHint: !hasIcon && hint }) },
       placeholder
     ) : null,
     _react2.default.createElement(
@@ -59,16 +61,22 @@ var XInput = function XInput(props) {
       { className: 'bar' },
       _react2.default.createElement('hr', null),
       _react2.default.createElement('hr', null)
-    )
+    ),
+    error ? _react2.default.createElement(
+      'span',
+      { className: 'error' },
+      error
+    ) : null
   );
 };
 
 XInput.propTypes = {
   type: _react.PropTypes.string,
+  name: _react.PropTypes.string,
   placeholder: _react.PropTypes.string,
-  pattern: _react.PropTypes.string,
-  maxlength: _react.PropTypes.number,
-  required: _react.PropTypes.bool,
+  floating: _react.PropTypes.bool,
+  hint: _react.PropTypes.bool,
+  disabled: _react.PropTypes.bool,
   className: _react.PropTypes.string,
   theme: _react.PropTypes.string,
   icon: _react.PropTypes.string,
@@ -79,10 +87,10 @@ XInput.propTypes = {
 
 XInput.defaultProps = {
   type: 'text',
-  required: false,
   className: '',
   theme: 'grey',
-  floating: true,
+  hint: false,
+  floating: false,
   disabled: false
 };
 

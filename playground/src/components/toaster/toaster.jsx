@@ -23,6 +23,7 @@ class Toaster extends Component {
       toastSide: 'right',
       toastType: 'info',
       toastMessage: '',
+      toastMessageError: null,
       toasts: fromJSOrdered({
         top: { left: {}, center: {}, right: {} },
         bottom: { left: {}, center: {}, right: {} }
@@ -49,22 +50,27 @@ class Toaster extends Component {
   }
 
   handleMessageInputOnChange(toastMessage) {
-    this.setState({toastMessage});
+    const toastMessageError = toastMessage != null && toastMessage !== undefined && toastMessage !== '' ? null : 'You have to write a toast message.';
+    this.setState({toastMessage, toastMessageError});
   }
 
   handleCreateToastButtonMouseUp() {
-    this.toastCount = this.toastCount ? this.toastCount + 1 : 1;
-    const { toastPosition: position, toastSide: side, toastType: type, toastMessage: message } = this.state;
-    const toastKey = `${position}${side}toast-${this.toastCount}`;
+    if (this.state.toastMessageError === null && this.state.toastMessage !== '') {
+      this.toastCount = this.toastCount ? this.toastCount + 1 : 1;
+      const { toastPosition: position, toastSide: side, toastType: type, toastMessage: message } = this.state;
+      const toastKey = `${position}${side}toast-${this.toastCount}`;
 
-    const toastState = {
-      type,
-      message,
-      msec: 6000
-    };
-    this.setState(({toasts}) => ({
-      toasts: toasts.updateIn([position, side], x => x.set(toastKey, toastState))
-    }));
+      const toastState = {
+        type,
+        message,
+        msec: 6000
+      };
+      this.setState(({toasts}) => ({
+        toasts: toasts.updateIn([position, side], x => x.set(toastKey, toastState))
+      }));
+    } else {
+      this.setState({toastMessageError: 'You have to write a toast message.'});
+    }
   }
 
   handleRemoveToast(position, side, toastKey) {
@@ -103,10 +109,8 @@ class Toaster extends Component {
             </XRadioGroup>
           </div>
         </div>
-        <div>
-          <XInput type="text" placeholder="Toast Message" theme="orange" icon="message" value={this.state.toastMessage} onChange={this.handleMessageInputOnChange}/>
-        </div>
-        <div>
+        <div className="toaster-form">
+          <XInput type="text" placeholder="Toast Message" theme="orange" icon="message" value={this.state.toastMessage} onChange={this.handleMessageInputOnChange} error={this.state.toastMessageError}/>
           <XButton name="Create Toast" onMouseUp={this.handleCreateToastButtonMouseUp} raised/>
         </div>
         <XToaster top left className="topOverride" toasts={this.state.toasts.getIn(['top', 'left']).toJS()} onRemoveToast={this.handleRemoveToast.bind(this, 'top', 'left')}/>
