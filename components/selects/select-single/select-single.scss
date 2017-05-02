@@ -1,0 +1,131 @@
+@import '~styles/base/mixins';
+@import '~styles/base/variables';
+@import '~styles/base/colors';
+
+.select-single {
+  display: inline-block;
+  position: relative;
+  margin: 10px 10px 10px 0;
+  outline: none;
+  width: 100%;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  & .select-input {
+    position: relative;
+    width: 100%;
+
+    & input {
+      position: relative;
+      display: block;
+      width: 100%;
+      padding: 5px 15px 5px 0;
+      background-color: transparent;
+      border: 0;
+      border-bottom: 1px solid color('grey', 'lighten-2');
+      font-family: $primary-fontstack;
+      font-size: 1em;
+      outline: none;
+      cursor: pointer;
+
+      :focus {
+        border-bottom: 2px solid $primary-color;
+      }
+    }
+
+    & label {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      color: rgba(144, 144, 144, 0.8);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    & .clear {
+      position: absolute;
+      top: 50%;
+      @include transform(translateY(-50%));
+      right: 25px;
+      color: #cacaca;
+
+      &:hover {
+        color: dimgrey;
+      }
+    }
+
+    & span.select-arrow {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      pointer-events: none;
+      border-top: 6px solid rgba(0,0,0,.12);
+      border-right: 6px solid transparent;
+      border-left: 6px solid transparent;
+      @include transform(translateY(-50%));
+    }
+  }
+
+  & .select-error {
+    position: relative;
+    bottom: -2px;
+    font-size: 12px;
+    line-height: 14px;
+    color: #ff2f2f;
+  }
+
+  & ul {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    max-height: 200px;
+    z-index: 100;
+    overflow-y: auto;
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    list-style: none;
+    background-color: #fff;
+    border-radius: 0;
+    box-shadow: 0 0 5px color('grey', 'lighten-2');
+    @include transform(translateY(5px));
+    @include transition(all ease-in-out .3s);
+
+    &.open {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: all;
+      @include transform(translateY(0));
+    }
+
+    & li {
+      position: relative;
+      white-space: nowrap;
+      padding: 10px;
+      display: block;
+      cursor: pointer;
+      border-bottom: 1px solid color('grey', 'lighten-4');
+      @include transition(all ease-in-out .3s);
+
+      &:last-child {
+        border-bottom: 0;
+      }
+
+      &:hover,
+      &.selected {
+        background-color: #eeeeee;
+      }
+    }
+  }
+
+  &.table-pagesize {
+    max-width: 45px;
+
+    & input {
+      width: 100%;
+      padding-right: 15px;
+    }
+  }
+}

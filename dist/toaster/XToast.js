@@ -36,7 +36,10 @@ var XToast = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (XToast.__proto__ || Object.getPrototypeOf(XToast)).call(this, props));
 
-    _this.state = { active: false };
+    _this.state = {
+      active: false,
+      closing: false
+    };
     _this.timebar = '';
     _this.handleDismiss = _this.handleDismiss.bind(_this);
     return _this;
@@ -49,13 +52,13 @@ var XToast = function (_React$Component) {
 
       this.setState({ active: true });
 
-      if (this.props.msec) {
+      if (this.props.seconds && this.props.seconds !== 0) {
         (function () {
           var self = _this2;
 
           _this2.timebar.addEventListener('animationend', function onAnimationEnd() {
             self.timebar.removeEventListener('animationend', onAnimationEnd);
-            self.setState({ active: false });
+            self.setState({ active: false, closing: true });
             setTimeout(self.props.onDismiss, 400);
           });
         })();
@@ -79,8 +82,8 @@ var XToast = function (_React$Component) {
     key: 'handleDismiss',
     value: function handleDismiss() {
       if (this.props.onDismiss) {
-        this.setState({ active: false });
-        setTimeout(this.props.onDismiss, 1000);
+        this.setState({ active: false, closing: true });
+        setTimeout(this.props.onDismiss, 400);
       }
     }
   }, {
@@ -95,13 +98,13 @@ var XToast = function (_React$Component) {
           icon = _props.icon,
           iconClassName = _props.iconClassName,
           message = _props.message,
-          msec = _props.msec,
+          seconds = _props.seconds,
           children = _props.children;
 
 
       return _react2.default.createElement(
         'div',
-        { className: (0, _classnames2.default)('toast', { active: this.state.active }, type, className, theme) },
+        { className: (0, _classnames2.default)('toast', { active: this.state.active, closing: this.state.closing }, type, className, theme) },
         _react2.default.createElement(
           'div',
           { className: 'dismiss', onClick: this.handleDismiss },
@@ -119,9 +122,9 @@ var XToast = function (_React$Component) {
           ),
           children
         ),
-        _react2.default.createElement('div', { ref: function ref(timebar) {
+        seconds && seconds !== 0 ? _react2.default.createElement('div', { ref: function ref(timebar) {
             _this3.timebar = timebar;
-          }, className: 'timebar', style: msec ? { animationDuration: msec / 1000 + 's' } : null })
+          }, className: 'timebar', style: { animationDuration: seconds + 's' } }) : null
       );
     }
   }]);
@@ -136,7 +139,7 @@ XToast.propTypes = {
   icon: _react.PropTypes.string,
   iconClassName: _react.PropTypes.string,
   message: _react.PropTypes.string,
-  msec: _react.PropTypes.number,
+  seconds: _react.PropTypes.number,
   children: _react.PropTypes.node,
   onDismiss: _react.PropTypes.func
 };

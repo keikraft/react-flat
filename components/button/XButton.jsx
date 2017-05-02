@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import xwaveFactory from '../wave/XWave';
 import XIcon from '../icon/XIcon';
@@ -6,67 +7,71 @@ import XIcon from '../icon/XIcon';
 import './styles.scss';
 
 const xbuttonFactory = (xwave) => {
-  const XButton = (props) => {
-    const { name, theme, className, inverse, icon, flat, raised, circular, mini, href, disabled, children, ...other } = props;
-
+  const XButton = ({text, theme, className, inverse, icon, flat, raised, circular, mini, href, disabled, children, onMouseUp, ...rest}) => {
     const element = href ? 'a' : 'button';
     const type = flat ? 'flat' : raised ? 'raised' : circular ? 'circular' : 'flat';
-    const classes = classnames('button', className, theme, type, {mini: mini, inverse: inverse});
-    const hasIcon = icon ? true : children ? true : false;
+    const classes = classnames('button', className, theme, type, {mini, inverse});
+    const hasIcon = icon || children;
 
     const handleMouseUp = () => {
-      if (props.onMouseUp) {
-        props.onMouseUp();
+      if (onMouseUp) {
+        onMouseUp();
       }
     };
 
-    const properties = {
+    const props = {
       className: classes,
       href,
       onMouseUp: handleMouseUp,
       disabled,
-      ...other
+      ...rest
     };
 
-    return React.createElement(element, properties,
-      hasIcon ? <XIcon className={classnames({'material-icons': typeof(icon) === 'string'})} value={icon}/> : null,
-      name && !circular ? <span className={classnames({text: hasIcon})}>{name}</span> : null,
+    return React.createElement(element, props,
+      hasIcon ? <XIcon className={classnames({'material-icons': typeof icon === 'string'})} value={icon} /> : null,
+      text && !circular ? <span className={classnames({'icon-text': hasIcon})}>{text}</span> : null,
       children
     );
   };
 
   XButton.propTypes = {
-    name: PropTypes.string,
+    text: PropTypes.string,
     theme: PropTypes.string,
     className: PropTypes.string,
-    inverse: PropTypes.bool,
     icon: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.element
     ]),
+    inverse: PropTypes.bool,
     flat: PropTypes.bool,
     raised: PropTypes.bool,
     circular: PropTypes.bool,
     mini: PropTypes.bool,
     href: PropTypes.string,
     disabled: PropTypes.bool,
-    onMouseUp: PropTypes.func,
-    children: PropTypes.node
+    children: PropTypes.node,
+    onMouseUp: PropTypes.func
   };
 
   XButton.defaultProps = {
+    text: '',
     theme: '',
     className: '',
+    icon: '',
+    inverse: false,
     flat: false,
     raised: false,
     circular: false,
     mini: false,
-    disabled: false
+    href: '',
+    disabled: false,
+    children: null,
+    onMouseUp: () => { return null; }
   };
 
   return xwave(XButton);
 };
 
 const XButton = xbuttonFactory(xwaveFactory());
-export { xbuttonFactory };
+export {xbuttonFactory};
 export default XButton;

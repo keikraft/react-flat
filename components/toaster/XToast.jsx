@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import XIcon from '../icon/XIcon';
 
@@ -12,7 +13,7 @@ class XToast extends React.Component {
     icon: PropTypes.string,
     iconClassName: PropTypes.string,
     message: PropTypes.string,
-    msec: PropTypes.number,
+    seconds: PropTypes.number,
     children: PropTypes.node,
     onDismiss: PropTypes.func
   };
@@ -37,7 +38,7 @@ class XToast extends React.Component {
   componentDidMount() {
     this.setState({active: true});
 
-    if (this.props.msec) {
+    if (this.props.seconds && this.props.seconds !== 0) {
       const self = this;
 
       this.timebar.addEventListener('animationend', function onAnimationEnd() {
@@ -69,7 +70,7 @@ class XToast extends React.Component {
   }
 
   render() {
-    const { type, className, theme, icon, iconClassName, message, msec, children } = this.props;
+    const { type, className, theme, icon, iconClassName, message, seconds, children } = this.props;
 
     return (
       <div className={classnames('toast', {active: this.state.active, closing: this.state.closing}, type, className, theme)}>
@@ -79,7 +80,7 @@ class XToast extends React.Component {
             <span className="text">{message}</span>
             {children}
           </div>
-          {msec ? <div ref={timebar => { this.timebar = timebar; }} className="timebar" style={{animationDuration: `${msec/1000}s`}}></div> : null}
+          {seconds && seconds !== 0 ? <div ref={timebar => { this.timebar = timebar; }} className="timebar" style={{animationDuration: `${seconds}s`}}></div> : null}
       </div>
     );
   }

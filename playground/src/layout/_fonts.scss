@@ -1,0 +1,65 @@
+$Roboto_fonts_path: './fonts';
+$Material_icons_path: './icons';
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('#{$Material_icons_path}/MaterialIcons-Regular.eot');
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url('#{$Material_icons_path}/MaterialIcons-Regular.woff2') format('woff2'),
+    url('#{$Material_icons_path}/MaterialIcons-Regular.woff') format('woff'),
+    url('#{$Material_icons_path}/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: local(Roboto Thin), url('#{$Roboto_fonts_path}/Roboto-Thin.eot');
+    src: url("#{$Roboto_fonts_path}/Roboto-Thin.eot?#iefix") format('embedded-opentype'),
+        url("#{$Roboto_fonts_path}/Roboto-Thin.woff2") format("woff2"),
+        url("#{$Roboto_fonts_path}/Roboto-Thin.woff") format("woff"),
+        url("#{$Roboto_fonts_path}/Roboto-Thin.ttf") format("truetype");
+
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: local(Roboto Light), url('#{$Roboto_fonts_path}/Roboto-Light.eot');
+    src: url("#{$Roboto_fonts_path}/Roboto-Light.eot?#iefix") format('embedded-opentype'),
+        url("#{$Roboto_fonts_path}/Roboto-Light.woff2") format("woff2"),
+        url("#{$Roboto_fonts_path}/Roboto-Light.woff") format("woff"),
+        url("#{$Roboto_fonts_path}/Roboto-Light.ttf") format("truetype");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: local(Roboto Regular), url('#{$Roboto_fonts_path}/Roboto-Regular.eot');
+    src: url("#{$Roboto_fonts_path}/Roboto-Regular.eot?#iefix") format('embedded-opentype'),
+        url("#{$Roboto_fonts_path}/Roboto-Regular.woff2") format("woff2"),
+        url("#{$Roboto_fonts_path}/Roboto-Regular.woff") format("woff"),
+        url("#{$Roboto_fonts_path}/Roboto-Regular.ttf") format("truetype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url('#{$Roboto_fonts_path}/Roboto-Medium.eot');
+    src: url("#{$Roboto_fonts_path}/Roboto-Medium.eot?#iefix") format('embedded-opentype'),
+        url("#{$Roboto_fonts_path}/Roboto-Medium.woff2") format("woff2"),
+        url("#{$Roboto_fonts_path}/Roboto-Medium.woff") format("woff"),
+        url("#{$Roboto_fonts_path}/Roboto-Medium.ttf") format("truetype");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url('#{$Roboto_fonts_path}/Roboto-Bold.eot');
+    src: url("#{$Roboto_fonts_path}/Roboto-Bold.eot?#iefix") format('embedded-opentype'),
+        url("#{$Roboto_fonts_path}/Roboto-Bold.woff2") format("woff2"),
+        url("#{$Roboto_fonts_path}/Roboto-Bold.woff") format("woff"),
+        url("#{$Roboto_fonts_path}/Roboto-Bold.ttf") format("truetype");
+    font-weight: 700;
+}
