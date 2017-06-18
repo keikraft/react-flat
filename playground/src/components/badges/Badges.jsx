@@ -29,11 +29,17 @@ const Badges = () => {
       <h2>Inverse Badges</h2>
       <div className="flex-row">
         <XBadge text="Default" inverse />
+        <XBadge text="Default" inverse small />
         <XBadge text="Themed" color="red" inverse />
+        <XBadge text="Themed" color="red" inverse small />
         <XBadge text="Icon" icon="code" color="blue" inverse />
+        <XBadge text="Icon" icon="code" color="blue" inverse small />
         <XBadge text="Right" icon="bug_report" color="green" iconRight inverse />
+        <XBadge text="Right" icon="bug_report" color="green" iconRight inverse small />
         <XBadge icon="accessibility" color="black" inverse />
+        <XBadge icon="accessibility" color="black" inverse small />
         <XBadge text="Github" icon={<GithubIcon />} color="purple" inverse />
+        <XBadge text="Github" icon={<GithubIcon />} color="purple" inverse small />
       </div>
     </div>
   );

@@ -9,13 +9,18 @@ header {
   a.title {
     display: flex;
     align-items: center;
+    margin-left: 10px;
     font-size: 28px;
     font-weight: 300;
     color: #ffffff;
     text-decoration: none;
 
+    & img:hover {
+      transform: scale(1.05);
+    }
+
     & span {
-      margin-left: 5px;
+      margin-left: 10px;
     }
   }
 

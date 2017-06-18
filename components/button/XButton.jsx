@@ -6,7 +6,7 @@ import XIcon from '../icon/XIcon';
 
 import './styles.scss';
 
-const xbuttonFactory = (xwave) => {
+const xbuttonFactory = (XWave) => {
   const XButton = ({text, theme, className, inverse, icon, flat, raised, circular, mini, href, disabled, children, onMouseUp, ...rest}) => {
     const element = href ? 'a' : 'button';
     const type = flat ? 'flat' : raised ? 'raised' : circular ? 'circular' : 'flat';
@@ -69,7 +69,7 @@ const xbuttonFactory = (xwave) => {
     onMouseUp: () => { return null; }
   };
 
-  return xwave(XButton);
+  return XWave ? XWave(XButton) : XButton;
 };
 
 const XButton = xbuttonFactory(xwaveFactory());

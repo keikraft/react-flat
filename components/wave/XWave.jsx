@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
-import { OrderedMap } from 'immutable';
-import classnames from 'classnames';
+import {OrderedMap} from 'immutable';
 
 import './styles.scss';
 
@@ -13,29 +11,16 @@ const xwaveFactory = (options = {}) => {
 
   return (Component) => {
     class XWaveComponent extends React.Component {
-      static propTypes = {
-        theme: PropTypes.string,
-        className: PropTypes.string,
-        length: PropTypes.number,
-        centered: PropTypes.bool,
-        multiple: PropTypes.bool,
-        disabled: PropTypes.bool
-      };
-
-      static defaultProps = {
-        theme: '',
-        className: '',
-        length: 2,
-        centered: false,
-        multiple: true,
-        disabled: false
-      };
-
       constructor(props) {
         super(props);
 
-        this.state = { waves: OrderedMap() };
-        this.waves = OrderedMap();
+        this.state = {
+          waves: OrderedMap()
+        };
+
+        this.elemRef = null;
+        this.waveRefs = OrderedMap();
+
         this.handleMouseDown = this.handleMouseDown.bind(this);
       }
 
@@ -44,8 +29,8 @@ const xwaveFactory = (options = {}) => {
           const self = this;
           const waveKey = this.getCurrentWaveKey();
 
-          this.addEventListenerOnAnimationEnd(this.waves.get(waveKey), function onAnimationEnd() {
-            self.removeEventListenerOnAnimationEnd(self.waves.get(waveKey), onAnimationEnd);
+          this.addEventListenerOnAnimationEnd(this.waveRefs.get(waveKey), function onAnimationEnd() {
+            self.removeEventListenerOnAnimationEnd(self.waveRefs.get(waveKey), onAnimationEnd);
             self.removeWave(waveKey);
           });
         }
@@ -56,16 +41,16 @@ const xwaveFactory = (options = {}) => {
         return true;
       }
 
-      removeEventListenerOnAnimationEnd (element, cb) {
+      removeEventListenerOnAnimationEnd(element, cb) {
         element.removeEventListener('animationend', cb);
         return true;
       }
 
       removeWave(waveKey) {
-        this.waves = this.waves.delete(waveKey);
-        this.setState(({waves}) => ({
-          waves: waves.delete(waveKey)
-        }));
+        this.waveRefs = this.waveRefs.delete(waveKey);
+        this.setState((prevState) => {
+          return {waves: prevState.waves.delete(waveKey)};
+        });
       }
 
       getNewWaveKey() {
@@ -77,62 +62,90 @@ const xwaveFactory = (options = {}) => {
         return `wave${this.waveCount}`;
       }
 
-      getOffset(x, y) {
-        const { left, top, width } = ReactDOM.findDOMNode(this).getBoundingClientRect();
+      getOffset(element, {x, y}) {
+        const {left, right, top, bottom, width} = element.getBoundingClientRect();
         const spread = width * this.props.length;
 
+        const topOffset = this.props.centered
+          ? ((bottom - top) / 2) - waveWidth - (spread / 2)
+          : y - top - waveWidth - (spread / 2);
+
+        const leftOffset = this.props.centered
+          ? ((right - left) / 2) - waveWidth - (spread / 2)
+          : x - left - waveWidth - (spread / 2);
+
         return {
-          top: y - top - waveWidth - spread / 2,
-          left: x - left - waveWidth - spread / 2,
+          top: topOffset,
+          left: leftOffset,
           width: spread
         };
       }
 
-      createWave(x, y) {
-        const { top, left, width } = this.getOffset(x, y);
-
+      createWave(element, position) {
         const noActiveWaves = this.state.waves.size === 0;
         const key = this.props.multiple || noActiveWaves ? this.getNewWaveKey() : this.getCurrentWaveKey();
 
-        const waveState = { top, left, width };
-        this.setState(({waves}) => ({
-          waves: waves.set(key, waveState)
-        }));
+        const waveState = this.getOffset(element, position);
+        this.setState((prevState) => {
+          return {waves: prevState.waves.set(key, waveState)};
+        });
       }
 
       handleMouseDown(event) {
         if (!this.props.disabled) {
-          const x = event.pageX - (window.scrollX || window.pageXOffset);
-          const y = event.pageY - (window.scrollY || window.pageYOffset);
-          this.createWave(x, y);
+          const position = {
+            x: event.pageX - (window.scrollX || window.pageXOffset),
+            y: event.pageY - (window.scrollY || window.pageYOffset)
+          };
+          this.createWave(event.currentTarget, position);
         }
       }
 
-      renderWave(key, className, theme, disabled, { top, left, width }) {
+      renderWave(key, {top, left, width}) {
         const border = `${waveWidth}px solid currentColor`;
         const waveRef = (wave) => {
           if (wave !== null) {
-            this.waves = this.waves.set(key, wave);
+            this.waveRefs = this.waveRefs.set(key, wave);
           }
         };
 
         return (
-          <span key={key} ref={waveRef} className={classnames('wave', className, theme)} style={{top, left, width, height: width, border}} disabled={disabled}/>
+          <span key={key} ref={waveRef} className="wave" style={{top, left, width, height: width, border}} />
         );
       }
 
       render() {
         const waves = this.state.waves.toJS();
-        const { waveClassName, waveTheme, waveDisabled, children, ...componentProps } = this.props;
+        const {centered, length, children, ...componentProps} = this.props; // eslint-disable-line no-unused-vars
 
         return (
           <Component {...componentProps} onMouseDown={this.handleMouseDown}>
             {children}
-            {Object.keys(waves).map(waveKey => { return this.renderWave(waveKey, waveClassName, waveTheme, waveDisabled, waves[waveKey]); })}
+            {Object.keys(waves).map((waveKey) => { return this.renderWave(waveKey, waves[waveKey]); })}
           </Component>
         );
       }
     }
+
+    XWaveComponent.propTypes = {
+      theme: PropTypes.string,
+      className: PropTypes.string,
+      length: PropTypes.number,
+      centered: PropTypes.bool,
+      multiple: PropTypes.bool,
+      disabled: PropTypes.bool,
+      children: PropTypes.element
+    };
+
+    XWaveComponent.defaultProps = {
+      theme: '',
+      className: '',
+      length: 2,
+      centered: false,
+      multiple: true,
+      disabled: false,
+      children: null
+    };
 
     return XWaveComponent;
   };

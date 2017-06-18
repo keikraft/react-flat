@@ -2,8 +2,31 @@
 
 div.color-values {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+
+  & .color-values-box {
+    display: flex;
+    flex-direction: column;
+    width: 165px;
+
+    & .values-box-name {
+      padding: 5px;
+      margin-bottom: 15px;
+      text-align: center;
+      color: $color-white;
+      font-weight: 600;
+      font-size: 1.6em;
+    }
+
+    & > div {
+      margin-bottom: 5px;
+
+      & .values-box-type {
+        margin-right: 3px;
+        font-weight: 600;
+      }
+    }
+  }
 }
 
 div.colors-row {

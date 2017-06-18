@@ -1,7 +1,12 @@
+import './layout/fonts/_roboto.scss';
+import './layout/icons/_material-icons.scss';
+import './layout/index.scss';
+
 import React from 'react';
 import {Route, Link} from 'react-router-dom';
 import classnames from 'classnames';
 
+import Home from './home/Home';
 import Badges from './components/badges/Badges';
 import Buttons from './components/buttons/Buttons';
 import Colors from './components/colors/Colors';
@@ -9,9 +14,10 @@ import Inputs from './components/inputs/Inputs';
 import Selectors from './components/selectors/Selectors';
 import Toaster from './components/toaster/Toaster';
 
-import './layout/index.scss';
+import logoImage from './layout/images/red_logo_48x48.png';
 
 const Pages = {
+  home: '/home',
   badges: '/app/badges',
   buttons: '/app/buttons',
   colors: '/app/colors',
@@ -20,19 +26,19 @@ const Pages = {
   toaster: '/app/toaster'
 };
 
-const App = () => {
+function App() {
   const currentPage = window.location.pathname;
 
   return (
     <div>
       <header>
-        <a className="title" href="/">
-          <i className="material-icons md-light md-48">all_out</i>
-          <span>react-flat</span>
-        </a>
+        <Link className="title" to={Pages.home}>
+          <img alt="" src={logoImage} />
+          <span>React-Flat</span>
+        </Link>
         <nav>
           <ul>
-            <li><a className="active" href="/">Components</a></li>
+            <li><Link to={Pages.home}>Components</Link></li>
             <li><a href="https://github.com/k3ira">Github</a></li>
           </ul>
         </nav>
@@ -50,6 +56,7 @@ const App = () => {
         </nav>
       </aside>
       <article>
+        <Route path={Pages.home} component={Home} />
         <Route path={Pages.badges} component={Badges} />
         <Route path={Pages.buttons} component={Buttons} />
         <Route path={Pages.colors} component={Colors} />
@@ -59,6 +66,6 @@ const App = () => {
       </article>
     </div>
   );
-};
+}
 
 export default App;

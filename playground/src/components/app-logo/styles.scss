@@ -1,0 +1,62 @@
+@import "../../../../components/colors";
+
+$logo_size: 256px;
+
+.app-logo {
+  position: relative;
+  width: $logo_size;
+  height: $logo_size;
+
+  & .rect-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(#{$logo_size} / 2);
+    height: $logo_size;
+  }
+
+  & .rect-right-up {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(#{$logo_size} / 2);
+    height: calc(#{$logo_size} / 2);
+  }
+
+  & .rect-right-down {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: calc(#{$logo_size} / 2);
+    height: calc(#{$logo_size} / 2);
+  }
+
+  & .rect-center {
+    position: absolute;
+    top: calc(#{$logo_size} / 4);
+    left: calc(#{$logo_size} / 4);
+    width: calc(#{$logo_size} / 2);
+    height: calc(#{$logo_size} / 2);
+  }
+
+  @each $color-name in $color-names {
+    &.app-logo.#{$color-name} {
+      & .rect-left {
+        background-color: get-color($color-name, '300');
+        transition: background-color 1s ease;
+      }
+      & .rect-right-up {
+        background-color: get-color($color-name, '330');
+        transition: background-color 1s ease;
+      }
+      & .rect-right-down {
+        background-color: get-color($color-name, '120');
+        transition: background-color 1s ease;
+      }
+      & .rect-center {
+        background-color: get-color($color-name, '200');
+        transition: background-color 1s ease;
+      }
+    }
+  }
+}

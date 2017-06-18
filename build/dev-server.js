@@ -1,6 +1,6 @@
 const open = require('open');
-const config = require('./build.config');
 const webpack = require('webpack');
+const config = require('./build.config');
 const webpackConfig = require('./webpack.dev.config');
 const WebpackDevServer = require('webpack-dev-server');
 

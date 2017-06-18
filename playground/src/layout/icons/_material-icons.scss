@@ -1,0 +1,13 @@
+$material_icons_path: './MaterialIcons';
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('#{$material_icons_path}/MaterialIcons-Regular.eot');
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url('#{$material_icons_path}/MaterialIcons-Regular.woff2') format('woff2'),
+    url('#{$material_icons_path}/MaterialIcons-Regular.woff') format('woff'),
+    url('#{$material_icons_path}/MaterialIcons-Regular.ttf') format('truetype');
+}

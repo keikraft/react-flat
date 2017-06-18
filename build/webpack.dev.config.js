@@ -10,7 +10,7 @@ function resolve(dir) {
 
 function getCssScssLoaders(sourceMap) {
   return ['css', 'sass'].map((ext) => {
-    return {loader: `${ext}-loader`, options: {sourceMap: sourceMap}};
+    return {loader: `${ext}-loader`, options: {sourceMap}};
   });
 }
 
@@ -25,7 +25,7 @@ const webpackDevConfig = {
     path: resolve('playground/build'),
     filename: 'flat.[hash:5].js',
     publicPath: config.build.assetsPublicPath,
-    devtoolModuleFilenameTemplate: "[resource-path]"
+    devtoolModuleFilenameTemplate: '[resource-path]'
   },
   devtool: config.dev.cssSourceMap ? '#cheap-eval-source-map' : false,
   resolve: {
@@ -54,6 +54,14 @@ const webpackDevConfig = {
         query: {
           limit: 10000,
           name: 'fonts/[name].[hash:5].[ext]'
+        }
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          name: 'images/[name].[hash:7].[ext]'
         }
       }
     ]
