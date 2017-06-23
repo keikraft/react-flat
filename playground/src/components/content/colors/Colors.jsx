@@ -1,7 +1,6 @@
-import React from 'react';
-
-import '../../../../components/_colors.scss';
 import './pageStyles.scss';
+
+import React from 'react';
 
 class Colors extends React.Component {
   constructor(props) {
@@ -43,7 +42,7 @@ class Colors extends React.Component {
       <div>
         <h2>Colors</h2>
         <div className="color-values">
-          {colorSelected ? this.renderColorValues() : <span>Click on a color to see its HEX/RGBA values.</span>}
+          {colorSelected ? this.renderColorValues() : <span>Click on a color to see its HEX/RGB values.</span>}
         </div>
         <div className="colors-row">
           <div className="color-container">

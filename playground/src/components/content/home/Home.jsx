@@ -2,7 +2,7 @@ import './home.scss';
 
 import React from 'react';
 
-import AppLogo from '../components/app-logo/AppLogo';
+import AppLogo from '../app-logo/AppLogo';
 
 class Home extends React.Component {
   constructor(props) {

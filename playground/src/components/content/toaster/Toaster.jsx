@@ -1,12 +1,14 @@
+import './pageStyles.scss';
+
 import React from 'react';
 import Immutable from 'immutable';
-import XToaster from '../../../../components/toaster/XToaster';
-import XButton from '../../../../components/button/XButton';
-import XInput from '../../../../components/input/XInput';
-import XSlider from '../../../../components/slider/XSlider';
-import {XRadioGroup, XRadioButton} from '../../../../components/radio/XRadio';
 
-import './pageStyles.scss';
+import XToaster from '../../../../../components/toaster/XToaster';
+import XButton from '../../../../../components/button/XButton';
+import XInput from '../../../../../components/input/XInput';
+import XSlider from '../../../../../components/slider/XSlider';
+import {XRadioGroup, XRadioButton} from '../../../../../components/radio/XRadio';
+
 
 class Toaster extends React.Component {
   constructor(props) {

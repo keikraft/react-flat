@@ -1,6 +1,6 @@
 import React from 'react';
-import XButton, {xbuttonFactory} from '../../../../components/button/XButton';
-import XIcon from '../../../../components/icon/XIcon';
+import XButton, {xbuttonFactory} from '../../../../../components/button/XButton';
+import XIcon from '../../../../../components/icon/XIcon';
 
 import './pageStyles.scss';
 

@@ -15,7 +15,8 @@ const AppLogoDefaultProps = {
 function AppLogo({color}) {
   return (
     <div className={classnames('app-logo', color)}>
-      <span className="rect-left" />
+      <span className="rect-left-up" />
+      <span className="rect-left-down" />
       <span className="rect-right-up" />
       <span className="rect-right-down" />
       <span className="rect-center" />

@@ -1,12 +1,12 @@
+import './styles.scss';
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+
 import XIcon from '../icon/XIcon';
 
-import './styles.scss';
-
-const XInput = (props) => {
-  const { type, name, placeholder, floating, hint, disabled, className, theme, icon, iconClassName, error, value, onChange } = props;
+const XInput = ({type, name, placeholder, floating, hint, disabled, className, theme, icon, iconClassName, error, value, onChange}) => {
   const valueEntered = value !== null && value !== undefined && value != '';
   const hasIcon = icon ? true : false;
 

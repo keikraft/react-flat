@@ -1,10 +1,11 @@
+import './pageStyles.scss';
+
 import React from 'react';
 
-import XCheck from '../../../../components/checkbox/XCheck';
-import XSwitch from '../../../../components/switch/XSwitch';
-import {XRadioGroup, XRadioButton} from '../../../../components/radio/XRadio';
+import XCheck from '../../../../../components/checkbox/XCheck';
+import XSwitch from '../../../../../components/switch/XSwitch';
+import {XRadioGroup, XRadioButton} from '../../../../../components/radio/XRadio';
 
-import './pageStyles.scss';
 
 class Selectors extends React.Component {
   constructor(props) {

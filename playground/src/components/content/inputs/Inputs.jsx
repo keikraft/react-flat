@@ -1,8 +1,8 @@
+import './pageStyles.scss';
+
 import React from 'react';
 
-import XInput from '../../../../components/input/XInput';
-
-import './pageStyles.scss';
+import XInput from '../../../../../components/input/XInput';
 
 class Inputs extends React.Component {
   constructor(props) {

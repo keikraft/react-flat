@@ -1,47 +1,60 @@
-@import "../../../../components/colors";
+@import "../../../../../components/colors";
 
 $logo_size: 256px;
+$square_size: calc(#{$logo_size} / 2);
 
 .app-logo {
   position: relative;
   width: $logo_size;
   height: $logo_size;
 
-  & .rect-left {
+  & .rect-left-up {
     position: absolute;
     top: 0;
     left: 0;
-    width: calc(#{$logo_size} / 2);
-    height: $logo_size;
+    width: $square_size;
+    height: $square_size;
+  }
+
+  & .rect-left-down {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: $square_size;
+    height: $square_size;
   }
 
   & .rect-right-up {
     position: absolute;
     top: 0;
     right: 0;
-    width: calc(#{$logo_size} / 2);
-    height: calc(#{$logo_size} / 2);
+    width: $square_size;
+    height: $square_size;
   }
 
   & .rect-right-down {
     position: absolute;
     bottom: 0;
     right: 0;
-    width: calc(#{$logo_size} / 2);
-    height: calc(#{$logo_size} / 2);
+    width: $square_size;
+    height: $square_size;
   }
 
   & .rect-center {
     position: absolute;
     top: calc(#{$logo_size} / 4);
     left: calc(#{$logo_size} / 4);
-    width: calc(#{$logo_size} / 2);
-    height: calc(#{$logo_size} / 2);
+    width: $square_size;
+    height: $square_size;
   }
 
   @each $color-name in $color-names {
     &.app-logo.#{$color-name} {
-      & .rect-left {
+      & .rect-left-up {
+        background-color: get-color($color-name, '300');
+        transition: background-color 1s ease;
+      }
+      & .rect-left-down {
         background-color: get-color($color-name, '300');
         transition: background-color 1s ease;
       }

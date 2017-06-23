@@ -1,5 +1,5 @@
 import React from 'react';
-import XBadge from '../../../../components/badge/XBadge';
+import XBadge from '../../../../../components/badge/XBadge';
 
 import './pageStyles.scss';
 
