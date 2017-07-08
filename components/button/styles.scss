@@ -97,6 +97,7 @@
   overflow: hidden;
   border: none;
   cursor: pointer;
+  transition: background-color .2s ease-in-out;
 
   &:focus {
     outline: none;

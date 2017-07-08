@@ -5,28 +5,30 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import classnames from 'classnames';
 
-import PagesEnum from '../../../pages.enum';
+import RoutesEnum from '../../../router/routes.enum';
 
 const SidebarPropTypes = {
+  theme: PropTypes.string,
   collapsed: PropTypes.bool
 };
 const SidebarDefaultProps = {
+  theme: 'red',
   collapsed: false
 };
 
-function Sidebar({collapsed}) {
-  const currentPage = window.location.pathname;
+function Sidebar({theme, collapsed}) {
+  const currentPage = window.location.hash.replace('#', '');
 
   return (
-    <nav className={classnames('app-sidebar', {collapsed})}>
+    <nav className={classnames('app-sidebar', theme, {collapsed})}>
       <div className="app-sidebar-content">
         <ul>
-          <li><Link to={PagesEnum.badges} className={classnames({active: PagesEnum.badges === currentPage})}>Badges</Link></li>
-          <li><Link to={PagesEnum.buttons} className={classnames({active: PagesEnum.buttons === currentPage})}>Buttons</Link></li>
-          <li><Link to={PagesEnum.colors} className={classnames({active: PagesEnum.colors === currentPage})}>Colors</Link></li>
-          <li><Link to={PagesEnum.inputs} className={classnames({active: PagesEnum.inputs === currentPage})}>Inputs</Link></li>
-          <li><Link to={PagesEnum.selectors} className={classnames({active: PagesEnum.selectors === currentPage})}>Selectors</Link></li>
-          <li><Link to={PagesEnum.toaster} className={classnames({active: PagesEnum.toaster === currentPage})}>Toaster</Link></li>
+          <li><Link to={RoutesEnum.badges} className={classnames({active: RoutesEnum.badges === currentPage})}>Badges</Link></li>
+          <li><Link to={RoutesEnum.buttons} className={classnames({active: RoutesEnum.buttons === currentPage})}>Buttons</Link></li>
+          <li><Link to={RoutesEnum.colors} className={classnames({active: RoutesEnum.colors === currentPage})}>Colors</Link></li>
+          <li><Link to={RoutesEnum.inputs} className={classnames({active: RoutesEnum.inputs === currentPage})}>Inputs</Link></li>
+          <li><Link to={RoutesEnum.selectors} className={classnames({active: RoutesEnum.selectors === currentPage})}>Selectors</Link></li>
+          <li><Link to={RoutesEnum.toaster} className={classnames({active: RoutesEnum.toaster === currentPage})}>Toaster</Link></li>
         </ul>
       </div>
     </nav>

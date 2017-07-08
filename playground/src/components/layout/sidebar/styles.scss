@@ -1,8 +1,9 @@
+@import "../../../../../components/colors";
+
 .app-sidebar {
   position: relative;
   width: 200px;
   height: 100%;
-  box-shadow: 0 0px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
   z-index: 100;
   transition: width .3s ease-in-out;
 
@@ -15,33 +16,47 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 3px;
+    width: 1px;
     height: 100%;
   }
 
   & .app-sidebar-content {
     height: 100%;
-    
+
     & ul {
       list-style: none;
       padding: 0;
       margin: 0;
       overflow: hidden;
 
-      li {
-        a {
-          display: block;
-          position: relative;
-          padding: 15px;
-          text-decoration: none;
-          font-weight: 500;
-          color: #2f2f2f;
-          border-bottom: 1px solid #ffebee;
-          transition: background-color .3s ease;
+      & li a {
+        display: block;
+        position: relative;
+        padding: 15px;
+        text-decoration: none;
+        font-weight: 500;
+        color: get-color('grey', 300);
+        transition: background-color .3s ease;
+      }
+    }
+  }
+
+  // THEMES
+  @each $color-name in $color-names {
+    &.#{$color-name} {
+      box-shadow: 0 0px 15px 2px get-color($color-name, 230, .1);
+
+      &::after {
+        background-color: get-color($color-name, 230, .1);
+      }
+
+      & .app-sidebar-content {
+        & ul li a {
+          border-bottom: 1px solid get-color($color-name, 100, .3);
 
           &:hover,
           &.active {
-            background-color: #ffebee;
+            background-color: get-color($color-name, 100, .3);
           }
         }
       }

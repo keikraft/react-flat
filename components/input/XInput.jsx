@@ -50,7 +50,8 @@ XInput.defaultProps = {
   theme: 'grey',
   hint: false,
   floating: false,
-  disabled: false
+  disabled: false,
+  onChange: () => {}
 };
 
 export default XInput;

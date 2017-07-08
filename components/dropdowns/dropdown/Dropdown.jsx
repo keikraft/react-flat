@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 import './dropdown.scss';
 
@@ -65,8 +66,10 @@ class Dropdown extends React.Component {
 
     return (
       <div className={dropdownClassNames} {...openMode} tabIndex="0">
-        {buttonSlot}
-        {this.state.open || openOnHover ? <ul className={classnames(side, {animated: animation}, animation)}>{children}</ul> : null}
+        <CSSTransitionGroup transitionName="fade-dropdown" transitionEnterTimeout={300} transitionLeaveTimeout={300}>
+          {buttonSlot}
+          {this.state.open || openOnHover ? <ul className={classnames(side, {animated: animation}, animation)}>{children}</ul> : null}
+        </CSSTransitionGroup>
       </div>
     );
   }

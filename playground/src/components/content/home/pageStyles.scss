@@ -1,0 +1,33 @@
+@import '../../../../../components/colors';
+
+.app-home {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  transition: background-color .3s ease-in-out;
+
+  /* THEMES */
+  @each $color-name in $color-names {
+    &.#{$color-name} {
+      background-color: get-color($color-name, 100, .5);
+    }
+  }
+
+  & .home-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & h2 {
+      margin-top: 40px;
+    }
+  }
+
+  & .home-content {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+  }
+}

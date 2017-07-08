@@ -13,44 +13,44 @@ const Buttons = () => {
     <div>
       <div>
         <h2>Flat</h2>
-        <XButton text="Default" flat />
-        <XButton text="Themed" theme="red" icon="bookmark" flat />
-        <XButton text="Right" theme="green" flat>
+        <XButton flat text="Default" />
+        <XButton flat text="Themed" theme="red" icon="bookmark" />
+        <XButton flat text="Right" theme="green">
           <XIcon className="material-icons" value="bug_report" />
         </XButton>
-        <XButton text="Disabled" flat disabled />
-        <XButton href="https://github.com/k3ira" icon={<GithubIcon />} theme="purple" flat />
+        <XButton flat disabled text="Disabled" />
+        <XButton flat href="https://github.com/k3ira" icon={<GithubIcon />} theme="purple" />
       </div>
       <div>
         <h2>Raised</h2>
-        <XButton text="Default" raised />
-        <XButton text="Themed" theme="red" icon="bookmark" raised />
-        <XButton text="Right" theme="green" raised>
+        <XButton raised text="Default" />
+        <XButton raised text="Themed" theme="red" icon="bookmark" />
+        <XButton raised text="Right" theme="green">
           <XIcon className="material-icons" value="bug_report" />
         </XButton>
-        <XButton text="Disabled" raised disabled />
-        <XButton text="Github" href="https://github.com/k3ira" icon={<GithubIcon />} theme="purple" raised />
+        <XButton raised disabled text="Disabled" />
+        <XButton raised text="Github" href="https://github.com/k3ira" icon={<GithubIcon />} theme="purple" />
       </div>
       <div>
         <h2>Circular</h2>
-        <XButton icon="add" circular />
-        <XButton icon="add" circular mini />
-        <XButton icon="add" circular inverse mini />
-        <XButton icon="add" circular disabled />
-        <XButton icon="favorite" theme="red" circular mini />
-        <XButton icon="favorite" theme="red" circular inverse />
-        <XButton href="https://github.com/k3ira" icon={<GithubIcon />} theme="purple" circular mini />
+        <XButton circular icon="add" />
+        <XButton circular mini icon="add" />
+        <XButton circular inverse mini icon="add" />
+        <XButton circular disabled icon="add" />
+        <XButton circular mini icon="favorite" theme="red" />
+        <XButton circular inverse icon="favorite" theme="red" />
+        <XButton circular mini href="https://github.com/k3ira" icon={<GithubIcon />} theme="purple" />
       </div>
       <div>
         <h2>Waveless</h2>
-        <XButtonWaveless text="Default" raised />
-        <XButtonWaveless text="Themed" theme="red" icon="bookmark" raised />
-        <XButtonWaveless text="Right" theme="green" flat>
+        <XButtonWaveless raised text="Default" />
+        <XButtonWaveless raised text="Themed" theme="red" icon="bookmark" />
+        <XButtonWaveless flat text="Right" theme="green">
           <XIcon className="material-icons" value="bug_report" />
         </XButtonWaveless>
-        <XButtonWaveless href="https://github.com/k3ira" icon={<GithubIcon />} theme="purple" flat />
-        <XButtonWaveless icon="add" circular />
-        <XButtonWaveless icon="favorite" theme="red" circular mini />
+        <XButtonWaveless flat href="https://github.com/k3ira" icon={<GithubIcon />} theme="purple" />
+        <XButtonWaveless circular icon="add" />
+        <XButtonWaveless circular mini icon="favorite" theme="red" />
       </div>
     </div>
   );

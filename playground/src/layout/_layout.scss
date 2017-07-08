@@ -11,9 +11,14 @@
       height: 100%;
 
       & .app-content {
-        padding: 20px;
+        display: flex;
+        justify-content: center;
         width: 100%;
         overflow-y: auto;
+
+        & > div {
+          min-width: 50%;
+        }
       }
     }
   }

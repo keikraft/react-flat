@@ -44,6 +44,10 @@ table {
   border-spacing: 0;
 }
 
+p {
+  color: #6d6d6d;
+}
+
 // Headings
 h1 {
   font-size: 36px;
@@ -67,9 +71,9 @@ h6 {
 h1, h2, h3, h4, h5, h6 {
   padding-bottom: 3px;
   font-family: inherit;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.1;
-  color: inherit;
+  color: #464646;
   border-bottom: 1px solid #dedede;
 }
 

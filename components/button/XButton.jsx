@@ -20,15 +20,15 @@ const xbuttonFactory = (XWave) => {
     };
 
     const props = {
-      className: classes,
       href,
-      onMouseUp: handleMouseUp,
       disabled,
+      className: classes,
+      onMouseUp: handleMouseUp,
       ...rest
     };
 
     return React.createElement(element, props,
-      hasIcon ? <XIcon className={classnames({'material-icons': typeof icon === 'string'})} value={icon} /> : null,
+      hasIcon ? <XIcon value={icon} /> : null,
       text && !circular ? <span className={classnames({'icon-text': hasIcon})}>{text}</span> : null,
       children
     );
@@ -66,7 +66,7 @@ const xbuttonFactory = (XWave) => {
     href: '',
     disabled: false,
     children: null,
-    onMouseUp: () => { return null; }
+    onMouseUp: () => {}
   };
 
   return XWave ? XWave(XButton) : XButton;

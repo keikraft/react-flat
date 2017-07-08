@@ -10,4 +10,5 @@
   .icon.#{$color-name} {
     @extend .icon;
     color: get-color($color-name,'300');
+  }
 }

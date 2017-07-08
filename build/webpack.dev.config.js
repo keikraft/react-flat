@@ -33,7 +33,11 @@ const webpackDevConfig = {
     modules: [
       resolve('playground/src'),
       resolve('node_modules')
-    ]
+    ],
+    alias: {
+      components: resolve('playground/src/components'),
+      router: resolve('playground/src/router')
+    }
   },
   module: {
     rules: [

@@ -1,48 +1,56 @@
-import './home.scss';
+import './pageStyles.scss';
 
 import React from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
-import AppLogo from '../app-logo/AppLogo';
+import XButton from '../../../../../components/button/XButton';
+import AppLogo from 'components/content/app-logo/AppLogo';
+
+import RoutesEnum from 'router/routes.enum';
+
+const HomePropTypes = {
+  history: PropTypes.object.isRequired,
+  theme: PropTypes.string,
+  onMount: PropTypes.func.isRequired,
+  onUnmount: PropTypes.func.isRequired
+};
+const HomeDefaultProps = {
+  theme: 'red'
+};
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      logoColor: 'red'
-    };
-
-    this.colorArray = ['red', 'pink', 'purple', 'blue', 'aqua', 'green', 'yellow', 'orange', 'brown', 'grey'];
-    this.colorIndex = 0;
-  }
-
-  componentDidMount() {
-    this.colorInternval = setInterval(() => {
-      const currentColorIndex = this.colorArray.indexOf(this.state.logoColor) + 1;
-      this.colorIndex = currentColorIndex !== this.colorArray.length ? currentColorIndex : 0;
-
-      const logoColor = this.colorArray[this.colorIndex];
-      this.setState({logoColor});
-    }, 5000);
+  componentWillMount() {
+    this.props.onMount();
   }
 
   componentWillUnmount() {
-    clearInterval(this.colorInternval);
+    this.props.onUnmount();
   }
 
+  handleExploreClick = () => {
+    this.props.history.push(RoutesEnum.installation);
+  };
+
   render() {
-    const {logoColor} = this.state;
+    const {theme} = this.props;
 
     return (
-      <div className="app-home">
+      <div className={classnames('app-home', theme)}>
         <div className="home-header">
-          <AppLogo color={logoColor} />
+          <AppLogo big color={theme} />
           <h2>React Flat</h2>
-          <p>Components made for React implmented with kind of Material FLAT Design.</p>
+          <p>Components made with and for React, implemented with kind of Material FLAT Design.</p>
+        </div>
+        <div className="home-content">
+          <XButton raised text="Explore" theme={theme} onClick={this.handleExploreClick} />
         </div>
       </div>
     );
   }
 }
+
+Home.propTypes = HomePropTypes;
+Home.defaultProps = HomeDefaultProps;
 
 export default Home;

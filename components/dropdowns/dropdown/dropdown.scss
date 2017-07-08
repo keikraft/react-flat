@@ -1,11 +1,12 @@
 @import '~styles/base/colors';
+@import '~styles/base/mixins';
 
 .dropdown-item {
   display: block;
-  padding: 10px;
-  font-size: 1em;
+  padding: 6px;
+  font-size: 13px;
   font-weight: 400;
-  line-height: 1em;
+  line-height: 13px;
   color: #333;
   cursor: pointer;
 
@@ -16,10 +17,10 @@
   }
 }
 
-div.dropdown {
+.dropdown {
   position: relative;
   display: block;
-  line-height: 1em;
+  line-height: 13px;
   text-decoration: none;
   cursor: pointer;
   outline: none;
@@ -38,7 +39,7 @@ div.dropdown {
     }
   }
 
-  & > ul {
+  & > span > ul {
     position: absolute;
     padding: 0;
     background: white;
@@ -47,6 +48,7 @@ div.dropdown {
     border-radius: 0;
     box-shadow: 0px 2px 5px color('grey', 'darken-2');
     z-index: 2000;
+    @include transition(all ease-in-out .3s);
 
     &.bottom {
       top: 100%;
@@ -72,4 +74,19 @@ div.dropdown {
       background-color: #e5e5e5;
     }
   }
+}
+
+// React CSS Transitions
+.fade-dropdown-enter {
+  opacity: 0;
+}
+.fade-dropdown-enter.fade-dropdown-enter-active {
+  opacity: 1;
+}
+.fade-dropdown-leave {
+  opacity: 1;
+}
+.fade-dropdown-leave.fade-dropdown-leave-active,
+.fade-dropdown-leave.fade-dropdown-leave-active:hover {
+  opacity: 0;
 }
