@@ -7,7 +7,7 @@
   padding: 4px 8px;
   height: 26px;
   font-size: 20px;
-  font-weight: 300;
+  font-weight: 400;
   background-color: $grey200;
   color: $color-white;
   text-shadow: none;
@@ -20,6 +20,7 @@
   }
 
   & .badge-icon {
+    color: inherit;
     vertical-align: text-bottom;
 
     & svg {
@@ -42,6 +43,7 @@
     padding: 2px 8px;
     height: 21px;
     font-size: 14px;
+    font-weight: 300;
     & .badge-icon {
       font-size: 18px;
       & svg {

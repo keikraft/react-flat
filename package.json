@@ -10,9 +10,7 @@
     "lint": "eslint ./components/**/*.jsx --color --quiet",
     "test": "mocha --compilers js:test/compiler.js --require test/setup.js test/**/*.spec.js",
     "build": "node ./build/build.js",
-    "dev": "node ./build/dev-server.js",
-    "playground": "",
-    "start": "npm run clean & npm run build & npm run playground"
+    "start": "npm run clean & npm run build"
   },
   "engines": {
     "node": ">=6.5.0"
@@ -24,7 +22,7 @@
     "classnames": "^2.2.5"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.1",
+    "autoprefixer": "^7.1.2",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.2",
     "babel-loader": "^7.1.1",
@@ -34,18 +32,18 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.24.1",
-    "chai": "^4.0.2",
-    "connect-history-api-fallback": "^1.3.0",
+    "chai": "^4.1.0",
+    "compression-webpack-plugin": "^0.4.0",
     "css-loader": "^0.28.4",
     "enzyme": "^2.9.1",
-    "eslint": "^4.1.1",
+    "eslint": "^4.3.0",
     "eslint-import-resolver-webpack": "^0.8.3",
-    "eslint-plugin-babel": "^4.1.1",
-    "eslint-plugin-html": "^3.0.0",
-    "eslint-plugin-import": "^2.6.1",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-html": "^3.1.1",
+    "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.1.0",
-    "extract-text-webpack-plugin": "^2.1.2",
+    "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.29.0",
     "immutable": "^3.8.1",
@@ -53,16 +51,11 @@
     "mocha": "^3.4.2",
     "node-sass": "^4.5.3",
     "open": "0.0.5",
-    "react-hot-loader": "^3.0.0-beta.7",
-    "react-router-dom": "^4.1.1",
     "react-test-renderer": "^15.6.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
-    "webpack": "^3.0.0",
-    "webpack-dev-middleware": "^1.11.0",
-    "webpack-dev-server": "^2.5.0",
-    "webpack-hot-middleware": "^2.18.1"
+    "webpack": "^3.4.1"
   },
   "eslintConfig": {
     "extends": "./eslint/index.js"
@@ -88,8 +81,7 @@
     "plugins": [
       "transform-class-properties",
       "transform-object-rest-spread",
-      "syntax-dynamic-import",
-      "react-hot-loader/babel"
+      "syntax-dynamic-import"
     ]
   }
 }

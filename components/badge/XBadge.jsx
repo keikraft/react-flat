@@ -6,8 +6,8 @@ import XIcon from '../icon/XIcon';
 
 import './styles.scss';
 
-const XBadge = ({text, icon, iconRight, color, inverse, small}) => {
-  const badgeColor = `badge-${color}`;
+const XBadge = ({text, icon, iconRight, theme, inverse, small}) => {
+  const badgeColor = `badge-${theme}`;
   const badgeSize = small ? 'badge-small' : '';
   const hasIcon = !!icon;
 
@@ -28,7 +28,7 @@ XBadge.propTypes = {
     PropTypes.element
   ]),
   iconRight: PropTypes.bool,
-  color: PropTypes.string,
+  theme: PropTypes.string,
   inverse: PropTypes.bool,
   small: PropTypes.bool
 };
@@ -37,7 +37,7 @@ XBadge.defaultProps = {
   text: '',
   icon: '',
   iconRight: false,
-  color: '',
+  theme: '',
   inverse: false,
   small: false
 };
