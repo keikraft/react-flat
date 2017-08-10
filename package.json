@@ -1,28 +1,37 @@
 {
   "name": "react-flat",
-  "author": "K3ira",
-  "description": "Flat designed components made with and for ReactJS",
-  "version": "1.0.0",
+  "author": {
+    "email": "k3ira.now@gmail.com",
+    "name": "Keira Aneiros"
+  },
+  "description": "Flat designed components made with and for React",
+  "version": "0.3.0",
   "license": "MIT",
-  "private": true,
-  "scripts": {
-    "clean": "rimraf ./dist",
-    "lint": "eslint ./components/**/*.jsx --color --quiet",
-    "test": "mocha --compilers js:test/compiler.js --require test/setup.js test/**/*.spec.js",
-    "build": "node ./build/build.js",
-    "start": "npm run clean & npm run build"
+  "main": "./src/index.js",
+  "module": "./components",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k3ira/react-flat.git"
   },
-  "engines": {
-    "node": ">=6.5.0"
-  },
+  "keywords": [
+    "ui",
+    "components",
+    "material design",
+    "flat design",
+    "react",
+    "react-component"
+  ],
   "dependencies": {
+    "classnames": "^2.2.5",
+    "prop-types": "^15.5.10"
+  },
+  "peerDependencies": {
     "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "prop-types": "^15.5.10",
-    "classnames": "^2.2.5"
+    "react-dom": "^15.6.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.2",
     "babel-loader": "^7.1.1",
@@ -34,7 +43,7 @@
     "babel-register": "^6.24.1",
     "chai": "^4.1.0",
     "compression-webpack-plugin": "^0.4.0",
-    "css-loader": "^0.28.4",
+    "cross-env": "^4.0.0",
     "enzyme": "^2.9.1",
     "eslint": "^4.3.0",
     "eslint-import-resolver-webpack": "^0.8.3",
@@ -44,18 +53,24 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.1.0",
     "extract-text-webpack-plugin": "^3.0.0",
-    "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.29.0",
     "immutable": "^3.8.1",
     "jsdom": "^11.1.0",
     "mocha": "^3.4.2",
     "node-sass": "^4.5.3",
     "open": "0.0.5",
-    "react-test-renderer": "^15.6.1",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.18.2",
-    "url-loader": "^0.5.9",
-    "webpack": "^3.4.1"
+    "react-test-renderer": "^15.6.1"
+  },
+  "scripts": {
+    "clean": "rimraf ./build",
+    "lint": "eslint ./src/**/*.jsx --color --quiet",
+    "test": "cross-env NODE_ENV=test mocha --compilers js:test/compiler.js --require test/setup.js src/**/*.spec.js",
+    "build:create-package": "babel-node ./scripts/create-package.js",
+    "build:babel": "cross-env NODE_ENV=release babel ./src --out-dir ./build",
+    "build": "npm run clean && npm run build:babel && npm run build:create-package"
+  },
+  "engines": {
+    "node": ">=6.5.0"
   },
   "eslintConfig": {
     "extends": "./eslint/index.js"
