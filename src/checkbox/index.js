@@ -1,1 +1,1 @@
-export {default} from './XCheck';
+export default './Check';

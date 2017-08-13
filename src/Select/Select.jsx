@@ -4,54 +4,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import XIcon from '../icon/XIcon';
+import Icon from '../Icon';
 
-const XSelectPropTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-        PropTypes.bool
-      ]).isRequired,
-      text: PropTypes.string.isRequired
-    })
-  ),
-  className: PropTypes.string,
-  theme: PropTypes.string,
-  placeholder: PropTypes.string,
-  single: PropTypes.bool,
-  multiple: PropTypes.bool,
-  clearable: PropTypes.bool,
-  disabled: PropTypes.bool,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.bool,
-    PropTypes.arrayOf([
-      PropTypes.string,
-      PropTypes.number,
-      PropTypes.bool
-    ])
-  ]),
-  error: PropTypes.string,
-  onSelect: PropTypes.func.isRequired
-};
-
-const XSelectDefaultProps = {
-  data: [],
-  className: '',
-  theme: 'grey',
-  placeholder: '',
-  single: false,
-  multiple: false,
-  clearable: false,
-  value: null,
-  error: '',
-  disabled: false
-};
-
-class XSelect extends React.Component {
+class Select extends React.Component {
   constructor(props) {
     super(props);
 
@@ -109,7 +64,7 @@ class XSelect extends React.Component {
   renderClearButton(item) {
     return (
       <button className="select-value-clear" onClick={this.handleRemoveValue.bind(this, item.value)}>
-        <XIcon value="clear" />
+        <Icon value="clear" />
       </button>
     );
   }
@@ -156,7 +111,48 @@ class XSelect extends React.Component {
   }
 }
 
-XSelect.propTypes = XSelectPropTypes;
-XSelect.defaultProps = XSelectDefaultProps;
+Select.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+        PropTypes.bool
+      ]).isRequired,
+      text: PropTypes.string.isRequired
+    })
+  ),
+  className: PropTypes.string,
+  theme: PropTypes.string,
+  placeholder: PropTypes.string,
+  single: PropTypes.bool,
+  multiple: PropTypes.bool,
+  clearable: PropTypes.bool,
+  disabled: PropTypes.bool,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.bool,
+    PropTypes.arrayOf([
+      PropTypes.string,
+      PropTypes.number,
+      PropTypes.bool
+    ])
+  ]),
+  error: PropTypes.string,
+  onSelect: PropTypes.func.isRequired
+};
+Select.defaultProps = {
+  data: [],
+  className: '',
+  theme: 'grey',
+  placeholder: '',
+  single: false,
+  multiple: false,
+  clearable: false,
+  value: null,
+  error: '',
+  disabled: false
+};
 
-export default XSelect;
+export default Select;

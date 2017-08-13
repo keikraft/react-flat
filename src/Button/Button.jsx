@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import xwaveFactory from '../wave/XWave';
-import XIcon from '../icon/XIcon';
+import waveFactory from '../Wave';
+import Icon from '../Icon';
 
 import './styles.scss';
 
-const xbuttonFactory = (XWave) => {
-  const XButton = ({text, theme, className, inverse, icon, flat, raised, circular, mini, href, disabled, children, onMouseUp, ...rest}) => {
+const buttonFactory = (Wave) => {
+  const Button = ({text, theme, className, inverse, icon, flat, raised, circular, mini, href, disabled, children, onMouseUp, ...rest}) => {
     const element = href ? 'a' : 'button';
     const type = flat ? 'flat' : raised ? 'raised' : circular ? 'circular' : 'flat';
     const classes = classnames('button', className, theme, type, {mini, inverse});
@@ -28,13 +28,13 @@ const xbuttonFactory = (XWave) => {
     };
 
     return React.createElement(element, props,
-      hasIcon ? <XIcon value={icon} /> : null,
+      hasIcon ? <Icon value={icon} /> : null,
       text && !circular ? <span className={classnames({'icon-text': hasIcon})}>{text}</span> : null,
       children
     );
   };
 
-  XButton.propTypes = {
+  Button.propTypes = {
     text: PropTypes.string,
     theme: PropTypes.string,
     className: PropTypes.string,
@@ -53,7 +53,7 @@ const xbuttonFactory = (XWave) => {
     onMouseUp: PropTypes.func
   };
 
-  XButton.defaultProps = {
+  Button.defaultProps = {
     text: '',
     theme: '',
     className: '',
@@ -69,9 +69,9 @@ const xbuttonFactory = (XWave) => {
     onMouseUp: () => {}
   };
 
-  return XWave ? XWave(XButton) : XButton;
+  return Wave ? Wave(Button) : Button;
 };
 
-const XButton = xbuttonFactory(xwaveFactory());
-export {xbuttonFactory};
-export default XButton;
+const Button = buttonFactory(waveFactory());
+export {buttonFactory};
+export default Button;

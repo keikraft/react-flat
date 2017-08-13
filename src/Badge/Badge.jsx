@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import XIcon from '../icon/XIcon';
+import Icon from '../Icon';
 
 import './styles.scss';
 
-const XBadge = ({text, icon, iconRight, theme, inverse, small}) => {
+const Badge = ({text, icon, iconRight, theme, inverse, small}) => {
   const badgeColor = `badge-${theme}`;
   const badgeSize = small ? 'badge-small' : '';
   const hasIcon = !!icon;
 
-  const Icon = hasIcon ? <XIcon key="icon" className={classnames('badge-icon', {'material-icons': typeof icon === 'string'})} value={icon} /> : null;
+  const Icon = hasIcon ? <Icon key="icon" className={classnames('badge-icon', {'material-icons': typeof icon === 'string'})} value={icon} /> : null;
   const Text = text ? <span key="text" className={classnames('badge-text', {hasIcon, right: iconRight})}>{text}</span> : null;
 
   return (
@@ -21,7 +21,7 @@ const XBadge = ({text, icon, iconRight, theme, inverse, small}) => {
   );
 };
 
-XBadge.propTypes = {
+Badge.propTypes = {
   text: PropTypes.string,
   icon: PropTypes.oneOfType([
     PropTypes.string,
@@ -33,7 +33,7 @@ XBadge.propTypes = {
   small: PropTypes.bool
 };
 
-XBadge.defaultProps = {
+Badge.defaultProps = {
   text: '',
   icon: '',
   iconRight: false,
@@ -42,4 +42,4 @@ XBadge.defaultProps = {
   small: false
 };
 
-export default XBadge;
+export default Badge;

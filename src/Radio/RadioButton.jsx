@@ -3,9 +3,7 @@ import classnames from 'classnames';
 
 import './styles.scss';
 
-const XRadioButton = (props) => {
-  const { label, value, className, theme, checked, disabled, onChange} = props;
-
+const RadioButton = ({label, value, className, theme, checked, disabled, onChange}) => {
   const handleClick = (event) => {
     if (!checked && !disabled && onChange) {
       onChange(event);
@@ -14,27 +12,29 @@ const XRadioButton = (props) => {
 
   return (
     <label className={classnames('radiobutton', className, theme)}>
-      <input type="radio" value={value} onClick={handleClick}/>
-      <span className={classnames('radio', { disabled: disabled, checked: checked })}/>
-      <span className={classnames('text', { disabled: disabled })}>{label}</span>
+      <input type="radio" value={value} onClick={handleClick} />
+      <span className={classnames('radio', {disabled, checked})} />
+      <span className={classnames('text', {disabled})}>{label}</span>
     </label>
   );
 };
 
-XRadioButton.propTypes = {
+RadioButton.propTypes = {
   label: React.PropTypes.string.isRequired,
   value: React.PropTypes.any.isRequired,
+  className: React.PropTypes.string,
   theme: React.PropTypes.string,
   checked: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   onChange: React.PropTypes.func
 };
 
-XRadioButton.defaultProps = {
+RadioButton.defaultProps = {
   className: '',
   theme: 'grey',
   checked: false,
-  disabled: false
+  disabled: false,
+  onChange: () => {}
 };
 
-export default XRadioButton;
+export default RadioButton;

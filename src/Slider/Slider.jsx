@@ -4,28 +4,7 @@ import classnames from 'classnames';
 
 import './styles.scss';
 
-class XSlider extends React.Component {
-  static propTypes = {
-    min: PropTypes.number,
-    max: PropTypes.number,
-    step: PropTypes.number,
-    value: PropTypes.number,
-    className: PropTypes.string,
-    theme: PropTypes.string,
-    disabled: PropTypes.bool,
-    onChange: PropTypes.func
-  };
-
-  static defaultProps = {
-    min: 0,
-    max: 1,
-    step: 0.01,
-    value: 0,
-    className: '',
-    theme: 'grey',
-    disabled: false
-  };
-
+class Slider extends React.Component {
   constructor(props) {
     super(props);
 
@@ -67,7 +46,7 @@ class XSlider extends React.Component {
     this.thumb.focus();
 
     this.onDragStart(event);
-  };
+  }
 
   handleMouseUp() {
     if (!this.props.disabled) {
@@ -75,7 +54,7 @@ class XSlider extends React.Component {
         active: false,
       });
     }
-  };
+  }
 
   onDragStart(event) {
     this.setState({
@@ -124,22 +103,21 @@ class XSlider extends React.Component {
   }
 
   getTrackOffset() {
-    return this.track.getBoundingClientRect()['left'];
+    return this.track.getBoundingClientRect().left;
   }
 
   getPercent(min, max, value) {
-    let percent = (value - min) / (max - min);
-
+    const percent = (value - min) / (max - min);
     return isNaN(percent) ? 0 : percent;
   }
 
   setValueFromPosition(event, position) {
-    const positionMax = this.track['clientWidth'];
-    position = position < 0 ? 0 : position > positionMax ? positionMax : position;
+    const positionMax = this.track.clientWidth;
+    const positionCalc = position < 0 ? 0 : position > positionMax ? positionMax : position;
 
-    const { min, max, step } = this.props;
-    let value = position / positionMax * (max - min);
-    value = Math.round(value / step) * step + min;
+    const {min, max, step} = this.props;
+    let value = (positionCalc / positionMax) * (max - min);
+    value = Math.round(value / step) * (step + min);
     value = parseFloat(value.toFixed(5));
 
     value = value < min ? min : value > max ? max : value;
@@ -153,21 +131,42 @@ class XSlider extends React.Component {
   }
 
   render() {
-    const { name, min, max, step, className, theme, disabled, onChange } = this.props;
-    const { value } = this.state;
-    const percent = this.getPercent(min, max, value);
+    const {name, min, max, step, className, theme, disabled, onChange} = this.props;
+    const percent = this.getPercent(min, max, this.state.value);
 
     return (
-      <div className={classnames('slider', className, theme)} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp}>
-        <div ref={node => { this.track = node; }} className="track-container">
+      <div className={classnames('slider', className, theme, {disabled})} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp}>
+        <div ref={(trackElem) => (this.track = trackElem)} className="track-container">
           <div className="track-fill" style={{width: `calc(${((percent) * 100)}%)`}}></div>
           <div className="track-post" style={{width: `calc(${((1 - percent) * 100)}%)`}}></div>
-          <div ref={node => { this.thumb = node; }} className="thumb" style={{left: percent === 0 ? '0%' : `${(percent * 100)}%`}}></div>
+          <div ref={(thumbElem) => (this.thumb = thumbElem)} className="thumb" style={{left: percent === 0 ? '0%' : `${(percent * 100)}%`}}></div>
         </div>
-        <input type="hidden" name={name} min={min} max={max} step={step} value={value}/>
+        <input type="hidden" name={name} min={min} max={max} step={step} value={this.state.value} />
       </div>
     );
   }
 }
 
-export default XSlider;
+Slider.propTypes = {
+  min: PropTypes.number,
+  max: PropTypes.number,
+  step: PropTypes.number,
+  value: PropTypes.number,
+  className: PropTypes.string,
+  theme: PropTypes.string,
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func
+};
+
+Slider.defaultProps = {
+  min: 0,
+  max: 1,
+  step: 0.01,
+  value: 0,
+  className: '',
+  theme: 'grey',
+  disabled: false,
+  onChange: () => {}
+};
+
+export default Slider;

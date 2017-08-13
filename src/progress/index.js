@@ -1,1 +1,1 @@
-export {default} from './XProgress';
+export default './Progress';

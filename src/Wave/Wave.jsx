@@ -4,13 +4,13 @@ import {OrderedMap} from 'immutable';
 
 import './styles.scss';
 
-const xwaveFactory = (options = {}) => {
+const waveFactory = (options = {}) => {
   const {
     waveWidth = 15
   } = {...options};
 
   return (Component) => {
-    class XWaveComponent extends React.Component {
+    class Wave extends React.Component {
       constructor(props) {
         super(props);
 
@@ -127,7 +127,7 @@ const xwaveFactory = (options = {}) => {
       }
     }
 
-    XWaveComponent.propTypes = {
+    Wave.propTypes = {
       theme: PropTypes.string,
       className: PropTypes.string,
       length: PropTypes.number,
@@ -137,7 +137,7 @@ const xwaveFactory = (options = {}) => {
       children: PropTypes.element
     };
 
-    XWaveComponent.defaultProps = {
+    Wave.defaultProps = {
       theme: '',
       className: '',
       length: 2,
@@ -147,8 +147,8 @@ const xwaveFactory = (options = {}) => {
       children: null
     };
 
-    return XWaveComponent;
+    return Wave;
   };
 };
 
-export default xwaveFactory;
+export default waveFactory;

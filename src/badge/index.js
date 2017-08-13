@@ -1,1 +1,1 @@
-export default './XBadge';
+export default './Badge';

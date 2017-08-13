@@ -1,1 +1,1 @@
-export {default} from './XDropdown';
+export default './Dropdown';

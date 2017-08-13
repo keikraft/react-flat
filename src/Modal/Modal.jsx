@@ -4,23 +4,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const ModalPropTypes = {
-  title: PropTypes.string,
-  subtitle: PropTypes.string,
-  visible: PropTypes.bool,
-  cancelButton: PropTypes.bool,
-  children: PropTypes.any,
-  onOk: PropTypes.func.isRequired,
-  onCancel: PropTypes.func.isRequired
-};
-const ModalDefaultProps = {
-  title: '',
-  subtitle: '',
-  visible: false,
-  cancelButton: true,
-  children: null
-};
-
 const Modal = ({title, subtitle, visible, cancelButton, children, onOk, onCancel}) => {
   const handleOk = () => {
     if (onOk) {
@@ -58,7 +41,21 @@ const Modal = ({title, subtitle, visible, cancelButton, children, onOk, onCancel
   );
 };
 
-Modal.propTypes = ModalPropTypes;
-Modal.defaultProps = ModalDefaultProps;
+Modal.propTypes = {
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  visible: PropTypes.bool,
+  cancelButton: PropTypes.bool,
+  children: PropTypes.any,
+  onOk: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired
+};
+Modal.defaultProps = {
+  title: '',
+  subtitle: '',
+  visible: false,
+  cancelButton: true,
+  children: null
+};
 
 export default Modal;

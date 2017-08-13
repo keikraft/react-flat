@@ -1,1 +1,1 @@
-export {default} from './XInput';
+export default './Input';
