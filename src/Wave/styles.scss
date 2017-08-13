@@ -1,0 +1,23 @@
+@import '../globals';
+
+.wave {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: $z-index-high;
+  pointer-events: none;
+  border-radius: 50%;
+  animation: wave .8s ease-out;
+}
+
+@keyframes wave {
+  0% {
+    opacity: 0.5;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}

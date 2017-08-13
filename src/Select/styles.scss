@@ -1,0 +1,180 @@
+@import '../colors';
+
+.select {
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  outline: none;
+  width: 100%;
+
+  &.multiple .select-values .select-value {
+    margin-right: 4px;
+  }
+
+  .select-values {
+    position: relative;
+    padding-right: 10px;
+    width: 100%;
+    min-height: 23px;
+    cursor: pointer;
+    outline: none;
+
+    &.disabled {
+      cursor: not-allowed;
+    }
+
+    & .select-value {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 2px;
+      padding: 4px;
+      user-select: none;
+      cursor: default;
+
+      & .select-value-clear {
+        margin-left: 4px;
+        line-height: 10px;
+        background-color: transparent;
+        outline: none;
+        cursor: pointer;
+
+        & span {
+          font-size: 16px;
+          transition: color ease-in-out .2s;
+        }
+      }
+
+      & .select-value-item {
+        font-size: 1rem;
+      }
+    }
+
+    & .select-placeholder {
+      display: inline-block;
+      padding: 4px 4px 0 4px;
+      pointer-events: none;
+      user-select: none;
+      overflow: hidden;
+      font-size: 13px;
+    }
+
+    & .select-arrow {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      pointer-events: none;
+      border-right: 5px solid transparent;
+      border-left: 5px solid transparent;
+      transform: translateY(-50%);
+    }
+  }
+
+  .select-error {
+    position: relative;
+    bottom: -2px;
+    font-size: 12px;
+    line-height: 14px;
+    color: get-color('red', 300);
+  }
+
+  & .select-dropdown {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    max-height: 200px;
+    width: 100%;
+    overflow-y: auto;
+    z-index: 100;
+    pointer-events: none;
+    list-style: none;
+    background-color: white;
+    border-radius: 0;
+    box-shadow: 0 0 5px get-color('grey', 120);
+    transition: all ease-in-out .3s;
+
+    &::-webkit-scrollbar {
+        width: 0.5em;
+    }
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,.3);
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: darkgrey;
+      outline: 1px solid slategrey;
+    }
+
+    &.open {
+      max-height: 30vh;
+      display: block;
+      pointer-events: all;
+      opacity: 1;
+      animation: fadeInUp .3s ease-in-out;
+    }
+
+    & li {
+      display: block;
+      position: relative;
+      padding: 10px;
+      color: get-color('grey', 300);
+      border-bottom: 1px solid get-color('grey', 100, .4);
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all ease-in-out .3s;
+
+      &:last-child {
+        border-bottom: 0;
+      }
+
+      &:hover,
+      &.selected {
+        background-color: get-color('grey', 100);
+      }
+    }
+  }
+
+  /* THEMES */
+  @each $color-name in $color-names {
+    &.#{$color-name} {
+      & .select-values {
+        border-bottom: 2px solid get-color('grey', 120);
+
+        &:focus {
+          border-bottom: 2px solid get-color($color-name, 210);
+        }
+        &.disabled {
+          border-bottom: 2px dashed get-color($color-name, 100);
+        }
+
+        & .select-value {
+          color: get-color($color-name, 330);
+          background-color: get-color($color-name, 200);
+
+          & .select-value-clear {
+            & span {
+              color: get-color($color-name, 100);
+            }
+
+            &:hover span {
+              color: get-color($color-name, 330);
+            }
+          }
+        }
+
+        & .select-arrow {
+          border-top: 5px solid get-color($color-name, 330, .12);
+        }
+
+        & .select-placeholder {
+          color: get-color('grey', 200);
+        }
+      }
+    }
+
+    &.#{$color-name}.inverse {
+      background-color: get-color($color-name, '100', 0.3);
+      color: get-color($color-name, '300');
+    }
+  }
+}
