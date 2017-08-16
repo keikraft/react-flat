@@ -1,1 +1,1 @@
-export default './Modal';
+export {default} from './Modal';

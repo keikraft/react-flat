@@ -1,1 +1,1 @@
-export default './Dropdown';
+export {default} from './Dropdown';

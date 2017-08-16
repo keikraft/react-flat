@@ -1,1 +1,1 @@
-export default './Wave';
+export {default} from './Wave';

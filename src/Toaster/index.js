@@ -1,4 +1,2 @@
-export {Toast} from './Toast';
-export {Toaster} from './Toaster';
-
-export default './Toast';
+export {default} from './Toast';
+export {default as Toaster} from './Toaster';

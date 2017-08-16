@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import './styles.scss';
 
-const Check = ({label, className, theme, checked, disabled, onChange}) => {
+const Checkbox = ({label, className, theme, checked, disabled, onChange}) => {
   const checkboxLabel = label ? <span className={classnames('text', {disabled})}>{label}</span> : null;
 
   const handleToggle = (event) => {
@@ -22,7 +22,7 @@ const Check = ({label, className, theme, checked, disabled, onChange}) => {
   );
 };
 
-Check.propTypes = {
+Checkbox.propTypes = {
   label: PropTypes.string,
   className: PropTypes.string,
   theme: PropTypes.string,
@@ -31,7 +31,7 @@ Check.propTypes = {
   onChange: PropTypes.func
 };
 
-Check.defaultProps = {
+Checkbox.defaultProps = {
   label: '',
   className: '',
   theme: 'grey',
@@ -40,4 +40,4 @@ Check.defaultProps = {
   onChange: () => { return null; }
 };
 
-export default Check;
+export default Checkbox;

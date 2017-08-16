@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import './styles.scss';
 
-const RadioButton = ({label, value, className, theme, checked, disabled, onChange}) => {
+function RadioButton({label, value, className, theme, checked, disabled, onChange}) {
   const handleClick = (event) => {
     if (!checked && !disabled && onChange) {
       onChange(event);
