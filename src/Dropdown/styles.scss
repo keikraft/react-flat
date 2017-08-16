@@ -1,5 +1,4 @@
-@import '~styles/base/colors';
-@import '~styles/base/mixins';
+@import '../colors';
 
 .dropdown-item {
   display: block;
@@ -48,7 +47,7 @@
     border-radius: 0;
     box-shadow: 0px 2px 5px color('grey', 'darken-2');
     z-index: 2000;
-    @include transition(all ease-in-out .3s);
+    transition: all ease-in-out .3s;
 
     &.bottom {
       top: 100%;

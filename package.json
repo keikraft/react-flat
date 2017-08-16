@@ -65,7 +65,7 @@
     "lint": "eslint ./src/**/*.jsx --color --quiet",
     "test": "cross-env NODE_ENV=test mocha --compilers js:test/compiler.js --require test/setup.js src/**/*.spec.js",
     "build:create-package": "babel-node ./scripts/create-package.js",
-    "build:babel": "cross-env NODE_ENV=release babel ./src --out-dir ./build",
+    "build:babel": "cross-env NODE_ENV=release babel ./src --out-dir ./build --copy-files",
     "build": "npm run clean && npm run build:babel && npm run build:create-package"
   },
   "engines": {

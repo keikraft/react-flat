@@ -1,5 +1,3 @@
-@import '~styles/base/mixins';
-
 .modal {
   position: fixed;
   top: 0;
@@ -18,7 +16,7 @@
 
     & .modal-dialog {
       opacity: 1;
-      @include transform(translateY(-50%) translateX(-50%));
+      transform: translateY(-50%) translateX(-50%);
     }
   }
 
@@ -37,8 +35,8 @@
     opacity: 0;
     outline: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-    @include transform(translateY(-40%) translateX(-50%));
-    @include transition(all ease-in-out .3s);
+    transform: translateY(-40%) translateX(-50%);
+    transition: all ease-in-out .3s;
 
     & .modal-header {
       position: relative;
@@ -93,7 +91,7 @@
   background-color: rgba(0, 0, 0, .5);
   z-index: 9;
   pointer-events: none;
-  @include transition(opacity ease-in-out .3s);
+  transition: opacity ease-in-out .3s;
 
   &.visible {
     opacity: 1;

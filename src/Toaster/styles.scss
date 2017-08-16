@@ -1,11 +1,10 @@
-@import "../globals";
 @import "../colors";
 @import "variables";
 
 div.toaster {
   position: fixed;
   pointer-events: none;
-  z-index: $z-index-highest;
+  z-index: 999999;
 
   /* Positions */
   &.top {

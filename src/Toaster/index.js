@@ -1,4 +1,4 @@
-export {Toast} from './XToast';
-export {Toaster} from './XToaster';
+export {Toast} from './Toast';
+export {Toaster} from './Toaster';
 
-export default './XToast';
+export default './Toast';

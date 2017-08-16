@@ -1,4 +1,4 @@
-export {XRadioButton} from './RadioButton';
-export {XRadioGroup} from './RadioGroup';
+export {RadioButton} from './RadioButton';
+export {RadioGroup} from './RadioGroup';
 
 export default './RadioButton';

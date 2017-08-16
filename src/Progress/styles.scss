@@ -1,6 +1,4 @@
-@import '~styles/base/variables';
-@import '~styles/base/mixins';
-@import '~styles/base/colors';
+@import '../colors';
 
 .progress {
   position: relative;
@@ -15,7 +13,7 @@
     font-weight: 500;
     font-size: 11px;
     color: white;
-    @include transform(translateY(-50%));
+    transform: translateY(-50%);
   }
 
   & .progress-bar {
