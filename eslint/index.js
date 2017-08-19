@@ -8,7 +8,7 @@ module.exports = {
     './rules/es6',
     './rules/imports',
     './rules/react',
-    './rules/react-a11y'
+    // './rules/react-a11y'
   ].map(require.resolve),
   env: {
     "browser": true

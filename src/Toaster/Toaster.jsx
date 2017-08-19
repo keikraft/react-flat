@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+
 import Toast from './Toast';
 
 import './styles.scss';
@@ -25,7 +26,7 @@ class Toaster extends React.Component {
 
     return (
       <div className={classnames('toaster', toasterPosition, toasterSide, className)}>
-        {Object.keys(toasts).map(toastKey => this.renderToast(toastKey, toasts[toastKey]))}
+        {Object.keys(toasts).map((toastKey) => this.renderToast(toastKey, toasts[toastKey]))}
       </div>
     );
   }
@@ -38,7 +39,7 @@ Toaster.propTypes = {
   center: PropTypes.bool,
   right: PropTypes.bool,
   className: PropTypes.string,
-  toasts: PropTypes.object,
+  toasts: PropTypes.objectOf(PropTypes.object),
   onRemoveToast: PropTypes.func
 };
 Toaster.defaultProps = {

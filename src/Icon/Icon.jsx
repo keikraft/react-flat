@@ -26,6 +26,7 @@ Icon.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func
 };
+
 Icon.defaultProps = {
   iconFont: '',
   value: '',

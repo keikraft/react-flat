@@ -1,13 +1,14 @@
+import './styles.scss';
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import waveFactory from '../Wave';
-import Icon from '../Icon';
 
-import './styles.scss';
+import waveFactory from '../Wave/Wave';
+import Icon from '../Icon/Icon';
 
-const buttonFactory = (Wave) => {
-  const Button = ({text, theme, className, inverse, icon, flat, raised, circular, mini, href, disabled, children, onMouseUp, ...rest}) => {
+function buttonFactory(Wave) {
+  function Button({text, theme, className, inverse, icon, flat, raised, circular, mini, href, disabled, children, onMouseUp, ...rest}) {
     const element = href ? 'a' : 'button';
     const type = flat ? 'flat' : raised ? 'raised' : circular ? 'circular' : 'flat';
     const classes = classnames('button', className, theme, type, {mini, inverse});
@@ -32,7 +33,7 @@ const buttonFactory = (Wave) => {
       text && !circular ? <span className={classnames({'icon-text': hasIcon})}>{text}</span> : null,
       children
     );
-  };
+  }
 
   Button.propTypes = {
     text: PropTypes.string,
@@ -70,7 +71,7 @@ const buttonFactory = (Wave) => {
   };
 
   return Wave ? Wave(Button) : Button;
-};
+}
 
 const Button = buttonFactory(waveFactory());
 export {buttonFactory};

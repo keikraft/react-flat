@@ -1,10 +1,10 @@
+import './styles.scss';
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import './styles.scss';
-
-const Checkbox = ({label, className, theme, checked, disabled, onChange}) => {
+function Checkbox({label, className, theme, checked, disabled, onChange}) {
   const checkboxLabel = label ? <span className={classnames('text', {disabled})}>{label}</span> : null;
 
   const handleToggle = (event) => {
@@ -20,7 +20,7 @@ const Checkbox = ({label, className, theme, checked, disabled, onChange}) => {
       {checkboxLabel}
     </label>
   );
-};
+}
 
 Checkbox.propTypes = {
   label: PropTypes.string,

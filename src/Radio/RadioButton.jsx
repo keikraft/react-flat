@@ -1,14 +1,14 @@
+import './styles.scss';
+
 import React from 'react';
 import classnames from 'classnames';
-
-import './styles.scss';
 
 function RadioButton({label, value, className, theme, checked, disabled, onChange}) {
   const handleClick = (event) => {
     if (!checked && !disabled && onChange) {
       onChange(event);
     }
-  }
+  };
 
   return (
     <label className={classnames('radiobutton', className, theme)}>
@@ -17,11 +17,11 @@ function RadioButton({label, value, className, theme, checked, disabled, onChang
       <span className={classnames('text', {disabled})}>{label}</span>
     </label>
   );
-};
+}
 
 RadioButton.propTypes = {
   label: React.PropTypes.string.isRequired,
-  value: React.PropTypes.any.isRequired,
+  value: React.PropTypes.string.isRequired,
   className: React.PropTypes.string,
   theme: React.PropTypes.string,
   checked: React.PropTypes.bool,

@@ -1,6 +1,6 @@
 import React, {Children} from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames'
+import classnames from 'classnames';
 
 function RadioGroup({name, value, className, children, onChange}) {
   const handleChange = (val) => {
@@ -11,7 +11,7 @@ function RadioGroup({name, value, className, children, onChange}) {
 
   return (
     <div className={classnames('radiogroup', className)} name={name} value={value}>
-      {Children.map(children, child => (
+      {Children.map(children, (child) => (
         React.cloneElement(child, {
           checked: child.props.value === value,
           onChange: handleChange.bind(this, child.props.value)
@@ -19,11 +19,11 @@ function RadioGroup({name, value, className, children, onChange}) {
       ))}
     </div>
   );
-};
+}
 
 RadioGroup.propTypes = {
   name: PropTypes.string.isRequired,
-  value: PropTypes.any.isRequired,
+  value: PropTypes.string.isRequired,
   className: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   children: PropTypes.node

@@ -1,5 +1,3 @@
-import './select-tags.scss';
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -140,11 +138,11 @@ class SelectTags extends React.Component {
           {tags && tags.map((tag, index) => { return this.renderTag(index, tag); })}
           <div className="select-input">
             <input ref={(input) => { this.input = input; }}
-                   value={writtenTag}
-                   disabled={disabled}
-                   style={{width: `${this.inputWidth}px`, boxSizing: 'content-box'}}
-                   onChange={this.handleInputChange}
-                   onKeyDown={this.handleKeyDown} />
+              value={writtenTag}
+              disabled={disabled}
+              style={{width: `${this.inputWidth}px`, boxSizing: 'content-box'}}
+              onChange={this.handleInputChange}
+              onKeyDown={this.handleKeyDown} />
           </div>
           {placeholder && writtenTag === '' && tags.length === 0 ? <label>{placeholder}</label> : null}
           {clearable && tags.length > 0 ? <a className="clear" onClick={this.handleClearSelection}><i className="fa fa-times" /></a> : null}

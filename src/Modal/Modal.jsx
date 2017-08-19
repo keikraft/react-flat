@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const Modal = ({title, subtitle, visible, cancelButton, children, onOk, onCancel}) => {
+function Modal({title, subtitle, visible, cancelButton, children, onOk, onCancel}) {
   const handleOk = () => {
     if (onOk) {
       onOk();
@@ -39,17 +39,18 @@ const Modal = ({title, subtitle, visible, cancelButton, children, onOk, onCancel
       <div className={classnames('modal-mask', {visible})} />
     </div>
   );
-};
+}
 
 Modal.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
   visible: PropTypes.bool,
   cancelButton: PropTypes.bool,
-  children: PropTypes.any,
+  children: PropTypes.node,
   onOk: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired
 };
+
 Modal.defaultProps = {
   title: '',
   subtitle: '',

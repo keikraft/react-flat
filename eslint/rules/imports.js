@@ -14,9 +14,6 @@ module.exports = {
     'import/resolver': {
       node: {
         extensions: ['.js', '.json']
-      },
-      webpack: {
-        config: './build/webpack.dev.config.js'
       }
     },
     'import/extensions': ['.js', '.jsx'],
@@ -32,7 +29,7 @@ module.exports = {
 
     // ensure imports point to files/modules that can be resolved
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
-    'import/no-unresolved': ['error', {commonjs: true, caseSensitive: true, ignore: ['features.*$', 'shared.*$', 'store.*$']}],
+    'import/no-unresolved': ['error', {caseSensitive: true, ignore: ['features.*$', 'shared.*$', 'store.*$']}],
 
     // ensure named imports coupled with named exports
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/named.md#when-not-to-use-it
@@ -68,8 +65,8 @@ module.exports = {
     // paths are treated both as absolute paths, and relative to process.cwd()
     'import/no-extraneous-dependencies': ['off', {
       devDependencies: [
-        'test/**', // tape, common npm pattern
-        'tests/**', // also common npm pattern
+        'test/**', // tape, app-common npm pattern
+        'tests/**', // also app-common npm pattern
         'spec/**', // mocha, rspec-like pattern
         '**/__tests__/**', // jest pattern
         'test.js', // repos with a single test file
@@ -144,7 +141,7 @@ module.exports = {
 
     // Require modules with a single export to use a default export
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/prefer-default-export.md
-    'import/prefer-default-export': 'error',
+    'import/prefer-default-export': 'off',
 
     // Restrict which files can be imported in a given folder
     // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-restricted-paths.md

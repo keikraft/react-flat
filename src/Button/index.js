@@ -1,1 +1,2 @@
-export {default, buttonFactory} from './Button';
+export {default} from './Button';
+export {default as Button, buttonFactory} from './Button';

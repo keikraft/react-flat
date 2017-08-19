@@ -204,7 +204,7 @@ module.exports = {
         'no-mixed-spaces-and-tabs': 'error',
 
         // disallow multiple empty lines and only one newline at the end
-        'no-multiple-empty-lines': ['error', {max: 2, maxEOF: 1}],
+        'no-multiple-empty-lines': ['error', {max: 1, maxEOF: 0}],
 
         // disallow negated conditions
         // http://eslint.org/docs/rules/no-negated-condition

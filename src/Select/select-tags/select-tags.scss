@@ -1,7 +1,3 @@
-@import '~styles/base/mixins';
-@import '~styles/base/variables';
-@import '~styles/base/colors';
-
 .select-tags {
   display: inline-block;
   position: relative;
@@ -52,7 +48,6 @@
         padding: 0 15px 0 0;
         border: 0;
         background-color: transparent;
-        font-family: $primary-fontstack;
         font-size: 13px;
         outline: none;
       }
@@ -63,7 +58,7 @@
       left: 0;
       top: 50%;
       font-size: 13px;
-      @include transform(translateY(-50%));
+      transform: translateY(-50%);
       color: rgba($text-color, .7);
       pointer-events: none;
       user-select: none;
@@ -73,7 +68,7 @@
     & .clear {
       position: absolute;
       top: 50%;
-      @include transform(translateY(-50%));
+      transform: translateY(-50%);
       right: 25px;
       color: #cacaca;
 
@@ -90,7 +85,7 @@
       border-top: 5px solid rgba(0,0,0,.12);
       border-right: 5px solid transparent;
       border-left: 5px solid transparent;
-      @include transform(translateY(-50%));
+      transform: translateY(-50%);
     }
   }
 
@@ -127,13 +122,13 @@
     background-color: white;
     border-radius: 0;
     box-shadow: 0 0 5px color('grey', 'lighten-2');
-    @include transition(all ease-in-out .3s);
+    transition: all ease-in-out .3s;
 
     &.open {
       display: block;
       pointer-events: all;
       opacity: 1;
-      @include animation(fadeInUp .3s ease-in-out )
+      animation: fadeInUp .3s ease-in-out;
     }
 
     & li {
@@ -143,7 +138,7 @@
       display: block;
       cursor: pointer;
       border-bottom: 1px solid color('grey', 'lighten-4');
-      @include transition(all ease-in-out .3s);
+      transition: all ease-in-out .3s;
 
       &:last-child {
         border-bottom: 0;

@@ -64,7 +64,7 @@ module.exports = {
 
     // Validate JSX has key prop when in array or iterator
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-key.md
-    'react/jsx-key': 'off',
+    'react/jsx-key': 'error',
 
     // Limit maximum of props on a single line in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md
@@ -112,7 +112,7 @@ module.exports = {
     // Enforce props alphabetical sorting
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md
     'react/jsx-sort-props': ['error', {
-      ignoreCase: false,
+      ignoreCase: true,
       callbacksLast: true,
       shorthandFirst: true,
       shorthandLast: false,
@@ -129,7 +129,7 @@ module.exports = {
 
     // Prevent usage of dangerous JSX properties
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-danger.md
-    'react/no-danger': 'warn',
+    'react/no-danger': 'off',
 
     // Prevent usage of deprecated methods
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-deprecated.md
@@ -145,7 +145,7 @@ module.exports = {
 
     // Prevent direct mutation of this.state
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-direct-mutation-state.md
-    'react/no-direct-mutation-state': 'off',
+    'react/no-direct-mutation-state': 'error',
 
     // Prevent usage of isMounted
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-is-mounted.md
@@ -159,7 +159,7 @@ module.exports = {
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-set-state.md
     'react/no-set-state': 'off',
 
-    // Prevent using string references
+    // Prevent using string reference
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-string-refs.md
     'react/no-string-refs': 'error',
 
@@ -326,7 +326,7 @@ module.exports = {
     },
     react: {
       pragma: 'React',
-      version: '0.14'
+      version: '15.0'
     },
   }
 };

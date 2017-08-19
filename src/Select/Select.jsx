@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import Icon from '../Icon';
+import Icon from '../Icon/Icon';
 
 class Select extends React.Component {
   constructor(props) {
@@ -142,6 +142,7 @@ Select.propTypes = {
   error: PropTypes.string,
   onSelect: PropTypes.func.isRequired
 };
+
 Select.defaultProps = {
   data: [],
   className: '',
