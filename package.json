@@ -4,7 +4,7 @@
     "email": "k3ira.now@gmail.com",
     "name": "Keira Aneiros"
   },
-  "description": "Flat designed components made with and for React",
+  "description": "Flat designed UI components made with and for React",
   "version": "0.3.0",
   "license": "MIT",
   "main": "./src/index.js",
