@@ -1,5 +1,7 @@
 # <a href=''><img src='http://i.imgur.com/6mIDYUa.png'></a>
 
+[![npm version](https://img.shields.io/badge/npm-0.3.0-f75c4c.svg?style=flat-square)](https://www.npmjs.com/package/react-flat)
+
 React Flat is a set of UI components made with and for [React](http://facebook.github.io/react/), mixing [Google's Material Design](https://material.google.com/) and [Flat Design](https://en.wikipedia.org/wiki/Flat_design).
 
 ## Installation
