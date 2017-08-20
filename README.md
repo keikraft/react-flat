@@ -1,6 +1,6 @@
 # <a href=''><img src='http://i.imgur.com/6mIDYUa.png'></a>
 
-[![npm version](https://img.shields.io/badge/npm-0.3.0-f75c4c.svg?style=flat-square)](https://www.npmjs.com/package/react-flat)[![Build Status](https://travis-ci.org/k3ira/react-flat.svg?branch=master)](https://travis-ci.org/k3ira/react-flat)
+[![npm version](https://img.shields.io/npm/v/react-flat.svg?style=flat-square)](https://www.npmjs.com/package/react-flat) [![Build Status](https://img.shields.io/travis/k3ira/react-flat/master.svg?style=flat-square)](https://travis-ci.org/k3ira/react-flat)
 
 React Flat is a set of UI components made with and for [React](http://facebook.github.io/react/), mixing [Google's Material Design](https://material.google.com/) and [Flat Design](https://en.wikipedia.org/wiki/Flat_design).
 
