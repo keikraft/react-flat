@@ -1,8 +1,10 @@
-# <a href=''><img src='http://i.imgur.com/6mIDYUa.png'></a>
+# <a href='https://k3ira.github.io/react-flat-web'><img src='http://i.imgur.com/zHxviLb.png'></a>
 
 [![npm version](https://img.shields.io/npm/v/react-flat.svg?style=flat-square)](https://www.npmjs.com/package/react-flat) [![Build Status](https://img.shields.io/travis/k3ira/react-flat/master.svg?style=flat-square)](https://travis-ci.org/k3ira/react-flat)
 
 React Flat is a set of UI components made with and for [React](http://facebook.github.io/react/), mixing [Google's Material Design](https://material.google.com/) and [Flat Design](https://en.wikipedia.org/wiki/Flat_design).
+
+<a href='https://k3ira.github.io/react-flat-web'>Here</a> you can see examples and how to get started
 
 ## Installation
 
