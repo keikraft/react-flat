@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="All Tests Suite" type="mocha-javascript-test-runner" factoryName="Mocha">
+    <node-interpreter>project</node-interpreter>
+    <node-options />
+    <working-directory>$PROJECT_DIR$</working-directory>
+    <pass-parent-env>true</pass-parent-env>
+    <envs>
+      <env name="NODE_ENV" value="test" />
+    </envs>
+    <ui>bdd</ui>
+    <extra-mocha-options>--compilers js:scripts/test/compiler.js --require scripts/test/setup.js</extra-mocha-options>
+    <test-kind>PATTERN</test-kind>
+    <test-pattern>src/**/*.spec.{js,jsx}</test-pattern>
+    <method />
+  </configuration>
+</component>

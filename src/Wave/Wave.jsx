@@ -17,11 +17,7 @@ const waveFactory = (options = {}) => {
         this.state = {
           waves: OrderedMap()
         };
-
-        this.elemRef = null;
         this.waveRefs = OrderedMap();
-
-        this.handleMouseDown = this.handleMouseDown.bind(this);
       }
 
       componentDidUpdate(prevProps, prevState) {
@@ -91,7 +87,7 @@ const waveFactory = (options = {}) => {
         });
       }
 
-      handleMouseDown(event) {
+      handleMouseDown = (event) => {
         if (!this.props.disabled) {
           const position = {
             x: event.pageX - (window.scrollX || window.pageXOffset),
@@ -99,7 +95,7 @@ const waveFactory = (options = {}) => {
           };
           this.createWave(event.currentTarget, position);
         }
-      }
+      };
 
       renderWave(key, {top, left, width}) {
         const border = `${waveWidth}px solid currentColor`;

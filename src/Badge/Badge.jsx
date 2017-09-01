@@ -11,8 +11,8 @@ function Badge({text, icon, iconRight, theme, inverse, small}) {
   const badgeSize = small ? 'badge-small' : '';
   const hasIcon = !!icon;
 
-  const BadgeIcon = hasIcon ? <Icon key="icon" className={classnames('badge-icon', {'material-icons': typeof icon === 'string'})} value={icon} /> : null;
-  const Text = text ? <span key="text" className={classnames('badge-text', {hasIcon, right: iconRight})}>{text}</span> : null;
+  const BadgeIcon = hasIcon ? <Icon key="icon" className="badge-icon" value={icon} /> : null;
+  const Text = text ? <span key="text" className={classnames('badge-text', {'has-icon': hasIcon, right: iconRight})}>{text}</span> : null;
 
   return (
     <div className={classnames('badge', badgeColor, {inverse}, badgeSize)}>
