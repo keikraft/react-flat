@@ -8,11 +8,11 @@ import waveFactory from '../Wave/Wave';
 import Icon from '../Icon/Icon';
 
 function buttonFactory(Wave) {
-  function Button({text, theme, className, inverse, icon, flat, raised, circular, mini, href, disabled, children, onMouseUp, ...rest}) {
+  function Button({text, theme, className, icon, flat, raised, circular, inverse, mini, href, disabled, children, onMouseUp, ...rest}) {
     const element = href ? 'a' : 'button';
     const type = flat ? 'flat' : raised ? 'raised' : circular ? 'circular' : 'flat';
     const classes = classnames('button', className, theme, type, {mini, inverse});
-    const hasIcon = icon || children;
+    const hasIcon = !!icon;
 
     const handleMouseUp = () => {
       if (onMouseUp) {
@@ -21,8 +21,8 @@ function buttonFactory(Wave) {
     };
 
     const props = {
-      href,
       disabled,
+      href: element === 'a' ? href : null,
       className: classes,
       onMouseUp: handleMouseUp,
       ...rest

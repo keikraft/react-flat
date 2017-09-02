@@ -5,7 +5,7 @@
     "name": "Keira Aneiros"
   },
   "description": "Flat designed UI components made with and for React",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "MIT",
   "main": "./src/index.js",
   "module": "./components",
@@ -61,7 +61,7 @@
   "scripts": {
     "clean": "rimraf ./build",
     "lint": "eslint ./src/**/*.jsx --color --quiet",
-    "test": "cross-env NODE_ENV=test mocha --compilers js:test/compiler.js --require test/setup.js src/**/*.spec.js",
+    "test": "cross-env NODE_ENV=test mocha --compilers js:scripts/test/compiler.js --require scripts/test/setup.js src/**/*.spec.{js,jsx}",
     "build:create-package": "babel-node ./scripts/create-package.js",
     "build:babel": "cross-env NODE_ENV=release babel ./src --out-dir ./build --copy-files",
     "build": "npm run clean && npm run build:babel && npm run build:create-package"
@@ -72,6 +72,7 @@
   "eslintConfig": {
     "extends": "./eslint/index.js"
   },
+  "eslintIgnore": ["*.spec.jsx"],
   "babel": {
     "presets": [
       "react",
